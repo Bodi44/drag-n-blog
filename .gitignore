@@ -6,11 +6,15 @@
 .pnp.js
 .idea/
 
+
 # testing
 /coverage
 
 # production
 /build
+
+# prettier
+.prettierrc
 
 # misc
 .DS_Store

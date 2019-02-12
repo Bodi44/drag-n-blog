@@ -1,5 +1,5 @@
 # Drag-n-Blog
-## flexible blog-post powered by ReactJS
+### flexible blog-post powered by ReactJS
 
 ### Project set-up:
 ```
