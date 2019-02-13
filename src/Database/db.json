@@ -1,0 +1,39 @@
+{
+  "articles": [
+    {
+      "id": "1",
+      "title": "CopyRight Automatico",
+      "date": "2018-12-09",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "author": "Mike Jackson"
+    },
+    {
+      "title": "nre title",
+      "text": "new text",
+      "date": "2006-05-15",
+      "author": "Max Voloskiy",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "title": "Astalavista",
+      "date": "2018-12-07",
+      "text": "Lorem ipsumLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.ike Taylor",
+      "author": "Mike Taylor"
+    },
+    {
+      "id": "4",
+      "title": "Title",
+      "text": "Text",
+      "date": "2008-04-26",
+      "author": "Max Voloskiy"
+    },
+    {
+      "id": "5",
+      "title": "New Title",
+      "text": "My Text",
+      "date": "2019-02-12",
+      "author": "Bohdan Shtohrinets"
+    }
+  ]
+}

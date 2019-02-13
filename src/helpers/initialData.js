@@ -5,28 +5,28 @@ const initialData = {
       title: 'A Technique for Deciding When to Say No',
       content: 'Instead of trying to do everything, figure out what deserves your time and energy...',
       author: 'Adam Frank',
-      time: '~4min.'
+      time: '~4min.',
     },
     'task-2': {
       id: 'task-2',
       title: 'Facebook Doesn’t Care About You',
       content: 'Scandal after scandal won’t change user behavior — and the company knows it...',
       author: 'Trevor Timm',
-      time: '~8min.'
+      time: '~8min.',
     },
     'task-3': {
       id: 'task-3',
       title: 'As a Designer, I Refuse to Call People ‘Users’',
       content: 'In an industry that touches so many lives, accurate terminology is essential...',
       author: 'Adam Lefton',
-      time: '~14min.'
+      time: '~14min.',
     },
     'task-4': {
       id: 'task-4',
       title: 'How Top-Performing College Grads Fall Into the ‘Prestige Career’ Trap',
       content: 'We funnel our highest achievers into consulting and finance — and it’s hurting all of us...',
       author: 'Indra Sofian',
-      time: '~24min.'
+      time: '~24min.',
     },
   },
   columns: {

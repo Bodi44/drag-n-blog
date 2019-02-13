@@ -3,7 +3,7 @@ import { Droppable } from 'react-beautiful-dnd'
 
 import Task from '../Task/Task'
 
-import '../css-grid/grid.scss'
+import '../../css-grid/grid.scss'
 import './Column.scss'
 
 export default class Column extends Component {
@@ -17,7 +17,8 @@ export default class Column extends Component {
               ref={provided.innerRef}
               {...provided.droppableProps}>
               {this.props.tasks.map((task, index) => (
-                <Task key={task.id} task={task} index={index}/>
+                <Task key={task.id} columnId={this.props.column.id} task={task} index={index}
+                      handler={this.props.handler}/>
               ))}
               {provided.placeholder}
             </ul>

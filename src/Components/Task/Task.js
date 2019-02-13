@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 
-import '../css-grid/grid.scss'
+import '../../css-grid/grid.scss'
 import './Task.scss'
 
 
@@ -18,7 +18,9 @@ export default class Task extends Component {
           >
             <header className={'Task__top-content'}>
               <h5 className='Task__title'>{this.props.task.title}</h5>
-              <button className={'Task__remove'}>Remove</button>
+              <button className={'Task__remove'}
+                      onClick={() => this.props.handler(this.props.task.id, this.props.columnId)}>Remove
+              </button>
             </header>
             <p className={'Task__content'}>{this.props.task.content}</p>
             <footer className={'Task__secondary'}>
