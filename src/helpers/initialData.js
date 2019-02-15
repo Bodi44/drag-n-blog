@@ -40,7 +40,7 @@ const initialData = {
   columnOrder: ['column-1'],
 }
 
-export const Item1 = [
+export const postList = [
   {
     id: 'post-1',
     title: 'A Technique for Deciding When to Say No',
@@ -76,6 +76,15 @@ export const Item1 = [
     author: 'Post Author',
     time: '~post time',
   },
+  {
+    id: 'post-6',
+    title: 'Some Title 2',
+    content: 'Post contents 2',
+    author: 'Post Author 2',
+    time: '~post time 2',
+  },
 ]
 
-export const Item2 = []
+export const blogContainers = [
+  []
+]

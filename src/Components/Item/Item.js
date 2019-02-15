@@ -6,8 +6,10 @@ import flow from 'lodash/flow'
 import './Item.scss'
 import '../../css-grid/grid.scss'
 
+
 const itemSource = {
   beginDrag(props) {
+    console.log('begin: ', props.containerId)
     return {
       index: props.index,
       id: props.containerId,
@@ -53,13 +55,16 @@ const itemTarget = {
 class Item extends Component {
   render() {
     const { isDragging, connectDragSource, connectDropTarget, item } = this.props
+    const changeSize = this.props.containerId === 2
     const opacity = isDragging ? 0 : 1
+
+    console.log('change size: ', changeSize)
 
     return connectDragSource(
       connectDropTarget(
-        <li className={'Item'}>
-          <h1>{item.title}</h1>
-          <p>{item.content}</p>
+        <li className={!changeSize ? 'Item' : 'Item Item_bigger'} style={{ opacity }}>
+          <h4 className={!changeSize ? 'Item__title' : 'Item__title Item__title_bigger'}>{item.title}</h4>
+          <p className={'Item__content'}>{item.content}</p>
           <small>{item.author}</small>
           <time>{item.time}</time>
         </li>,

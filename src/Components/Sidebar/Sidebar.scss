@@ -1,6 +1,9 @@
 .Sidebar{
   font-family: Roboto, sans-serif;
   background-color: #ecf0f1;
+  height: 845px;
+  overflow: auto;
+  min-width: 300px;
 
   &__title{
     margin: 0;
