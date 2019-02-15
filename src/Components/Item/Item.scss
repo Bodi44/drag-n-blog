@@ -1,0 +1,8 @@
+.Item{
+  list-style-type: none;
+  border: 1px solid lightgray;
+  padding: 10px;
+  &:not(:last-child){
+    margin-bottom: 5px;
+  }
+}
