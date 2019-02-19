@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAU;EACR,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,kBAAkB;EAC/B,gBAAgB,EAAE,OAAO;EACzB,UAAU,EAAE,eAAe",
+"sources": ["BlogTable.scss"],
+"names": [],
+"file": "BlogTable.css"
+}

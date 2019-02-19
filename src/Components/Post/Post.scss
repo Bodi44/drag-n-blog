@@ -1,0 +1,40 @@
+.Post{
+  margin: 20px auto !important;
+  font-family: Roboto Slab, serif;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-align: center;
+
+  &-image{
+    border-radius: 5px;
+  }
+
+  &-header{
+    color: #394040;
+    font-size: 36px;
+  }
+
+  &-content{
+    font-size: 28px;
+    color: #394040;
+  }
+
+  &__tags{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+    color: #C4C4C4;
+
+    &-tag{
+      min-width: 100px;
+      text-align: center;
+      border: 1px solid #C4C4C4;
+      border-radius: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+  }
+}

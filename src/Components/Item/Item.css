@@ -1,0 +1,21 @@
+.Item {
+  background-color: #ffffff;
+  list-style-type: none;
+  border: 1px solid lightgray;
+  cursor: move; }
+  .Item:not(:last-child) {
+    margin-bottom: 5px; }
+  .Item_bigger {
+    height: 100%; }
+  .Item__title {
+    font-size: 14px;
+    margin: 0;
+    padding: 0; }
+    .Item__title_bigger {
+      font-size: 20px; }
+  .Item__content {
+    margin: 0;
+    padding: 0;
+    font-size: 12px; }
+
+/*# sourceMappingURL=Item.css.map */
