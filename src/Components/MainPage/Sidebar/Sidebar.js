@@ -4,7 +4,7 @@ import { DropTarget } from 'react-dnd'
 
 import Item from '../Item/Item'
 
-import '../../css-grid/grid.scss'
+import '../../../css-grid/grid.scss'
 import './Sidebar.scss'
 
 const itemTarget = {

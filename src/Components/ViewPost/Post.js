@@ -17,13 +17,13 @@ class Post extends Component{
     render(){
         const {title, content} = this.state;
         return(
-            <div className={'Post grid_10'}>
-                <img className={'Post-image'} src="https://res.cloudinary.com/maxvoloskiy/image/upload/v1550543000/Drag%27n%27Blog/cover.jpg"
+            <div className={'ViewPost grid_10'}>
+                <img className={'ViewPost-image'} src="https://res.cloudinary.com/maxvoloskiy/image/upload/v1550543000/Drag%27n%27Blog/cover.jpg"
                      alt="image"/>
 
-                <h1 className={'Post-header'}>{title}</h1>
+                <h1 className={'ViewPost-header'}>{title}</h1>
 
-                <p className={'Post-content'}>{content}</p>
+                <p className={'ViewPost-content'}>{content}</p>
 
                 <ul className={'Post__tags'}>
                     <li className={'Post__tags-tag'}>#enterpreneurship</li>

@@ -5,9 +5,14 @@ import { DropTarget } from 'react-dnd'
 import Item from '../Item/Item'
 
 import './Container.scss'
-import '../../css-grid/grid.scss'
+import '../../../css-grid/grid.scss'
 
 const itemTarget = {
+  canDrop(props, monitor) {
+    // console.log(props.container, monitor.getItem())
+    return true
+  },
+
   drop(props, monitor, component) {
     const { id } = props
     const sourceObj = monitor.getItem()
@@ -30,7 +35,7 @@ const collect = (connect, monitor) => {
 
 class Container extends Component {
   state = {
-    items: this.props.containers,
+    items: this.props.container,
   }
 
   pushItem = (item) => {
@@ -65,12 +70,14 @@ class Container extends Component {
 
   render() {
     const { items } = this.state
-    const { canDrop, isOver, connectDropTarget } = this.props
+    const { canDrop, isOver, connectDropTarget, index } = this.props
     const isActive = canDrop && isOver
     const backgroundColor = isActive ? '#ecf0f1' : '#FFF'
 
     return connectDropTarget(
-      <ul className={'grid_7 Container'} style={{ background: backgroundColor }}>
+      <ul onDrop={() => this.props.onDropHandler(items, index)}
+          className={'grid_7 Container'}
+          style={{ background: backgroundColor }}>
         {items.map((item, index) => (
           <Item key={items.id}
                 index={index}

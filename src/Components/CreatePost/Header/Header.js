@@ -1,7 +1,6 @@
-/* eslint-disable react/require-render-return */
 import React, { Component } from 'react'
 
-import '../../css-grid/grid.scss'
+import '../../../css-grid/grid.scss'
 import './Header.scss'
 
 class Header extends Component{

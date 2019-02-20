@@ -4,12 +4,11 @@ import { DragSource, DropTarget } from 'react-dnd'
 import flow from 'lodash/flow'
 
 import './Item.scss'
-import '../../css-grid/grid.scss'
+import '../../../css-grid/grid.scss'
 
 
 const itemSource = {
   beginDrag(props) {
-    console.log('begin: ', props.containerId)
     return {
       index: props.index,
       id: props.containerId,
@@ -57,8 +56,6 @@ class Item extends Component {
     const { isDragging, connectDragSource, connectDropTarget, item } = this.props
     const changeSize = this.props.containerId === 2
     const opacity = isDragging ? 0 : 1
-
-    console.log('change size: ', changeSize)
 
     return connectDragSource(
       connectDropTarget(

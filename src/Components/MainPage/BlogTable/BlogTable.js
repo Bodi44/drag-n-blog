@@ -4,7 +4,7 @@ import update from 'immutability-helper'
 import Container from '../Container/Container'
 
 import './BlogTable.scss'
-import '../../css-grid/grid.scss'
+import '../../../css-grid/grid.scss'
 
 class BlogTable extends Component {
   state = {
@@ -21,12 +21,16 @@ class BlogTable extends Component {
     }))
   }
 
+  modifyContainer = (index, items) =>{
+    console.log(index, items)
+  }
+
   render() {
     const { containers } = this.state
     return (
       <div className={'grid_9 BlogTable'}>
         {containers.map((container, index) => (
-          <Container id={this.props.id} index={index} containers={container}/>
+          <Container onDropHandler={this.modifyContainer} id={this.props.id} index={index} container={container}/>
         ))}
         <button onClick={this.addContainer}>Add new Container</button>
       </div>

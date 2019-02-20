@@ -72,15 +72,15 @@ export const postList = [
   {
     id: 'post-5',
     title: 'Some Title',
-    content: 'Post contents',
-    author: 'Post Author',
+    content: 'ViewPost contents',
+    author: 'ViewPost Author',
     time: '~post time',
   },
   {
     id: 'post-6',
     title: 'Some Title 2',
-    content: 'Post contents 2',
-    author: 'Post Author 2',
+    content: 'ViewPost contents 2',
+    author: 'ViewPost Author 2',
     time: '~post time 2',
   },
 ]

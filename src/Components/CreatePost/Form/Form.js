@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 
-import '../../css-grid/grid.scss'
+import '../../../css-grid/grid.scss'
 import './Form.scss'
 
 class Form extends Component{
-
     constructor(props){
         super(props);
         this.state = {
