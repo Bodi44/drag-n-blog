@@ -3,15 +3,14 @@ import React from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 import BlogTable from '../BlogTable/BlogTable'
 
-import { postList, blogContainers } from '../../../helpers/initialData'
-
 import '../../../css-grid/grid.scss'
 
-const MainPage = () => {
-  return(
+const MainPage = (props) => {
+  const { articles, layoutContainers } = props
+  return (
     <div className={'container_12'}>
-      <Sidebar id={1} items={postList}/>
-      <BlogTable id={2} items={blogContainers}/>
+      <Sidebar id={1} items={articles}/>
+      <BlogTable id={2} items={layoutContainers}/>
     </div>
   )
 }

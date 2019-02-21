@@ -28,8 +28,12 @@ const collect = (connect, monitor) => {
 }
 
 class Sidebar extends Component {
-  state = {
-    items: this.props.items,
+  constructor(props) {
+    super(props)
+    console.log(props)
+    this.state = {
+      items: props.items,
+    }
   }
 
   pushItem = (item) => {
@@ -63,6 +67,7 @@ class Sidebar extends Component {
   }
 
   render() {
+    console.log(this.state)
     const { items } = this.state
     const { canDrop, isOver, connectDropTarget } = this.props
     const isActive = canDrop && isOver

@@ -37,7 +37,7 @@ export default class Database {
     return await this.createFromJson({
       id: id,
       title: title,
-      text: text,
+      content: text,
       date: Database.dateToString(new Date()),
       author: author,
     })
