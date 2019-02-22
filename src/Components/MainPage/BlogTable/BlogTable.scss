@@ -1,8 +1,18 @@
 .BlogTable{
-  display: flex;
-  flex-direction: column;
   font-family: Roboto, sans-serif;
   background-color: #ffffff;
   height: 845px;
   overflow: auto;
+
+  &__add-container{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+    background: none;
+    border: 1px solid black;
+    font-family: Roboto, sans-serif;
+    text-transform: uppercase;
+  }
 }

@@ -1,25 +1,20 @@
 import React, { Component } from 'react'
-import update from 'immutability-helper'
 import { DropTarget } from 'react-dnd'
 
-import Item from '../Item/Item'
+import Database from '../../../Database/Database'
 
 import './Container.scss'
 import '../../../css-grid/grid.scss'
 
 const itemTarget = {
-  canDrop(props, monitor) {
-    // console.log(props.container, monitor.getItem())
-    return true
-  },
-
   drop(props, monitor, component) {
-    const { id } = props
-    const sourceObj = monitor.getItem()
-    if (id !== sourceObj.containerId) component.pushItem(sourceObj.item)
+    const { containerId } = props
+
+    if (containerId === 2)
+      component.addItemToContainer(props.container.id, monitor.getItem(), props.serverUrl)
 
     return {
-      containerId: id,
+      containerId: containerId,
     }
   },
 }
@@ -27,67 +22,40 @@ const itemTarget = {
 const collect = (connect, monitor) => {
   return {
     connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-    canDrop: monitor.canDrop(),
+    hovered: monitor.isOver(),
+    item: monitor.getItem(),
   }
 }
 
-
 class Container extends Component {
-  state = {
-    items: this.props.container,
+  addItemToContainer = (id, data, url) => {
+    const dataBase = new Database(url + 'layoutContainers')
+    this.props.containerUpdater(id, data, this.props.index)
+
+    dataBase.update(id, data)
   }
 
-  pushItem = (item) => {
-    this.setState(update(this.state, {
-      items: {
-        $push: [item],
-      },
-    }))
-  }
-
-  removeItem = (index) => {
-    this.setState(update(this.state, {
-      items: {
-        $splice: [[index, 1]],
-      },
-    }))
-  }
-
-  moveItem = (dragIndex, hoverIndex) => {
-    const { items } = this.state
-    const dragItem = items[dragIndex]
-
-    this.setState(update(this.state, {
-      items: {
-        $splice: [
-          [dragIndex, 1],
-          [hoverIndex, 0, dragItem],
-        ],
-      },
-    }))
+  checkIfEmpty = (container, backgroundColor) => {
+    return container.content ?
+      (<div className={'Container'} style={{ background: backgroundColor }}>
+        <h2 className={'Container__title'}>{container.title}</h2>
+        <button className={'Container__remove'}>X</button>
+        <p className={'Container__content'}>{container.content}</p>
+        <small className={'Container__author'}>{container.author}</small>
+        <time className={'Container__date'}>{container.date}</time>
+      </div>)
+      : (<div className={'Container'} style={{ background: backgroundColor }}>
+        Container
+        <button className={'Container__remove'}>X</button>
+      </div>)
   }
 
   render() {
-    const { items } = this.state
-    const { canDrop, isOver, connectDropTarget, index } = this.props
-    const isActive = canDrop && isOver
-    const backgroundColor = isActive ? '#ecf0f1' : '#FFF'
+    const { connectDropTarget, hovered, container } = this.props
+    const backgroundColor = hovered ? 'lightgreen' : 'white'
 
     return connectDropTarget(
-      <ul onDrop={() => this.props.onDropHandler(items, index)}
-          className={'grid_7 Container'}
-          style={{ background: backgroundColor }}>
-        {items.map((item, index) => (
-          <Item key={items.id}
-                index={index}
-                containerId={this.props.id}
-                item={item}
-                removeItem={this.removeItem}
-                moveItem={this.moveItem}
-          />
-        ))}
-      </ul>,
+      this.checkIfEmpty(container, backgroundColor),
     )
   }
 }

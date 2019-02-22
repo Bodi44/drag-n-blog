@@ -3,7 +3,8 @@
   background-color: #ecf0f1;
   height: 845px;
   overflow: auto;
-  min-width: 300px;
+  min-width: 390px;
+  padding: 5px;
 
   &__title{
     margin: 0;
@@ -13,5 +14,11 @@
   &__blog-list{
     margin: 0;
     padding: 0;
+  }
+
+  &__add-blog{
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px;
   }
 }

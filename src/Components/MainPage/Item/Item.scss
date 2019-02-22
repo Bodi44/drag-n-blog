@@ -1,10 +1,32 @@
 .Item{
+  position: relative;
   background-color: #ffffff;
+  min-width: 300px;
   list-style-type: none;
   border: 1px solid lightgray;
   cursor: move;
+  padding: 10px;
   &:not(:last-child){
     margin-bottom: 5px;
+  }
+
+  &__modifiers{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  &__remove{
+    padding: 0 5px;
+    background: none;
+    border: 1px solid black;
+    margin-right: 5px;
+  }
+
+  &__edit{
+    padding: 0;
+    background: none;
+    border: 1px solid black;
   }
 
   &_bigger{
@@ -13,8 +35,9 @@
 
   &__title{
     font-size: 14px;
-    margin: 0;
+    margin: 0 0 10px;
     padding: 0;
+    max-width: 22em;
 
     &_bigger{
       font-size: 20px;
@@ -22,8 +45,22 @@
   }
 
   &__content{
+    padding: 0;
+    font-size: 12px;
+    margin: 0 0 5px;
+  }
+
+  &__date{
+    color: #394040;
     margin: 0;
     padding: 0;
     font-size: 12px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+  &__author{
+    font-size: 12px;
+    color: #394040;
   }
 }

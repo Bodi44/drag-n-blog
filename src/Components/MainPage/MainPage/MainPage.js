@@ -1,4 +1,6 @@
 import React from 'react'
+import { DragDropContext } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 
 import Sidebar from '../Sidebar/Sidebar'
 import BlogTable from '../BlogTable/BlogTable'
@@ -6,13 +8,13 @@ import BlogTable from '../BlogTable/BlogTable'
 import '../../../css-grid/grid.scss'
 
 const MainPage = (props) => {
-  const { articles, layoutContainers } = props
+  const { serverUrl } = props
   return (
     <div className={'container_12'}>
-      <Sidebar id={1} items={articles}/>
-      <BlogTable id={2} items={layoutContainers}/>
+      <Sidebar id={1}  serverUrl={serverUrl}/>
+      <BlogTable id={2} serverUrl={serverUrl}/>
     </div>
   )
 }
 
-export default MainPage
+export default DragDropContext(HTML5Backend)(MainPage)

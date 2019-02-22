@@ -43,10 +43,10 @@ export default class Database {
     })
   }
 
-  async update(data) {
-    let resp = await fetcher.put(this.url + '/' + data.id, {
+  async update(id, data) {
+    let resp = await fetcher.put(this.url + '/' + id, {
       title: data.title,
-      text: data.text,
+      content: data.content,
       date: Database.dateToString(new Date()),
       author: data.author,
     })

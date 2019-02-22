@@ -1,33 +1,48 @@
 {
-    "articles": [
-      {
-        "id": "post-1",
-        "title": "A Technique for Deciding When to Say No",
-        "content": "Instead of trying to do everything, figure out what deserves your time and energy...",
-        "author": "Adam Frank",
-        "date": "~4min."
-      },
-      {
-        "id": "post-2",
-        "title": "Facebook Doesn’t Care About You",
-        "content": "Scandal after scandal won’t change user behavior — and the company knows it...",
-        "author": "Trevor Timm",
-        "date": "~8min."
-      },
-      {
-        "id": "post-3",
-        "title": "As a Designer, I Refuse to Call People ‘Users’",
-        "content": "In an industry that touches so many lives, accurate terminology is essential...",
-        "author": "Adam Lefton",
-        "date": "~14min."
-      },
-      {
-        "id": "post-4",
-        "title": "How Top-Performing College Grads Fall Into the ‘Prestige Career’ Trap",
-        "content": "We funnel our highest achievers into consulting and finance — and it’s hurting all of us...",
-        "author": "Indra Sofian",
-        "date": "~24min."
-      }
-    ],
-    "layoutContainers": []
+  "articles": [
+    {
+      "title": "How Top-Performing College Grads Fall Into the ‘Prestige Career’ Trap",
+      "content": "We funnel our highest achievers into consulting and finance — and it’s hurting all of us...",
+      "date": "2019-02-21",
+      "author": "Indra Sofian",
+      "id": "_56sahd0"
+    },
+    {
+      "title": "As a Designer, I Refuse to Call People ‘Users’",
+      "content": "In an industry that touches so many lives, accurate terminology is essential...",
+      "date": "2019-02-21",
+      "author": "Adam Lefton",
+      "id": "_h7w5xam"
+    },
+    {
+      "title": "How Top-Performing College Grads Fall Into the ‘Prestige Career’ Trap",
+      "content": "We funnel our highest achievers into consulting and finance — and it’s hurting all of us...",
+      "date": "2019-02-21",
+      "author": "Indra Sofian",
+      "id": "_jvy8r0l"
+    }
+  ],
+  "layoutContainers": [
+    {
+      "title": "Facebook Doesn’t Care About You",
+      "content": "Scandal after scandal won’t change user behavior — and the company knows it...",
+      "date": "2019-02-21",
+      "author": "Trevor Timm",
+      "id": "layout-1"
+    },
+    {
+      "title": "A Technique for Deciding When to Say No",
+      "content": "Instead of trying to do everything, figure out what deserves your time and energy...",
+      "date": "2019-02-21",
+      "author": "Adam Frank",
+      "id": "_2uf763y"
+    },
+    {
+      "id": "_mh407v1",
+      "title": "",
+      "content": "",
+      "date": "2019-02-22",
+      "author": ""
+    }
+  ]
 }
