@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import '../../css-grid/grid.scss'
+import '../../../css-grid/grid.scss'
 import './Post.scss'
 
 class Post extends Component{
@@ -25,10 +25,10 @@ class Post extends Component{
 
                 <p className={'ViewPost-content'}>{content}</p>
 
-                <ul className={'Post__tags'}>
-                    <li className={'Post__tags-tag'}>#enterpreneurship</li>
-                    <li className={'Post__tags-tag'}>#business</li>
-                    <li className={'Post__tags-tag'}>#partnership</li>
+                <ul className={'ViewPost__tags'}>
+                    <li className={'ViewPost__tags-tag'}>#enterpreneurship</li>
+                    <li className={'ViewPost__tags-tag'}>#business</li>
+                    <li className={'ViewPost__tags-tag'}>#partnership</li>
                 </ul>
             </div>
         )

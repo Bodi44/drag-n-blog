@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 
 import Header from '../Header/Header'
-import Form from '../Form/Form'
+import Post from '../Post/Post'
 
 import '../../../css-grid/grid.scss'
 
-const CreatePostPage = () =>{
+const ViewPostPage = () =>{
   return(
     <div className={'container_12'}>
       <Header />
-      <Form />
+      <Post />
     </div>
   )
 }
 
-export default CreatePostPage
+export default ViewPostPage
