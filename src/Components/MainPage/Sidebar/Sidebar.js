@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Item from '../Item/Item'
+import Item from './Item/Item'
 
 import '../../../css-grid/grid.scss'
 import './Sidebar.scss'
@@ -32,8 +32,6 @@ class Sidebar extends Component {
 
   render() {
     const { items } = this.state
-    console.log('Sidebar: ', items)
-
 
     return (
       <aside className={'grid_4 Sidebar'}>

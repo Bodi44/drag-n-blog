@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import update from 'immutability-helper'
 
-import Container from '../Container/Container'
+import Container from './Container/Container'
 
 import { generateUniqueId } from '../../../helpers/generateUniqueId'
 import Database from '../../../Database/Database'

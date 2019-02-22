@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { DropTarget } from 'react-dnd'
 
-import Database from '../../../Database/Database'
+import Database from '../../../../Database/Database'
 
 import './Container.scss'
-import '../../../css-grid/grid.scss'
+import '../../../../css-grid/grid.scss'
 
 const itemTarget = {
   drop(props, monitor, component) {
@@ -17,6 +17,10 @@ const itemTarget = {
       containerId: containerId,
     }
   },
+
+  canDrop(props) {
+    return props.container.content === ''
+  },
 }
 
 const collect = (connect, monitor) => {
@@ -24,6 +28,7 @@ const collect = (connect, monitor) => {
     connectDropTarget: connect.dropTarget(),
     hovered: monitor.isOver(),
     item: monitor.getItem(),
+    canDrop: monitor.canDrop(),
   }
 }
 
@@ -33,6 +38,15 @@ class Container extends Component {
     this.props.containerUpdater(id, data, this.props.index)
 
     dataBase.update(id, data)
+  }
+
+  getHoveredColor = (hovered, canDrop) => {
+    if(hovered && canDrop)
+      return 'lightgreen'
+    else if(hovered && !canDrop)
+      return 'red'
+    else
+      return 'white'
   }
 
   checkIfEmpty = (container, backgroundColor, onClickRemove) => {
@@ -51,8 +65,10 @@ class Container extends Component {
   }
 
   render() {
-    const { connectDropTarget, hovered, container } = this.props
-    const backgroundColor = hovered ? 'lightgreen' : 'white'
+    const { connectDropTarget, hovered, canDrop, container } = this.props
+    const backgroundColor = this.getHoveredColor(hovered, canDrop)
+
+    // const canDropColor = canDrop ? 'red' : 'lightgreen'
 
     return connectDropTarget(
       this.checkIfEmpty(container, backgroundColor, this.props.containerRemover),

@@ -1,3 +1,9 @@
 .MainPage{
-  flex-wrap: nowrap;
+  //flex-wrap: nowrap;
+  &__content{
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+  }
 }

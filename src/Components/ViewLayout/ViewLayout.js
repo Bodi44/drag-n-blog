@@ -4,12 +4,12 @@ import PageLayout from './PageLayout/PageLayout'
 
 import '../../css-grid/grid.scss'
 
-const ViewLayout = (props) => {
-  const { serverUrl } = props
+const jsonServerUrl = 'http://localhost:3001/'
 
+const ViewLayout = () => {
   return(
     <div className={'container_12'}>
-      <PageLayout serverUrl={serverUrl}/>
+      <PageLayout serverUrl={jsonServerUrl}/>
     </div>
   )
 }

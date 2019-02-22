@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { DragSource } from 'react-dnd'
 
 import './Item.scss'
-import '../../../css-grid/grid.scss'
+import '../../../../css-grid/grid.scss'
 
 const itemSource = {
   beginDrag(props) {
