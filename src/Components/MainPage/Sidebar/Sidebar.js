@@ -39,9 +39,10 @@ class Sidebar extends Component {
       <aside className={'grid_4 Sidebar'}>
         <ul className={'Sidebar__blog-list'}>
           {items.map((item) => (
-            <Item item={item} key={item.id} containerId={this.props.id} handleDrop={(id) => {
-              this.deleteItem(id)
-            }}/>
+            <Item item={item}
+                  key={item.id}
+                  containerId={this.props.id}
+                  itemDeleter={this.deleteItem}/>
           ))}
         </ul>
         <div className={'Sidebar__add-blog'}>

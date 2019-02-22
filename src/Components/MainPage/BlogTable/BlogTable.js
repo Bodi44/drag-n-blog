@@ -57,6 +57,14 @@ class BlogTable extends Component {
     this.setState({newState})
   }
 
+  removeContainer = (id) => {
+    const dataBase = new Database(this.props.serverUrl + 'layoutContainers')
+    const newState = this.state.items.filter(item => item.id !== id)
+
+    this.setState({items: newState})
+    dataBase.delete(id)
+  }
+
   render() {
     const { serverUrl, id } = this.props
     const { items } = this.state
@@ -69,7 +77,9 @@ class BlogTable extends Component {
             containerId={id}
             key={item.id}
             serverUrl={serverUrl}
-            containerUpdater={this.updateContainer}/>
+            containerUpdater={this.updateContainer}
+            containerRemover={this.removeContainer}
+          />
         ))}
         <button className={'BlogTable__add-container'} onClick={this.addContainer}>Add container</button>
       </div>

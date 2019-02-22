@@ -35,18 +35,18 @@ class Container extends Component {
     dataBase.update(id, data)
   }
 
-  checkIfEmpty = (container, backgroundColor) => {
+  checkIfEmpty = (container, backgroundColor, onClickRemove) => {
     return container.content ?
       (<div className={'Container'} style={{ background: backgroundColor }}>
         <h2 className={'Container__title'}>{container.title}</h2>
-        <button className={'Container__remove'}>X</button>
+        <button className={'Container__remove'} onClick={() => onClickRemove(container.id)}>X</button>
         <p className={'Container__content'}>{container.content}</p>
         <small className={'Container__author'}>{container.author}</small>
         <time className={'Container__date'}>{container.date}</time>
       </div>)
       : (<div className={'Container'} style={{ background: backgroundColor }}>
         Container
-        <button className={'Container__remove'}>X</button>
+        <button className={'Container__remove'} onClick={() => onClickRemove(container.id)}>X</button>
       </div>)
   }
 
@@ -55,7 +55,7 @@ class Container extends Component {
     const backgroundColor = hovered ? 'lightgreen' : 'white'
 
     return connectDropTarget(
-      this.checkIfEmpty(container, backgroundColor),
+      this.checkIfEmpty(container, backgroundColor, this.props.containerRemover),
     )
   }
 }

@@ -13,7 +13,7 @@ const itemSource = {
     if (!monitor.didDrop())
       return
 
-    return props.handleDrop(props.item.id)
+    return props.itemDeleter(props.item.id)
   },
 }
 
@@ -34,7 +34,7 @@ class Item extends Component {
       <li className={'Item'} style={{ opacity }}>
         <h4 className={'Item__title'}>{item.title}</h4>
         <div className={'Item__modifiers'}>
-          <button className={'Item__remove'}>X</button>
+          <button className={'Item__remove'} onClick={() => this.props.itemDeleter(item.id)}>X</button>
           <button className={'Item__edit'}>Edit</button>
         </div>
         <p className={'Item__content'}>{item.content}</p>

@@ -3,6 +3,7 @@ import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 
 import MainPage from '../MainPage/MainPage/MainPage'
+import ViewLayout from '../ViewLayout/ViewLayout'
 
 import './App.scss'
 import '../../css-grid/grid.scss'
@@ -13,11 +14,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MainPage serverUrl={jsonServerUrl}/>
-        {/*<CreatePostPage />*/}
+        {/*<MainPage serverUrl={jsonServerUrl}/>*/}
+        <ViewLayout serverUrl={jsonServerUrl}/>
       </div>
     )
   }
 }
 
-export default DragDropContext(HTML5Backend)(App)
+export default App
