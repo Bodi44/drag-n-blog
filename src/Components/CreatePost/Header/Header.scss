@@ -5,6 +5,11 @@
   justify-content: space-between;
   height: 100px;
 
+  a{
+    color: #000000;
+    text-decoration: none;
+  }
+
   &__placeholder{
     display: flex;
     align-items: center;
