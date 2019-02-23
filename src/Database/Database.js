@@ -1,4 +1,4 @@
-const fetcher = require('./fetcher')
+const fetcher = require('./fetcher');
 
 export default class Database {
   constructor(url) {
@@ -6,12 +6,12 @@ export default class Database {
   }
 
   static normalizeSingle(data) {
-    data.date = new Date(data.date)
+    data.date = new Date(data.date);
     return data
   }
 
   normalize(data) {
-    data.forEach(el => Database.normalizeSingle(el))
+    data.forEach(el => Database.normalizeSingle(el));
     return data
   }
 
@@ -20,16 +20,18 @@ export default class Database {
   }
 
   async get(url) {
-    let resp = await fetcher.get(url)
+    let resp = await fetcher.get(url);
     return this.normalize(resp)
   }
 
-  async getAll() {
-    return await this.get(this.url)
-  }
+    async getById(id) {
+        return await this.get(
+            this.url + '?' + 'id=' + id
+        )
+    }
 
   async createFromJson(data) {
-    let resp = await fetcher.post(this.url, data)
+    let resp = await fetcher.post(this.url, data);
     return Database.normalizeSingle(resp)
   }
 
