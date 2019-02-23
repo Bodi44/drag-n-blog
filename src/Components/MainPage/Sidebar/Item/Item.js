@@ -9,11 +9,12 @@ const itemSource = {
     return props.item
   },
 
-  endDrag(props, monitor, component) {
-    if (!monitor.didDrop())
-      return
+  endDrag(props, monitor) {
+    const dropResult = monitor.getDropResult()
 
-    return props.itemDeleter(props.item.id)
+    if (dropResult && dropResult.containerId !== props.containerId) {
+      props.itemDeleter(props.item.id)
+    }
   },
 }
 

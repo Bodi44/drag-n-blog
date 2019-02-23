@@ -66,15 +66,16 @@ class BlogTable extends Component {
   }
 
   render() {
-    const { serverUrl, id } = this.props
+    const { serverUrl, containerId } = this.props
     const { items } = this.state
 
     return (
       <div className={'grid_8 BlogTable'}>
         {items.map(item => (
           <Container
+            containerList={items}
             container={item}
-            containerId={id}
+            containerId={containerId}
             key={item.id}
             serverUrl={serverUrl}
             containerUpdater={this.updateContainer}
