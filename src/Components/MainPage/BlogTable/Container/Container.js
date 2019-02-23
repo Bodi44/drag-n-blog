@@ -1,10 +1,27 @@
 import React, { Component } from 'react'
-import { DropTarget } from 'react-dnd'
+import { DropTarget, DragSource } from 'react-dnd'
+import flow from 'lodash/flow'
 
 import Database from '../../../../Database/Database'
 
 import './Container.scss'
 import '../../../../css-grid/grid.scss'
+
+const itemSource = {
+  beginDrag(props) {
+    return props.container
+  },
+
+  endDrag(props, monitor) {
+    if (monitor.getDropResult() === null)
+      return
+
+    if (monitor.getDropResult() !== props.containerId) {
+      props.containerRemover(props.container.id)
+    }
+  },
+}
+
 
 const itemTarget = {
   drop(props, monitor, component) {
@@ -18,8 +35,9 @@ const itemTarget = {
     }
   },
 
-  canDrop(props) {
-    return props.container.content === ''
+  canDrop(props, monitor) {
+    const result = props.containerList.filter((item) => item.id === monitor.getItem().id)
+    return (props.container.content === '' && result.length === 0)
   },
 }
 
@@ -41,10 +59,10 @@ class Container extends Component {
   }
 
   getHoveredColor = (hovered, canDrop) => {
-    if(hovered && canDrop)
-      return 'lightgreen'
-    else if(hovered && !canDrop)
-      return 'red'
+    if (hovered && canDrop)
+      return '#2ecc71'
+    else if (hovered && !canDrop)
+      return '#e74c3c'
     else
       return 'white'
   }
@@ -65,15 +83,21 @@ class Container extends Component {
   }
 
   render() {
-    const { connectDropTarget, hovered, canDrop, container } = this.props
+    const { connectDropTarget, connectDragSource, hovered, canDrop, container } = this.props
     const backgroundColor = this.getHoveredColor(hovered, canDrop)
 
-    // const canDropColor = canDrop ? 'red' : 'lightgreen'
-
-    return connectDropTarget(
-      this.checkIfEmpty(container, backgroundColor, this.props.containerRemover),
-    )
+    return connectDragSource(
+      connectDropTarget(
+        this.checkIfEmpty(container, backgroundColor, this.props.containerRemover),
+      ))
   }
 }
 
-export default DropTarget('Item', itemTarget, collect)(Container)
+export default flow(
+  DropTarget('Item', itemTarget, collect),
+  DragSource('Item', itemSource, (connect, monitor) => ({
+    connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview(),
+    isDragging: monitor.isDragging(),
+  })),
+)(Container)

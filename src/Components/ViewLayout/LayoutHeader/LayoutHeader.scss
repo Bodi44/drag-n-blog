@@ -1,12 +1,9 @@
-.Header {
+.LayoutHeader{
   font-family: Roboto, sans-serif;
-  padding: 10px 10px;
-
-  &__view-layout{
+  padding: 10px 0;
+  &__home{
     color: #000000;
     font-size: 18px;
     font-weight: 600;
-    display: block;
-    text-align: left;
   }
 }

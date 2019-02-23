@@ -16,8 +16,8 @@ const MainPage = () => {
     <div className={'container_12 MainPage'}>
       <Header/>
       <main className={'grid_12 MainPage__content'}>
-        <Sidebar id={1} serverUrl={jsonServerUrl}/>
-        <BlogTable id={2} serverUrl={jsonServerUrl}/>
+        <Sidebar containerId={1} serverUrl={jsonServerUrl}/>
+        <BlogTable containerId={2} serverUrl={jsonServerUrl}/>
       </main>
     </div>
   )

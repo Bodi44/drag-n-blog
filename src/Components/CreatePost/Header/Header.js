@@ -6,7 +6,7 @@ import './Header.scss'
 class Header extends Component{
     render(){
         return (
-            <div className={'grid_12 Header'}>
+            <div className={'grid_12 LayoutHeader'}>
                 <div className={'Header__placeholder'}>
                     <div className={'Header__placeholder-logo'}>
                         <h1>Drag'n'Blog</h1>
