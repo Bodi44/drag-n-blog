@@ -44,7 +44,7 @@ class Sidebar extends Component {
           ))}
         </ul>
         <div className={'Sidebar__add-blog'}>
-          <a href={'#'}>Write New Blog!</a>
+          <a href={'/create_post'}>Write New Blog!</a>
         </div>
       </aside>
     )

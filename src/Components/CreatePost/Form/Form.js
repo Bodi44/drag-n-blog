@@ -25,7 +25,7 @@ class Form extends Component{
 
     handleSubmit(event){
         const database = new Database(this.props.serverUrl + 'articles');
-        database.create(this.state.title.split(' ')[0], this.state.title, this.state.content);
+        database.create(this.state.title.split(' ')[0], this.state.title, this.state.content, this.state.author);
         this.props.history.push('/');
         event.preventDefault();
     };
