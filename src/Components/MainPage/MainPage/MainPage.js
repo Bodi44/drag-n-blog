@@ -2,7 +2,7 @@ import React from 'react'
 import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 
-import Header from '../Header/Header'
+import MainHeader from '../MainHeader/MainHeader'
 import Sidebar from '../Sidebar/Sidebar'
 import BlogTable from '../BlogTable/BlogTable'
 
@@ -14,7 +14,7 @@ const jsonServerUrl = 'http://localhost:3001/'
 const MainPage = () => {
   return (
     <div className={'container_12 MainPage'}>
-      <Header/>
+      <MainHeader/>
       <main className={'grid_12 MainPage__content'}>
         <Sidebar containerId={1} serverUrl={jsonServerUrl}/>
         <BlogTable containerId={2} serverUrl={jsonServerUrl}/>

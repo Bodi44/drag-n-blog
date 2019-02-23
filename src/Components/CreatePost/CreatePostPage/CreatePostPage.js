@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Header from '../Header/Header'
+import Header from '../CreatePostHeader/CreatePostHeader'
 import Form from '../Form/Form'
 
 import '../../../css-grid/grid.scss'

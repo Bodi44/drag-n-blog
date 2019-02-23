@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Header from '../Header/Header'
+import Header from '../ViewPostHeader/ViewPostHeader'
 import Post from '../Post/Post'
 
 import '../../../css-grid/grid.scss'
