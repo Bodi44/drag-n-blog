@@ -15,28 +15,11 @@
       "id": "_2uf763y"
     },
     {
-      "id": "My",
-      "title": "My new title",
-      "content": "First try to write post",
-      "date": "2019-02-23"
-    },
-    {
-      "id": "Dinamo",
-      "title": "Dinamo beat Olympiacos",
-      "content": "Dinamo is winner in match against Olympiacos",
-      "date": "2019-02-23"
-    },
-    {
-      "id": "_wobrjgv",
-      "title": "adjfbvhjdfbvlajdbvdjlfv",
-      "content": "dahlfvalhjvbajdfvla",
-      "date": "2019-02-23"
-    },
-    {
-      "id": "New",
-      "title": "New test post",
-      "content": "some text in content...",
-      "date": "2019-02-23"
+      "id": "new",
+      "title": "new test ost",
+      "content": "some story to telll....",
+      "date": "2019-02-23",
+      "author": "Max Voloskiy"
     }
   ],
   "layoutContainers": [
