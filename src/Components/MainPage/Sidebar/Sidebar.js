@@ -18,7 +18,6 @@ const itemTarget = {
       return item.id === monitor.getItem().id
     })
 
-
     if (result.length === 0)
       component.addItem(monitor.getItem())
 

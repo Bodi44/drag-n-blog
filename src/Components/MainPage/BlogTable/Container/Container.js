@@ -53,8 +53,8 @@ const collect = (connect, monitor) => {
 class Container extends Component {
   addItemToContainer = (id, data, url) => {
     const dataBase = new Database(url + 'layoutContainers')
-    this.props.containerUpdater(id, data, this.props.index)
 
+    this.props.containerUpdater(id, data, this.props.index)
     dataBase.update(id, data)
   }
 
