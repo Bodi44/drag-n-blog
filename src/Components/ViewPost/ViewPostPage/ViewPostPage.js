@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import Header from '../ViewPostHeader/ViewPostHeader'
 import Post from '../Post/Post'
