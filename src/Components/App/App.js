@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import MainPage from '../MainPage/MainPage/MainPage'
 import ViewLayout from '../ViewLayout/ViewLayout'
 import CreatePostPage from '../CreatePost/CreatePostPage/CreatePostPage'
 import ViewPostPage from '../ViewPost/ViewPostPage/ViewPostPage'
+import EditPost from '../EditPost/EditPost'
 
 import './App.scss'
 import '../../css-grid/grid.scss'
@@ -14,10 +15,11 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path={"/"} component={MainPage}/>
-          <Route path={"/layout"} component={ViewLayout}/>
-          <Route path={"/create_post"} component={CreatePostPage}/>
-          <Route path={"/view_post"} component={ViewPostPage}/>
+          <Route exact path={'/'} component={MainPage}/>
+          <Route path={'/layout'} component={ViewLayout}/>
+          <Route path={'/create_post'} component={CreatePostPage}/>
+          <Route path={'/view_post'} component={ViewPostPage}/>
+          <Route path={'/edit_post'} component={EditPost}/>
         </div>
       </Router>
     )
