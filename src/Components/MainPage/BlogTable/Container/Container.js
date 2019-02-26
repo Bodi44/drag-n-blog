@@ -72,7 +72,7 @@ class Container extends Component {
       (<div className={'Container'} style={{ background: backgroundColor }}>
         <h2 className={'Container__title'}>{container.title}</h2>
         <button className={'Container__remove'} onClick={() => onClickRemove(container.id)}>X</button>
-        <p className={'Container__content'}>{container.content}</p>
+        <p className={'Container__content'}>{container.content.split(' ').slice(0, 100).join(' ')}</p>
         <small className={'Container__author'}>{container.author}</small>
         <time className={'Container__date'}>{container.date}</time>
       </div>)

@@ -11,7 +11,7 @@ export default class ArticleContainer extends Component {
     return (
       <Link to={{pathname: '/view_post', state: {data: article}}} className={'grid_12 ArticleContainer'}>
           <h2 className={'ArticleContainer__title'}>{article.title}</h2>
-          <p className={'ArticleContainer__content'}>{article.content}</p>
+          <p className={'ArticleContainer__content'}>{article.content.split(' ').slice(0,100).join(' ')}</p>
           <small className={'ArticleContainer__author'}>{article.author}</small>
           <time className={'ArticleContainer__date'}>{article.date}</time>
       </Link>

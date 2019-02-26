@@ -39,7 +39,7 @@ class Item extends Component {
           <button className={'Item__remove'} onClick={() => this.props.itemDeleter(item.id)}>X</button>
           <Link to={{ pathname: '/edit_post', state: { data: item } }} className={'Item__edit'}>Edit</Link>
         </div>
-        <p className={'Item__content'}>{item.content}</p>
+        <p className={'Item__content'}>{item.content.split(' ').slice(0, 100).join(' ')}</p>
         <small className={'Item__author'}>{item.author}</small>
         <time className={'Item__date'}>{item.date}</time>
       </li>,

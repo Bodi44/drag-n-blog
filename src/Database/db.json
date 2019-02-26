@@ -1,15 +1,8 @@
 {
   "articles": [
     {
-      "title": "How Top-Performing College Grads Fall Into the ‘Prestige Career’ Trap",
-      "content": "We funnel our highest achievers into consulting and finance — and it’s hurting all of us...",
-      "date": "2019-02-21",
-      "author": "Indra Sofian",
-      "id": "_56sahd0"
-    },
-    {
       "title": "A Technique for Deciding When to Say No",
-      "content": "Instead of trying to do everything, figure out what deserves your time and energy...",
+      "content": "In a culture that tends toward the myth of no limits, acknowledging that we can’t do everything seems restrictive. Our industrial naïveté proudly proclaims that we have unlimited time, unlimited resources, and unlimited capacity. Our enlightened progress that emerged in modernism has told us that supply is infinite, demand is infinite, and we, too, are infinite.",
       "date": "2019-02-21",
       "author": "Adam Frank",
       "id": "_2uf763y"
@@ -20,29 +13,29 @@
       "content": "some story to telll....",
       "date": "2019-02-26",
       "author": "Max Voloskiy"
+    },
+    {
+      "id": "layout-1",
+      "title": "Facebook Doesn’t Care About You",
+      "content": "ew Facebook controversies sprouted up so fast this week it was hard to keep track of them. The social media giant managed to hit the digital scandal trifecta: allegedly exploiting children for money, curtailing transparency, and encroaching on user privacy. All while posting record profits.\n\nFirst up, last Thursday Reveal reported that “Facebook orchestrated a multiyear effort that duped children and their parents out of money, in some cases hundreds or even thousands of dollars, and then often refused to give the money back.” Essentially, “Facebook encouraged game developers to let children spend money without their parents’ permission — something the social media giant described internally as ‘friendly fraud’ — in an effort to maximize revenues, according to a document detailing the company’s game strategy.”\n\nThen on Monday, ProPublica revealed that Facebook was cutting off its journalists from a tool ProPublica itself had built that allowed the public to better see who is paying for the vast amount of political advertising on Facebook. ProPublica’s searchable database was created in the wake of the massive controversy over how ads on Facebook can influence voters and potentially tilt an election. (It’s also not the first time Facebook has tried to cut off journalists from using tools to understand Facebook’s opaque operations.)\n\nThe next day, TechCrunch reported that Facebook was quietly paying people — including teenagers as young as 13 — $20 a month to install a VPN app that would track almost everything those users do on their phones, including calls, texts, and website visits.\n\nFacebook initially claimed it was pulling the app voluntarily. “There was nothing ‘secret’ about this,” the company said in its defense. “It wasn’t ‘spying’ as all of the people who signed up to participate went through a clear on-boarding process asking for their permission and were paid to participate.”\n\nAs it turned out, the program violated Apple’s developer rules for iPhones, and Apple itself removed the app. Apple also took the extraordinary step of cutting off Facebook’s access to its developer tools, which, according to the New York Times, caused “chaos among the company’s software engineers.”\n\nIt’s hard not to view all these scandals without also acknowledging that Facebook is more profitable than ever. On Wednesday afternoon, the company announced, on its Wall Street earnings call, that it had yet again made record profits for the quarter ($6.9 billion) and its three major services (Facebook, Instagram, and WhatsApp) have approximately 2.7 billion active users combined.\n\nThe lazy response to all of this is to blame the users. “If you hate Facebook so much, why don’t you just leave?” the argument goes. For many people, it’s not that simple. With almost half the world on one of Facebook’s platforms, it’s where everyone’s family and friends are. Most businesses are basically required to have a Facebook presence. In many countries, Facebook is the internet, and WhatsApp is the only way people can communicate digitally.",
+      "date": "2019-02-26",
+      "author": "Trevor Timm"
     }
   ],
   "layoutContainers": [
     {
-      "title": "Facebook Doesn’t Care About You",
-      "content": "Scandal after scandal won’t change user behavior — and the company knows it...",
-      "date": "2019-02-21",
-      "author": "Trevor Timm",
-      "id": "layout-1"
+      "title": "As a Designer, I Refuse to Call People ‘Users’",
+      "content": "ve worked in UX for the better part of a decade. From now on, I plan to remove the word “user” and any associated terms—like “UX” and “user experience”—from my vocabulary. It’ll take time. I’ll start by trying to avoid using them in conversations at work. I’ll erase them from my LinkedIn profile. I’ll find new ways to describe my job when making small talk. I will experiment and look for something better.\n\nI don’t have any strong alternatives to offer right now, but I’m confident I’ll find some. I think of it as a challenge. The U-words are everywhere in tech, but they no longer reflect my values or my approach to design and technology. I can either keep using language I disagree with, or I can begin to search for what’s next. I choose to search.",
+      "date": "2019-02-26",
+      "author": "Adam Lefton",
+      "id": "_mt5gxwv"
     },
     {
       "title": "How Top-Performing College Grads Fall Into the ‘Prestige Career’ Trap",
-      "content": "We funnel our highest achievers into consulting and finance — and it’s hurting all of us...",
-      "date": "2019-02-22",
-      "author": "Indra Sofian",
-      "id": "_3mm9xwc"
-    },
-    {
-      "title": "As a Designer, I Refuse to Call People ‘Users’",
-      "content": "In an industry that touches so many lives, accurate terminology is essential...",
+      "content": "today’s society, there is a well-established prestige pathway. If you attend a high-ranking university, it’s very likely you’ll end up with a job in consulting and/or investment banking.\n\nIn 2017, nearly 40 percent of Harvard graduates took consulting or finance jobs. That statistic remains equal or higher across other Ivy League universities. Most of these graduates end up at the so-called top firms. In consulting, that’s McKinsey, Bain, BCG; in finance, it’s Goldman Sachs, Morgan Stanley, JPMorgan.\n\nThis means thousands of the brightest, most hardworking (and privileged) young adults are going to work for only a handful of firms every year. That’s a ridiculously high percentage of graduates concentrated in a couple of industries.\n\nOver decades, these firms have thoroughly and meticulously infiltrated and transformed the culture of these universities, resulting in a staggeringly high conversion rate of graduates into their ranks. As a result, fewer candidates are left for other fields that need them, such as healthcare, education, energy, and environmental science. It’s a very real — and very damaging — brain drain.\n\nEven worse, most of these students have no idea what they’re getting into. They’re doing it because of the prestige; landing one of these jobs is seen as the pinnacle of a status culture in which they’ve been immersed. Although many leave after about two years, driven away by the long hours and cutthroat culture, some stay far longer. Eventually, they realize that prestige and overachievement are no longer as important as when they were younger — but by then, they’re trapped.",
       "date": "2019-02-26",
-      "author": "Adam Lefton",
-      "id": "_xr3xa40"
+      "author": "Indra Sofian",
+      "id": "_f02rc0o"
     }
   ]
 }
