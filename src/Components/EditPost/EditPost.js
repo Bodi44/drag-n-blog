@@ -1,6 +1,7 @@
 import React from 'react'
 
 import EditForm from './EditForm/EditForm'
+import Header from './EditPostHeader/EditPostHeader'
 
 import '../../css-grid/grid.scss'
 
@@ -11,6 +12,7 @@ const EditPost = (props) => {
 
   return (
     <div className={'container_12'}>
+      <Header />
       <EditForm serverUrl={jsonServerUrl} data={data}/>
     </div>
   )

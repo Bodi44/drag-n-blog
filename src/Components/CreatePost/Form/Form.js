@@ -38,7 +38,6 @@ class Form extends Component{
     };
 
     render(){
-        console.log(this.props);
         return(
             <form className={'Form grid_10 container_12'} onSubmit={this.handleSubmit}>
                 <div className={'Form__placeholder grid_1'}>
