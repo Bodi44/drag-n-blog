@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { DropTarget } from 'react-dnd'
 import update from 'immutability-helper'
+import { Link } from 'react-router-dom'
 
 import Item from './Item/Item'
 
@@ -103,7 +104,7 @@ class Sidebar extends Component {
           ))}
         </ul>
         <div className={'Sidebar__add-blog'}>
-          <a href={'/create_post'}>Write New Blog!</a>
+          <Link to={'/create_post'}>Write New Blog!</Link>
         </div>
       </aside>,
     )
