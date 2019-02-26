@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import '../../../css-grid/grid.scss'
-import './Header.scss'
 
 class Header extends Component {
   render() {
