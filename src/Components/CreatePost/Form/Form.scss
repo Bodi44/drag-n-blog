@@ -6,7 +6,6 @@
   line-height: normal;
 
   &__placeholder{
-
     min-width: 50px;
 
     &-fileInput {
@@ -83,9 +82,5 @@
         margin: 0 5px;
       }
     }
-    //
-    //[contenteditable=true]:empty:before {
-    //  content: attr(placeholder);
-    //}
   }
 }

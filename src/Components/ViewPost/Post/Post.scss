@@ -4,18 +4,19 @@
   font-style: normal;
   font-weight: 300;
   line-height: normal;
-  text-align: center;
 
   &-image{
     border-radius: 5px;
   }
 
   &-header{
+    font-family: Roboto, sans-serif;
     color: #394040;
     font-size: 36px;
   }
 
   &-content{
+    font-family: Roboto, sans-serif;
     font-size: 28px;
     color: #394040;
   }
