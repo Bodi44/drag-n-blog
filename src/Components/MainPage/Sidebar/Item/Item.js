@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { DragSource } from 'react-dnd'
-import { Link } from 'react-router-dom'
 
 import './Item.scss'
 import '../../../../css-grid/grid.scss'
+import {Link} from "react-router-dom";
 
 const itemSource = {
   beginDrag(props) {
@@ -37,7 +37,7 @@ class Item extends Component {
         <h4 className={'Item__title'}>{item.title}</h4>
         <div className={'Item__modifiers'}>
           <button className={'Item__remove'} onClick={() => this.props.itemDeleter(item.id)}>X</button>
-          <Link to={{pathname: '/edit_post', state: {data: item}}} className={'Item__edit'}>Edit</Link>
+            <Link className={'Item__edit'} to={{pathname: '/create_post', state: {data: this.props.item}}}>Edit</Link>
         </div>
         <p className={'Item__content'}>{item.content}</p>
         <small className={'Item__author'}>{item.author}</small>

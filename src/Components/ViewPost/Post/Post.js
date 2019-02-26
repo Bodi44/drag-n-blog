@@ -5,7 +5,7 @@ import './Post.scss'
 
 class Post extends Component {
   render() {
-    const { article } = this.props
+    const { article } = this.props;
     return (
       <div className={'ViewPost grid_10'}>
 

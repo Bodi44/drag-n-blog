@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: nowrap;
   font-family: Roboto, sans-serif;
+  letter-spacing: 2px;
   padding: 15px 0;
 
   &__logo{
@@ -11,11 +12,12 @@
     font-family: "Roboto Mono", monospace;
     display: block;
     border-right: 1px solid black;
+    text-align: center;
 
     &_home{
       &:after{
         top: 25%;
-        right: -25%;
+        right: -35%;
         position: absolute;
         content: "home";
       }
@@ -24,7 +26,7 @@
     &_post{
       &:after{
         top: 25%;
-        right: -25%;
+        right: -35%;
         position: absolute;
         content: "post";
       }
@@ -33,7 +35,7 @@
     &_create{
       &:after{
         top: 25%;
-        right: -30%;
+        right: -40%;
         position: absolute;
         content: "draft";
       }
@@ -43,9 +45,9 @@
       &:after{
         display: block;
         top: 25%;
-        right: -25%;
+        right: -40%;
         position: absolute;
-        content: "lay";
+        content: "posts";
       }
     }
   }
