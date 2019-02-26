@@ -8,11 +8,8 @@ class Post extends Component {
     const { article } = this.props;
     return (
       <div className={'ViewPost grid_10'}>
-
         <h1 className={'ViewPost-header'}>{article.title}</h1>
-
         <p className={'ViewPost-content'}>{article.content}</p>
-
         <ul className={'ViewPost__tags'}>
           <li className={'ViewPost__tags-tag'}>#enterpreneurship</li>
           <li className={'ViewPost__tags-tag'}>#business</li>

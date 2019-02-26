@@ -9,13 +9,11 @@ export default class ArticleContainer extends Component {
     const { article } = this.props
 
     return (
-      <Link to={{pathname: '/view_post', state: {data: article}}}>
-        <div className={'grid_12 ArticleContainer'}>
-          <h2>{article.title}</h2>
-          <p>{article.content}</p>
-          <small>{article.author}</small>
-          <time>{article.date}</time>
-        </div>
+      <Link to={{pathname: '/view_post', state: {data: article}}} className={'grid_12 ArticleContainer'}>
+          <h2 className={'ArticleContainer__title'}>{article.title}</h2>
+          <p className={'ArticleContainer__content'}>{article.content}</p>
+          <small className={'ArticleContainer__author'}>{article.author}</small>
+          <time className={'ArticleContainer__date'}>{article.date}</time>
       </Link>
     )
   }

@@ -14,8 +14,7 @@ class Header extends Component {
         <nav className={'Header__navigation'}>
           <NavLink
             to={'/'}
-            className={'navigation__item'}
-            activeClassName={'navigation__item navigation__item_active'}>Home</NavLink>
+            className={'navigation__item'}  >Home</NavLink>
           <NavLink
             to={'/layout'}
             className={'navigation__item'}>ViewArticle</NavLink>
