@@ -1,21 +1,15 @@
-import React from 'react'
+import React from "react";
 
-import EditForm from './EditForm/EditForm'
-import Header from './EditPostHeader/EditPostHeader'
+import EditForm from "./EditForm/EditForm";
 
-import '../../css-grid/grid.scss'
+import "../../css-grid/grid.scss";
 
-const jsonServerUrl = 'http://localhost:3001/'
+const jsonServerUrl = "http://localhost:3001/";
 
-const EditPost = (props) => {
-  const { data } = props.location.state
+const EditPost = props => {
+  const { data } = props.location.state;
 
-  return (
-    <div className={'container_12'}>
-      <Header />
-      <EditForm serverUrl={jsonServerUrl} data={data}/>
-    </div>
-  )
-}
+  return <EditForm serverUrl={jsonServerUrl} data={data} />;
+};
 
-export default EditPost
+export default EditPost;

@@ -1,29 +1,29 @@
-import React, { Component } from 'react'
-import update from 'immutability-helper'
+import React, { Component } from "react";
+import update from "immutability-helper";
 
-import Container from './Container/Container'
+import Container from "./Container/Container";
 
-import { generateUniqueId } from '../../../helpers/generateUniqueId'
-import Database from '../../../Database/Database'
+import { generateUniqueId } from "../../../helpers/generateUniqueId";
+import Database from "../../../Database/Database";
 
-import './BlogTable.scss'
-import '../../../css-grid/grid.scss'
+import "./BlogTable.scss";
+import "../../../css-grid/grid.scss";
 
 class BlogTable extends Component {
   state = {
-    items: [],
-  }
+    items: []
+  };
 
   componentDidMount() {
-    fetch(this.props.serverUrl + 'layoutContainers')
+    fetch(this.props.serverUrl + "layoutContainers")
       .then(resp => resp.json())
       .then(json => {
-        this.setState({ items: json })
-      })
+        this.setState({ items: json });
+      });
   }
 
   addContainer = () => {
-    const dataBase = new Database(this.props.serverUrl + 'layoutContainers')
+    const dataBase = new Database(this.props.serverUrl + "layoutContainers");
 
     const newItem = {
       title: "",
@@ -31,46 +31,48 @@ class BlogTable extends Component {
       date: Database.dateToString(new Date()),
       author: "",
       id: generateUniqueId()
-    }
+    };
 
-    this.setState(update(this.state, {
-      items:{
-        $push: [newItem]
-      }
-    }))
+    this.setState(
+      update(this.state, {
+        items: {
+          $push: [newItem]
+        }
+      })
+    );
 
-    dataBase.create(newItem.id, newItem.title, newItem.content, newItem.author)
-  }
+    dataBase.create(newItem.id, newItem.title, newItem.content, newItem.author);
+  };
 
   updateContainer = (id, data) => {
-    const newState = Object.assign({}, this.state.items)
+    const newState = Object.assign({}, this.state.items);
 
     Object.keys(newState).forEach(key => {
-      if(newState[key].id === id){
-        newState[key].title = data.title
-        newState[key].content = data.content
-        newState[key].date = Database.dateToString(new Date())
-        newState[key].author = data.author
+      if (newState[key].id === id) {
+        newState[key].title = data.title;
+        newState[key].content = data.content;
+        newState[key].date = Database.dateToString(new Date());
+        newState[key].author = data.author;
       }
-    })
+    });
 
-    this.setState({newState})
-  }
+    this.setState({ newState });
+  };
 
-  removeContainer = (id) => {
-    const dataBase = new Database(this.props.serverUrl + 'layoutContainers')
-    const newState = this.state.items.filter(item => item.id !== id)
+  removeContainer = id => {
+    const dataBase = new Database(this.props.serverUrl + "layoutContainers");
+    const newState = this.state.items.filter(item => item.id !== id);
 
-    this.setState({items: newState})
-    dataBase.delete(id)
-  }
+    this.setState({ items: newState });
+    dataBase.delete(id);
+  };
 
   render() {
-    const { serverUrl, containerId } = this.props
-    const { items } = this.state
+    const { serverUrl, containerId } = this.props;
+    const { items } = this.state;
 
     return (
-      <div className={'grid_8 BlogTable'}>
+      <div className={"grid_8 BlogTable"}>
         {items.map(item => (
           <Container
             containerList={items}
@@ -82,10 +84,15 @@ class BlogTable extends Component {
             containerRemover={this.removeContainer}
           />
         ))}
-        <button className={'BlogTable__add-container'} onClick={this.addContainer}>Add container</button>
+        <button
+          className={"BlogTable__add-container"}
+          onClick={this.addContainer}
+        >
+          Add container
+        </button>
       </div>
-    )
+    );
   }
 }
 
-export default BlogTable
+export default BlogTable;

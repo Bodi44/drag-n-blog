@@ -1,19 +1,11 @@
-import React from 'react'
+import React from "react";
 
-import LayoutHeader from './LayoutHeader/LayoutHeader'
-import PageLayout from './PageLayout/PageLayout'
+import PageLayout from "./PageLayout/PageLayout";
 
-import '../../css-grid/grid.scss'
+import "../../css-grid/grid.scss";
 
-const jsonServerUrl = 'http://localhost:3001/'
+const jsonServerUrl = "http://localhost:3001/";
 
-const ViewLayout = () => {
-  return(
-    <div className={'container_12'}>
-      <LayoutHeader />
-      <PageLayout serverUrl={jsonServerUrl} />
-    </div>
-  )
-}
+const ViewLayout = () => <PageLayout serverUrl={jsonServerUrl} />;
 
-export default ViewLayout
+export default ViewLayout;
