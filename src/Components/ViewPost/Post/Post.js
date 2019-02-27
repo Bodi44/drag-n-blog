@@ -4,7 +4,6 @@ import '../../../css-grid/grid.scss'
 import './Post.scss'
 
 class Post extends Component {
-
   render() {
     const { article } = this.props;
       const tags = article.tags.map((tag) =>
