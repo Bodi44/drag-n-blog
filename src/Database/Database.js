@@ -35,13 +35,14 @@ export default class Database {
     return Database.normalizeSingle(resp)
   }
 
-  async create(id, title, text, author) {
+  async create(id, title, text, author, tags) {
     return await this.createFromJson({
       id: id,
       title: title,
       content: text,
       date: Database.dateToString(new Date()),
       author: author,
+      tags: tags
     })
   }
 
@@ -51,7 +52,8 @@ export default class Database {
       content: data.content,
       date: Database.dateToString(new Date()),
       author: data.author,
-    })
+      tags: data.tags
+    });
     return Database.normalizeSingle(resp)
   }
 
