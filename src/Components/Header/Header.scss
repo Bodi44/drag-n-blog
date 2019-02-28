@@ -1,0 +1,110 @@
+.Header {
+  font-family: "Roboto Mono", monospace;
+  padding: 15px 0;
+
+  &__top-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 15px;
+
+    &_left {
+      margin-right: auto;
+    }
+
+    &_right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-left: auto;
+    }
+  }
+
+  &__logo {
+    margin: 0 auto;
+    padding: 0;
+
+    &_main {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    &_secondary {
+      font-size: 10px;
+      font-weight: lighter;
+      letter-spacing: 0.37rem;
+    }
+  }
+
+  &__navigation {
+    text-transform: uppercase;
+    border-top: 1px solid #c4c4c4;
+    border-bottom: 1px solid #c4c4c4;
+    padding: 10px 0;
+  }
+
+  &__nav-link {
+    font-family: Roboto, sans-serif;
+    font-weight: lighter;
+    color: #000000;
+    text-decoration: none;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    &_active {
+      font-weight: bold;
+    }
+  }
+
+  &__write-blog {
+    margin-right: 20px;
+    position: relative;
+    text-align: left;
+    font-family: Roboto, sans-serif;
+    font-weight: 600;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background: none;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+    height: 34px;
+    width: 155px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      right: 7px;
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url("https://res.cloudinary.com/dum2a6djw/image/upload/v1551362952/rocket_icon.svg");
+      background-size: contain;
+    }
+  }
+
+  &__search {
+    margin-right: 20px;
+  }
+
+  &__user {
+    color: transparent;
+    position: relative;
+    width: 35px;
+    height: 35px;
+
+    &:after {
+      position: absolute;
+      top: 0;
+      content: "";
+      display: block;
+      width: 35px;
+      height: 35px;
+      background: url("https://res.cloudinary.com/dum2a6djw/image/upload/v1551362952/user_icon.svg");
+      background-size: contain;
+    }
+  }
+}

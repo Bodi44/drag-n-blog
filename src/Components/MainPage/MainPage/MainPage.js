@@ -6,13 +6,12 @@ import Sidebar from "../Sidebar/Sidebar";
 import BlogTable from "../BlogTable/BlogTable";
 
 import "./MainPage.scss";
-import "../../../css-grid/grid.scss";
 
 const jsonServerUrl = "http://localhost:3001/";
 
 const MainPage = () => {
   return (
-    <main className={"grid_12 MainPage__content"}>
+    <main className={"MainPage__content"}>
       <Sidebar containerId={1} serverUrl={jsonServerUrl} />
       <BlogTable containerId={2} serverUrl={jsonServerUrl} />
     </main>
