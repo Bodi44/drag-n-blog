@@ -103,7 +103,7 @@ class Sidebar extends Component {
           ))}
         </ul>
         <div className={'Sidebar__add-blog'}>
-          <Link to={'/create_post'}>Write New Blog!</Link>
+          <Link to={'/write_blog'}>Write New Blog!</Link>
         </div>
       </aside>,
     )

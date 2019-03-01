@@ -1,8 +1,14 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, Route } from 'react-router-dom'
 
 import './Header.scss'
 import '../../css-grid/grid.scss'
+
+const MainButton = () => (
+  <Link to={'/write_blog'} className={'Header__write-blog'}>
+    <span className={'Header__write-blog_centered'}>Write New Blog!</span>
+  </Link>
+)
 
 const Header = () => {
   return (
@@ -16,13 +22,15 @@ const Header = () => {
           <form action="" className={'Header__search'}>
             <input/>
           </form>
-          <button className={'Header__write-blog'}>Write New Blog!</button>
+          <Route exact path={'/'} component={MainButton}/>
+          <Route exact path={'/layout'} component={MainButton}/>
           <Link to={'/'} className={'Header__user'}>User</Link>
         </div>
       </div>
       <nav className={'Header__navigation'}>
         <NavLink
-          to={'/home'}
+          exact
+          to={'/'}
           className={'Header__nav-link'}
           activeClassName={'Header__nav-link_active'}
           children={'Home'}/>
