@@ -1,0 +1,36 @@
+.PostContainer{
+  position: relative;
+  display: block;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-family: Roboto, sans-serif;
+  text-decoration: none;
+  color: #000000;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.35);
+
+  &__title{
+    padding: 0;
+    text-decoration: none;
+    font-size: 32px;
+    margin: 0 0 20px;
+  }
+
+  &__content{
+    font-size: 18px;
+    margin: 0 0 15px;
+    padding: 0;
+  }
+
+  &__author{
+    color: #394040;
+    font-size: 16px;
+  }
+
+  &__date{
+    font-size: 16px;
+    color: #394040;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+}

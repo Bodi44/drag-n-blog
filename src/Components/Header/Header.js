@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink, Link, Route } from 'react-router-dom'
 
 import './Header.scss'
-import '../../css-grid/grid.scss'
 
 const MainButton = () => (
   <Link to={'/write_blog'} className={'Header__write-blog'}>
