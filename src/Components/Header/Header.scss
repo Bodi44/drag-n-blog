@@ -37,6 +37,17 @@
     }
   }
 
+  &__search{
+    &-input{
+      outline: none;
+      height: 20px;
+      border-radius: 5px;
+      border: 1px solid #c4c4c4;
+      padding: 5px 5px 5px 40px;
+      background: url("https://res.cloudinary.com/dum2a6djw/image/upload/c_scale,w_25/v1551519983/search_icon.png") no-repeat 5% center;
+    }
+  }
+
   &__navigation {
     text-transform: uppercase;
     border-top: 1px solid #c4c4c4;

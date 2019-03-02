@@ -14,7 +14,7 @@ export default class WriteBlog extends Component {
       comma: 188,
       enter: 13,
     },
-  }
+  };
 
   state = {
     id: '',
@@ -22,7 +22,7 @@ export default class WriteBlog extends Component {
     content: '',
     author: '',
     tags: [],
-  }
+  };
 
   handleTagsDelete = i => {
     const { tags } = this.state
