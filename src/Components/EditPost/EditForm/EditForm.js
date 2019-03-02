@@ -1,13 +1,23 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import TextareaAutosize from 'react-autosize-textarea'
+import { WithContext as ReactTags } from "react-tag-input";
 
 import "../../../Database/Database";
 import Database from "../../../Database/Database";
 
 import "../../../css-grid/grid.scss";
-import { WithContext as ReactTags } from "react-tag-input";
-class EditForm extends Component {
-  state = {
+import "../../WriteBlog/WriteBlog.scss";
+
+export  default class EditForm extends Component {
+  static defaultProps = {
+      keyCodes: {
+          comma: 188,
+          enter: 13,
+      },
+  };
+
+
+    state = {
     data: this.props.data
   };
 
@@ -25,9 +35,7 @@ class EditForm extends Component {
   handleSubmit = event => {
     const database = new Database(this.props.serverUrl + "articles");
     const { data } = this.state;
-
     database.update(data.id, data);
-
     this.props.history.push("/");
     event.preventDefault();
   };
@@ -43,73 +51,52 @@ class EditForm extends Component {
 
   render() {
     const { data } = this.state;
-
-    const KeyCodes = {
-      comma: 188,
-      enter: 13
-    };
+    const KeyCodes = this.props;
     const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
     return (
       <form
-        className={"Form grid_10 container_12"}
+        className={'WriteBlog'}
         onSubmit={this.handleSubmit}
       >
-        <div className={"Form__placeholder grid_1"}>
-          <label htmlFor="file-input">
-            <img
-              className={"Form__placeholder-image"}
-              src="https://res.cloudinary.com/maxvoloskiy/image/upload/c_scale,w_55/v1550486428/Drag'n'Blog/camera.png"
-            />
-          </label>
           <input
-            className={"Form__placeholder-fileInput"}
-            id="file-input"
-            type="file"
-          />
-        </div>
-
-        <div className={"Form__placeholder grid_11"}>
-          <div>
-            <input
-              className="Form__placeholder-title"
-              name="title"
+              className="WriteBlog__title"
               placeholder="Title"
+              name={'title'}
               onChange={this.handleChange}
               defaultValue={data.title}
-            />
-          </div>
-
-          <div className="Form__placeholder-tags">
-            <ReactTags
-              tags={data.tags}
-              handleDelete={this.handleTagsDelete}
-              handleAddition={this.handleTagsAddition}
-              delimiters={delimiters}
-            />
+          />
+          <input
+              className="WriteBlog__author"
+              placeholder="Author"
+              name={'author'}
+              onChange={this.handleChange}
+              defaultValue={data.author}
+          />
+          <div>
+              <ReactTags
+                  tags={data.tags}
+                  placeholder={'#add tags'}
+                  handleDelete={this.handleTagsDelete}
+                  handleAddition={this.handleTagsAddition}
+                  delimiters={delimiters}
+                  allowDragDrop={false}
+              />
           </div>
 
           <div>
-            <textarea
-              className={"Form__placeholder-content"}
-              name="content"
-              id="content"
-              placeholder={"Tell us your story..."}
-              onChange={this.handleChange}
-              defaultValue={data.content}
-            />
+              <TextareaAutosize
+                  className={'WriteBlog__content'}
+                  name="content"
+                  placeholder={'Tell us your story...'}
+                  onChange={this.handleChange}
+                  defaultValue={data.content}
+              />
           </div>
-          <button className={"Form__placeholder-button"} type="submit">
-            <p>Publish</p>{" "}
-            <img
-              src="https://res.cloudinary.com/maxvoloskiy/image/upload/c_scale,w_25/v1550482977/Drag'n'Blog/rocket.png"
-              alt="rocket"
-            />
+          <button className={'WriteBlog__publish-button'} type="submit">
+              Ready To Publish?
           </button>
-        </div>
       </form>
     );
   }
 }
-
-export default withRouter(EditForm);
