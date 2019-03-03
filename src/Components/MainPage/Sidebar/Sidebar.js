@@ -72,7 +72,7 @@ class Sidebar extends Component {
       },
     }))
 
-    dataBase.create(data.id, data.title, data.content, data.author)
+    dataBase.create(data)
   }
 
   getHoveredColor = (hovered, canDrop) => {

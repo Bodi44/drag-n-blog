@@ -40,7 +40,7 @@ class BlogTable extends Component {
       }),
     )
 
-    dataBase.create(newItem.id, newItem.title, newItem.content, newItem.author)
+    dataBase.create(newItem)
   }
 
   updateArticleInLayout = (id, data) => {

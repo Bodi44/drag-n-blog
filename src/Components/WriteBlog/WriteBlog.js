@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import TextareaAutosize from 'react-autosize-textarea'
 import { WithContext as ReactTags } from 'react-tag-input'
 
-import { generateUniqueId } from '../../helpers/generateUniqueId'
-
 import Database from '../../Database/Database'
+import { generateUniqueId } from '../../helpers/generateUniqueId'
 
 import './WriteBlog.scss'
 
@@ -21,7 +20,7 @@ export default class WriteBlog extends Component {
     this.state = props.location.state ?
       props.location.state.data :
       {
-        id: '',
+        id: generateUniqueId(),
         title: '',
         content: '',
         author: '',
@@ -42,9 +41,9 @@ export default class WriteBlog extends Component {
 
   handleSubmit = event => {
     const database = new Database('http://localhost:3001/articles')
-    const { id, title, content, author, tags } = this.state
+    const { id } = this.state
     if (this.props.location.state === undefined)
-      database.create(generateUniqueId(), title, content, author, tags)
+      database.create(this.state)
     else
       database.update(id, this.state)
 

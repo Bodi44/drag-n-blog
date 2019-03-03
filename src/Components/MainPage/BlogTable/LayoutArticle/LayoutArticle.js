@@ -57,7 +57,7 @@ class LayoutArticle extends Component {
   addItemToContainer = (id, data, url) => {
     const dataBase = new Database(url + 'layoutContainers')
 
-    this.props.updateArticle(id, data, this.props.index)
+    this.props.updateArticle(id, data)
     dataBase.update(id, data)
   }
 
