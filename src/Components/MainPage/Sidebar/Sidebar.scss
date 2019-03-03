@@ -1,24 +1,19 @@
-.Sidebar{
+.Sidebar {
   font-family: Roboto, sans-serif;
   background-color: #ecf0f1;
   height: 845px;
-  min-width: 400px;
+  width: 30%;
   overflow: auto;
   padding: 5px;
+  margin-right: 10px;
 
-  &__title{
+  &__title {
     margin: 0;
     padding: 0;
   }
 
-  &__blog-list{
+  &__blog-list {
     margin: 0;
     padding: 0;
-  }
-
-  &__add-blog{
-    margin: 10px auto;
-    text-align: center;
-    padding: 10px;
   }
 }

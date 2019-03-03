@@ -37,6 +37,10 @@
     }
   }
 
+  &__search{
+    margin-right: 20px;
+  }
+
   &__input {
     outline: none;
     height: 20px;
@@ -103,10 +107,6 @@
       top: 50%;
       transform: translateY(-50%);
     }
-  }
-
-  &__search {
-    margin-right: 20px;
   }
 
   &__user {

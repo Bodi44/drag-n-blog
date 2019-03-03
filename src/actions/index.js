@@ -18,3 +18,13 @@ export const updateArticle = (id, data) => ({
   type: "UPDATE_ARTICLE",
   data
 });
+
+export const updateLayoutArticle = (id, data) => ({
+  type: "UPDATE_ARTICLE",
+  data
+});
+
+export const deleteLayoutArticle = (id, data) => ({
+  type: "UPDATE_ARTICLE",
+  data
+});

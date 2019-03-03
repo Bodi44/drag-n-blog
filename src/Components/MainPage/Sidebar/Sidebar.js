@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
 import { DropTarget } from 'react-dnd'
 import update from 'immutability-helper'
-import { Link } from 'react-router-dom'
 
-import Item from './Item/Item'
+import Article from './Article'
 
 import Database from '../../../Database/Database'
 
-import '../../../css-grid/grid.scss'
 import './Sidebar.scss'
 
 const itemTarget = {
   drop(props, monitor, component) {
     const { containerId } = props
 
-    const result = component.state.items.filter(item => {
+    const result = component.state.articles.filter(item => {
       return item.id === monitor.getItem().id
     })
 
@@ -45,7 +43,7 @@ class Sidebar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      items: [],
+      articles: [],
     }
   }
 
@@ -53,15 +51,15 @@ class Sidebar extends Component {
     fetch(this.props.serverUrl + 'articles')
       .then(resp => resp.json())
       .then(json => {
-        this.setState({ items: json })
+        this.setState({ articles: json })
       })
   }
 
   deleteItem = (id) => {
     const dataBase = new Database(this.props.serverUrl + 'articles')
-    let newState = this.state.items.filter(item => item.id !== id)
+    let newState = this.state.articles.filter(item => item.id !== id)
 
-    this.setState({ items: newState })
+    this.setState({ articles: newState })
     dataBase.delete(id)
   }
 
@@ -69,7 +67,7 @@ class Sidebar extends Component {
     const dataBase = new Database(this.props.serverUrl + 'articles')
 
     this.setState(update(this.state, {
-      items: {
+      articles: {
         $push: [data],
       },
     }))
@@ -88,26 +86,23 @@ class Sidebar extends Component {
 
   render() {
     const { connectDropTarget, hovered, canDrop, containerId } = this.props
-    const { items } = this.state
+    const { articles } = this.state
 
     const backgroundColor = this.getHoveredColor(hovered, canDrop)
 
     return connectDropTarget(
-      <aside className={'grid_4 Sidebar'} style={{ background: backgroundColor }}>
+      <aside className={'Sidebar'} style={{ background: backgroundColor }}>
         <ul className={'Sidebar__blog-list'}>
-          {items.map((item) => (
-            <Item item={item}
-                  key={item.id}
-                  containerId={containerId}
-                  itemDeleter={this.deleteItem}/>
+          {articles.map((article) => (
+            <Article article={article}
+                     key={article.id}
+                     containerId={containerId}
+                     itemDeleter={this.deleteItem}/>
           ))}
         </ul>
-        <div className={'Sidebar__add-blog'}>
-          <Link to={'/write_blog'}>Write New Blog!</Link>
-        </div>
       </aside>,
     )
   }
 }
 
-export default DropTarget('Item', itemTarget, collect)(Sidebar)
+export default DropTarget('Article', itemTarget, collect)(Sidebar)

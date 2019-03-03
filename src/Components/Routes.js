@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import MainPage from './MainPage/MainPage/MainPage'
+import MainPage from './MainPage'
 import Posts from './Posts'
 import WriteBlog from './WriteBlog'
 import ViewPostPage from './ViewPost/ViewPostPage/ViewPostPage'

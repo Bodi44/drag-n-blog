@@ -1,98 +1,97 @@
-import React, { Component } from "react";
-import update from "immutability-helper";
+import React, { Component } from 'react'
+import update from 'immutability-helper'
 
-import Container from "./Container/Container";
+import LayoutArticle from './LayoutArticle'
 
-import { generateUniqueId } from "../../../helpers/generateUniqueId";
-import Database from "../../../Database/Database";
+import { generateUniqueId } from '../../../helpers/generateUniqueId'
+import Database from '../../../Database/Database'
 
-import "./BlogTable.scss";
-import "../../../css-grid/grid.scss";
+import './BlogTable.scss'
 
 class BlogTable extends Component {
   state = {
-    items: []
-  };
-
-  componentDidMount() {
-    fetch(this.props.serverUrl + "layoutContainers")
-      .then(resp => resp.json())
-      .then(json => {
-        this.setState({ items: json });
-      });
+    layoutArticles: [],
   }
 
-  addContainer = () => {
-    const dataBase = new Database(this.props.serverUrl + "layoutContainers");
+  componentDidMount() {
+    fetch(this.props.serverUrl + 'layoutContainers')
+      .then(resp => resp.json())
+      .then(json => {
+        this.setState({ layoutArticles: json })
+      })
+  }
+
+  addArticleToLayout = () => {
+    const dataBase = new Database(this.props.serverUrl + 'layoutContainers')
 
     const newItem = {
-      title: "",
-      content: "",
+      title: '',
+      content: '',
       date: Database.dateToString(new Date()),
-      author: "",
-      id: generateUniqueId()
-    };
+      author: '',
+      id: generateUniqueId(),
+    }
 
     this.setState(
       update(this.state, {
-        items: {
-          $push: [newItem]
-        }
-      })
-    );
+        layoutArticles: {
+          $push: [newItem],
+        },
+      }),
+    )
 
-    dataBase.create(newItem.id, newItem.title, newItem.content, newItem.author);
-  };
+    dataBase.create(newItem.id, newItem.title, newItem.content, newItem.author)
+  }
 
-  updateContainer = (id, data) => {
-    const newState = Object.assign({}, this.state.items);
+  updateArticleInLayout = (id, data) => {
+    const newState = Object.assign({}, this.state.layoutArticles)
 
     Object.keys(newState).forEach(key => {
       if (newState[key].id === id) {
-        newState[key].title = data.title;
-        newState[key].content = data.content;
-        newState[key].date = Database.dateToString(new Date());
-        newState[key].author = data.author;
+        newState[key].title = data.title
+        newState[key].content = data.content
+        newState[key].date = Database.dateToString(new Date())
+        newState[key].author = data.author
       }
-    });
+    })
 
-    this.setState({ newState });
-  };
+    this.setState({ newState })
+  }
 
-  removeContainer = id => {
-    const dataBase = new Database(this.props.serverUrl + "layoutContainers");
-    const newState = this.state.items.filter(item => item.id !== id);
+  removeArticleFromLayout = id => {
+    const dataBase = new Database(this.props.serverUrl + 'layoutContainers')
+    const newState = this.state.layoutArticles.filter(article => article.id !== id)
 
-    this.setState({ items: newState });
-    dataBase.delete(id);
-  };
+    this.setState({ layoutArticles: newState })
+    dataBase.delete(id)
+  }
 
   render() {
-    const { serverUrl, containerId } = this.props;
-    const { items } = this.state;
+    const { serverUrl, containerId } = this.props
+    const { layoutArticles } = this.state
 
     return (
-      <div className={"grid_8 BlogTable"}>
-        {items.map(item => (
-          <Container
-            containerList={items}
-            container={item}
-            containerId={containerId}
-            key={item.id}
+      <div className={'BlogTable'}>
+        {layoutArticles.map(article => (
+          <LayoutArticle
+            layoutArticles={layoutArticles}
+            article={article}
+            articleId={containerId}
+            key={article.id}
             serverUrl={serverUrl}
-            containerUpdater={this.updateContainer}
-            containerRemover={this.removeContainer}
+            updateArticle={this.updateArticleInLayout}
+            removeArticle={this.removeArticleFromLayout}
           />
         ))}
         <button
-          className={"BlogTable__add-container"}
-          onClick={this.addContainer}
+          className={'BlogTable__add-container'}
+          onClick={this.addArticleToLayout}
         >
           Add container
         </button>
       </div>
-    );
+    )
   }
 }
 
-export default BlogTable;
+export default BlogTable
