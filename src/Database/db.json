@@ -25,25 +25,28 @@
       "tags": []
     },
     {
-      "id": "_lti3ha5",
+      "id": "_40eoz0w",
       "title": "Tell me your story",
       "content": "I'm going to tell you my story",
-      "date": "2019-02-27",
-      "author": "Max Voloskiy",
-      "tags": []
+      "date": "2019-03-03",
+      "author": "Max Voloskiy"
     },
     {
-      "id": "_nrckdsl",
-      "title": "title2",
-      "content": "somme stiriessss",
-      "date": "2019-03-01",
-      "author": "Admin2",
+      "title": "test title edited",
+      "content": "some tets text edited",
+      "date": "2019-03-03",
+      "author": "admin222",
       "tags": [
         {
-          "id": "sports",
-          "text": "sports"
+          "id": "test",
+          "text": "test"
+        },
+        {
+          "id": "edittest",
+          "text": "edittest"
         }
-      ]
+      ],
+      "id": "_bl44xzh"
     }
   ],
   "layoutContainers": [
@@ -62,27 +65,6 @@
       "author": "Indra Sofian",
       "id": "_f02rc0o",
       "tags": []
-    },
-    {
-      "title": "Some test post with tags",
-      "content": "some content for test post with tags\n",
-      "date": "2019-02-27",
-      "author": "Max Voloskiy",
-      "tags": [
-        {
-          "id": "sport",
-          "text": "sport"
-        },
-        {
-          "id": "art",
-          "text": "art"
-        },
-        {
-          "id": "web",
-          "text": "web"
-        }
-      ],
-      "id": "_r2ufcs4"
     }
   ]
 }

@@ -37,15 +37,13 @@
     }
   }
 
-  &__search{
-    &-input{
-      outline: none;
-      height: 20px;
-      border-radius: 5px;
-      border: 1px solid #c4c4c4;
-      padding: 5px 5px 5px 40px;
-      background: url("https://res.cloudinary.com/dum2a6djw/image/upload/c_scale,w_25/v1551519983/search_icon.png") no-repeat 5% center;
-    }
+  &__input {
+    outline: none;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    padding: 5px 5px 5px 40px;
+    background: url("https://res.cloudinary.com/dum2a6djw/image/upload/c_scale,w_25/v1551519983/search_icon.png") no-repeat 5% center;
   }
 
   &__navigation {
@@ -84,7 +82,7 @@
     background: none;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
     font-size: 15px;
-    height: 34px;
+    height: 30px;
     width: 155px;
 
     &:after {
@@ -99,7 +97,7 @@
       background-size: contain;
     }
 
-    &_centered{
+    &_centered {
       position: absolute;
       left: 10px;
       top: 50%;

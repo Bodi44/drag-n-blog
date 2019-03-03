@@ -37,7 +37,8 @@ class Item extends Component {
         <h4 className={'Item__title'}>{item.title}</h4>
         <div className={'Item__modifiers'}>
           <button className={'Item__remove'} onClick={() => this.props.itemDeleter(item.id)}>X</button>
-          <Link to={{ pathname: '/edit_post', state: { data: item } }} className={'Item__edit'}>Edit</Link>
+          <Link to={{ pathname: '/write_blog', state: { data: item } }}
+                className={'Item__edit'}>Edit</Link>
         </div>
         <p className={'Item__content'}>{item.content.split(' ').slice(0, 100).join(' ')}</p>
         <small className={'Item__author'}>{item.author}</small>

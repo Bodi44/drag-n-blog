@@ -14,15 +14,20 @@ export default class WriteBlog extends Component {
       comma: 188,
       enter: 13,
     },
-  };
+  }
 
-  state = {
-    id: '',
-    title: '',
-    content: '',
-    author: '',
-    tags: [],
-  };
+  constructor(props) {
+    super(props)
+    this.state = props.location.state ?
+      props.location.state.data :
+      {
+        id: '',
+        title: '',
+        content: '',
+        author: '',
+        tags: [],
+      }
+  }
 
   handleTagsDelete = i => {
     const { tags } = this.state
@@ -36,9 +41,13 @@ export default class WriteBlog extends Component {
   }
 
   handleSubmit = event => {
-    const database = new Database('http://localhost:3001/' + 'articles')
-    const { title, content, author, tags } = this.state
-    database.create(generateUniqueId(), title, content, author, tags)
+    const database = new Database('http://localhost:3001/articles')
+    const { id, title, content, author, tags } = this.state
+    if (this.props.location.state === undefined)
+      database.create(generateUniqueId(), title, content, author, tags)
+    else
+      database.update(id, this.state)
+
     this.props.history.push('/')
     event.preventDefault()
   }
@@ -61,12 +70,14 @@ export default class WriteBlog extends Component {
           placeholder="Title"
           name={'title'}
           onChange={this.handleChange}
+          defaultValue={this.state.title}
         />
         <input
           className="WriteBlog__author"
           placeholder="Author"
           name={'author'}
           onChange={this.handleChange}
+          defaultValue={this.state.author}
         />
         <div>
           <ReactTags
@@ -84,6 +95,7 @@ export default class WriteBlog extends Component {
             name="content"
             placeholder={'Tell us your story...'}
             onChange={this.handleChange}
+            defaultValue={this.state.content}
           />
         </div>
         <button className={'WriteBlog__publish-button'} type="submit">

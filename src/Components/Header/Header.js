@@ -20,8 +20,8 @@ const Header = () => {
         <div className={'Header__top-content_right'}>
           <form action="" className={'Header__search'}>
             <input
-                className={'Header__search-input'}
-                placeholder="Search"
+              className={'Header__input'}
+              placeholder="Search"
             />
           </form>
           <Route exact path={'/'} component={MainButton}/>
