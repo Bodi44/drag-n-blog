@@ -15,14 +15,6 @@
       "date": "2019-03-03",
       "author": "Trevor Timm",
       "tags": []
-    },
-    {
-      "id": "_gf9xycq",
-      "title": "How Top-Performing College Grads Fall Into the ‘Prestige Career’ Trap",
-      "content": "today’s society, there is a well-established prestige pathway. If you attend a high-ranking university, it’s very likely you’ll end up with a job in consulting and/or investment banking.\n\nIn 2017, nearly 40 percent of Harvard graduates took consulting or finance jobs. That statistic remains equal or higher across other Ivy League universities. Most of these graduates end up at the so-called top firms. In consulting, that’s McKinsey, Bain, BCG; in finance, it’s Goldman Sachs, Morgan Stanley, JPMorgan.\n\nThis means thousands of the brightest, most hardworking (and privileged) young adults are going to work for only a handful of firms every year. That’s a ridiculously high percentage of graduates concentrated in a couple of industries.\n\nOver decades, these firms have thoroughly and meticulously infiltrated and transformed the culture of these universities, resulting in a staggeringly high conversion rate of graduates into their ranks. As a result, fewer candidates are left for other fields that need them, such as healthcare, education, energy, and environmental science. It’s a very real — and very damaging — brain drain.\n\nEven worse, most of these students have no idea what they’re getting into. They’re doing it because of the prestige; landing one of these jobs is seen as the pinnacle of a status culture in which they’ve been immersed. Although many leave after about two years, driven away by the long hours and cutthroat culture, some stay far longer. Eventually, they realize that prestige and overachievement are no longer as important as when they were younger — but by then, they’re trapped.",
-      "date": "2019-03-04",
-      "author": "Indra Sofian",
-      "tags": []
     }
   ],
   "layoutContainers": [
@@ -54,6 +46,14 @@
         }
       ],
       "id": "_6r29tbf"
+    },
+    {
+      "title": "How Top-Performing College Grads Fall Into the ‘Prestige Career’ Trap",
+      "content": "today’s society, there is a well-established prestige pathway. If you attend a high-ranking university, it’s very likely you’ll end up with a job in consulting and/or investment banking.\n\nIn 2017, nearly 40 percent of Harvard graduates took consulting or finance jobs. That statistic remains equal or higher across other Ivy League universities. Most of these graduates end up at the so-called top firms. In consulting, that’s McKinsey, Bain, BCG; in finance, it’s Goldman Sachs, Morgan Stanley, JPMorgan.\n\nThis means thousands of the brightest, most hardworking (and privileged) young adults are going to work for only a handful of firms every year. That’s a ridiculously high percentage of graduates concentrated in a couple of industries.\n\nOver decades, these firms have thoroughly and meticulously infiltrated and transformed the culture of these universities, resulting in a staggeringly high conversion rate of graduates into their ranks. As a result, fewer candidates are left for other fields that need them, such as healthcare, education, energy, and environmental science. It’s a very real — and very damaging — brain drain.\n\nEven worse, most of these students have no idea what they’re getting into. They’re doing it because of the prestige; landing one of these jobs is seen as the pinnacle of a status culture in which they’ve been immersed. Although many leave after about two years, driven away by the long hours and cutthroat culture, some stay far longer. Eventually, they realize that prestige and overachievement are no longer as important as when they were younger — but by then, they’re trapped.",
+      "date": "2019-03-04",
+      "author": "Indra Sofian",
+      "tags": [],
+      "id": "_cq0xhl7"
     }
   ]
 }
