@@ -7,20 +7,20 @@
   margin: 0 auto;
   padding: 0;
   width: 800px;
+  cursor: default;
 
   &__title{
     padding: 0 20px;
     font-size: 36px;
     font-weight: 500;
     margin-bottom: 10px;
-    cursor: default;
+
   }
 
   &__author{
     padding: 0 25px;
     font-size: 16px;
     font-weight: 600;
-    cursor: default;
   }
 
   &__content{
@@ -28,7 +28,6 @@
     font-size: 28px;
     font-weight: 300;
     text-indent: 20px;
-    cursor: default;
   }
 
   &__tags{
@@ -44,50 +43,7 @@
       text-align: center;
       border: 1px solid #C4C4C4;
       border-radius: 5px;
-      cursor: default;
       padding: 5px;
     }
   }
 }
-
-//.ViewPost{
-//  margin: 20px auto !important;
-//  font-family: Roboto Slab, serif;
-//  font-style: normal;
-//  font-weight: 300;
-//  line-height: normal;
-//
-//  &-image{
-//    border-radius: 5px;
-//  }
-//
-//  &-header{
-//    font-family: Roboto, sans-serif;
-//    color: #394040;
-//    font-size: 36px;
-//  }
-//
-//  &-content{
-//    font-family: Roboto, sans-serif;
-//    font-size: 28px;
-//    color: #394040;
-//  }
-//
-//  &__tags{
-//    display: flex;
-//    justify-content: space-around;
-//    list-style: none;
-//    padding: 0;
-//    margin: 10px;
-//    color: #C4C4C4;
-//
-//    &-tag{
-//      min-width: 100px;
-//      text-align: center;
-//      border: 1px solid #C4C4C4;
-//      border-radius: 5px;
-//      cursor: pointer;
-//      padding: 5px;
-//    }
-//  }
-//}
