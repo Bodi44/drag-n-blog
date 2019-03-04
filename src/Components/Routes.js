@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom'
 import MainPage from './MainPage'
 import Posts from './Posts'
 import WriteBlog from './WriteBlog'
-import ViewPostPage from './ViewPost/ViewPostPage/ViewPostPage'
+import ViewPost from './ViewPost/ViewPost'
 
 import '../css-grid/grid.scss'
 
@@ -14,7 +14,7 @@ const Routes = () => {
       <Route exact path={'/'} component={MainPage}/>
       <Route path={'/layout'} component={Posts}/>
       <Route path={'/write_blog'} component={WriteBlog}/>
-      <Route path={'/view_post'} component={ViewPostPage}/>
+      <Route path={'/view_post'} component={ViewPost}/>
     </main>
   )
 }
