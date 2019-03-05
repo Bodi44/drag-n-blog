@@ -7,13 +7,15 @@ const articleReducer = (state = [], action) => {
         ...state,
         {
           id: action.id,
+          title: action.title,
           content: action.content,
           date: action.date,
           author: action.author,
+          tags: action.tags,
         },
       ]
     case 'REMOVE_ARTICLE':
-      return state.filter(item => item.id !== action.id)
+      return state.filter(article => article.id !== action.id)
     case 'UPDATE_ARTICLE':
       const newState = Object.assign({}, state)
       Object.keys(newState).forEach(key => {
@@ -22,6 +24,7 @@ const articleReducer = (state = [], action) => {
           newState[key].content = action.content
           newState[key].date = Database.dateToString(new Date())
           newState[key].author = action.author
+          newState[key].tags = action.tags
         }
       })
       return newState

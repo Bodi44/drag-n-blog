@@ -1,30 +1,42 @@
-import { generateUniqueId } from "../helpers/generateUniqueId";
-import Database from "../Database/Database";
+import { generateUniqueId } from '../helpers/generateUniqueId'
+import Database from '../Database/Database'
 
-export const addArticle = (title, content, author) => ({
-  type: "ADD_ARTICLE",
+export const addArticle = (title, content, author, tags) => ({
+  type: 'ADD_ARTICLE',
   id: generateUniqueId(),
+  title,
   content,
   date: Database.dateToString(new Date()),
-  author
-});
+  author,
+  tags,
+})
 
 export const removeArticle = id => ({
-  type: "REMOVE_ARTICLE",
-  id
-});
+  type: 'REMOVE_ARTICLE',
+  id,
+})
 
-export const updateArticle = (id, data) => ({
-  type: "UPDATE_ARTICLE",
-  data
-});
+export const updateArticle = (id, newArticleData) => ({
+  type: 'UPDATE_ARTICLE',
+  newArticleData,
+})
 
-export const updateLayoutArticle = (id, data) => ({
-  type: "UPDATE_ARTICLE",
-  data
-});
+export const addLayoutArticle = (title, content, author, tags) => ({
+  type: 'ADD_LAYOUT_ARTICLE',
+  id: generateUniqueId(),
+  title,
+  content,
+  date: Database.dateToString(new Date()),
+  author,
+  tags,
+})
 
-export const deleteLayoutArticle = (id, data) => ({
-  type: "UPDATE_ARTICLE",
-  data
-});
+export const updateLayoutArticle = (id, newLayoutData) => ({
+  type: 'UPDATE_LAYOUT_ARTICLE',
+  newLayoutData,
+})
+
+export const removeLayoutArticle = id => ({
+  type: 'REMOVE_LAYOUT_ARTICLE',
+  id,
+})
