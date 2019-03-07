@@ -1,30 +1,83 @@
 import Database from '../Database/Database'
 
-const articleReducer = (state = [], action) => {
+import {
+  FETCH_ARTICLES_BEGIN,
+  FETCH_ARTICLES_SUCCESS,
+  FETCH_ARTICLES_FAILURE,
+  ADD_ARTICLE,
+  REMOVE_ARTICLE,
+  UPDATE_ARTICLE,
+} from '../actions'
+
+const database = new Database('http://localhost:3001/articles')
+
+const initialState = {
+  articles: [],
+  loading: false,
+  error: null,
+}
+
+const articleReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_ARTICLE':
-      return [
+    case FETCH_ARTICLES_BEGIN:
+      return {
         ...state,
-        {
-          id: action.id,
-          title: action.title,
-          content: action.content,
-          date: action.date,
-          author: action.author,
-          tags: action.tags,
-        },
-      ]
-    case 'REMOVE_ARTICLE':
-      return state.filter(article => article.id !== action.id)
-    case 'UPDATE_ARTICLE':
+        loading: true,
+        error: null,
+      }
+    case FETCH_ARTICLES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        articles: action.payload.articles,
+      }
+    case FETCH_ARTICLES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+        articles: [],
+      }
+    case ADD_ARTICLE:
+      database.create(action)
+      return {
+        ...state,
+        articles: [
+          ...state.articles,
+          {
+            id: action.id,
+            title: action.title,
+            content: action.content,
+            date: action.date,
+            author: action.author,
+            tags: action.tags,
+          },
+        ],
+      }
+    case REMOVE_ARTICLE:
+      database.delete(action.id)
+      return {
+        ...state,
+        articles: [
+          ...state.articles.filter(article =>
+            article.id !== action.id,
+          )],
+      }
+    case UPDATE_ARTICLE:
+      database.update(action.id, {
+        title: action.title,
+        content: action.content,
+        author: action.author,
+        tags: action.tags,
+      })
       const newState = Object.assign({}, state)
-      Object.keys(newState).forEach(key => {
-        if (newState[key].id === action.id) {
-          newState[key].title = action.title
-          newState[key].content = action.content
-          newState[key].date = Database.dateToString(new Date())
-          newState[key].author = action.author
-          newState[key].tags = action.tags
+      newState.articles.forEach(article => {
+        if (article.id === action.id) {
+          article.title = action.title
+          article.content = action.content
+          article.data = Database.dateToString(new Date())
+          article.author = action.author
+          article.tags = action.tags
         }
       })
       return newState

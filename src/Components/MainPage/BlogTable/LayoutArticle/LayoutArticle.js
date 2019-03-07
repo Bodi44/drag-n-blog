@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { DropTarget, DragSource } from 'react-dnd'
 import flow from 'lodash/flow'
 
-import Database from '../../../../Database/Database'
-
 import './LayoutArticle.scss'
 
 const itemSource = {
@@ -23,6 +21,7 @@ const itemSource = {
 const itemTarget = {
   drop(props, monitor, component) {
     const { articleId } = props
+    console.log(props.article.id, monitor.getItem().id)
 
     if (articleId === 2)
       component.addItemToContainer(
@@ -54,11 +53,8 @@ const collect = (connect, monitor) => {
 }
 
 class LayoutArticle extends Component {
-  addItemToContainer = (id, data, url) => {
-    const dataBase = new Database(url + 'layoutContainers')
-
+  addItemToContainer = (id, data) => {
     this.props.updateArticle(id, data)
-    dataBase.update(id, data)
   }
 
   getHoveredColor = (hovered, canDrop) => {

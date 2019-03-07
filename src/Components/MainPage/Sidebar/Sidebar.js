@@ -1,20 +1,23 @@
 import React, { Component } from 'react'
 import { DropTarget } from 'react-dnd'
-import update from 'immutability-helper'
+import { connect } from 'react-redux'
+import flow from 'lodash/flow'
 
 import Article from './Article'
-
-import Database from '../../../Database/Database'
+import {
+  addArticle,
+  fetchArticles,
+  removeArticle,
+} from '../../../actions'
 
 import './Sidebar.scss'
 
 const itemTarget = {
   drop(props, monitor, component) {
     const { containerId } = props
-
-    const result = component.state.articles.filter(item => {
-      return item.id === monitor.getItem().id
-    })
+    const result = props.articles.filter(item =>
+      item.id === monitor.getItem().id,
+    )
 
     if (result.length === 0)
       component.addItem(monitor.getItem())
@@ -29,7 +32,6 @@ const itemTarget = {
   },
 }
 
-
 const collect = (connect, monitor) => {
   return {
     connectDropTarget: connect.dropTarget(),
@@ -40,39 +42,12 @@ const collect = (connect, monitor) => {
 }
 
 class Sidebar extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      articles: [],
-    }
-  }
-
   componentDidMount() {
-    fetch(this.props.serverUrl + 'articles')
-      .then(resp => resp.json())
-      .then(json => {
-        this.setState({ articles: json })
-      })
-  }
-
-  deleteItem = (id) => {
-    const dataBase = new Database(this.props.serverUrl + 'articles')
-    let newState = this.state.articles.filter(item => item.id !== id)
-
-    this.setState({ articles: newState })
-    dataBase.delete(id)
+    this.props.fetchContent()
   }
 
   addItem = (data) => {
-    const dataBase = new Database(this.props.serverUrl + 'articles')
-
-    this.setState(update(this.state, {
-      articles: {
-        $push: [data],
-      },
-    }))
-
-    dataBase.create(data)
+    this.props.addNewToArticles(data)
   }
 
   getHoveredColor = (hovered, canDrop) => {
@@ -85,10 +60,24 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { connectDropTarget, hovered, canDrop, containerId } = this.props
-    const { articles } = this.state
+    const {
+      connectDropTarget,
+      hovered,
+      canDrop,
+      containerId,
+      error,
+      loading,
+      articles,
+      removeFromArticles,
+    } = this.props
 
     const backgroundColor = this.getHoveredColor(hovered, canDrop)
+
+    if (error)
+      return <div>Error! {error.message}</div>
+
+    if (loading)
+      return <div>Loading...</div>
 
     return connectDropTarget(
       <aside className={'Sidebar'} style={{ background: backgroundColor }}>
@@ -97,7 +86,7 @@ class Sidebar extends Component {
             <Article article={article}
                      key={article.id}
                      containerId={containerId}
-                     itemDeleter={this.deleteItem}/>
+                     itemDeleter={removeFromArticles}/>
           ))}
         </ul>
       </aside>,
@@ -105,4 +94,23 @@ class Sidebar extends Component {
   }
 }
 
-export default DropTarget('Article', itemTarget, collect)(Sidebar)
+const mapStateToProps = state => ({
+  articles: state.articles.articles,
+  loading: state.articles.loading,
+  error: state.articles.error,
+})
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addNewToArticles: (data) => {
+      dispatch(addArticle(data))
+    },
+    fetchContent: () => dispatch(fetchArticles()),
+    removeFromArticles: (id) => dispatch(removeArticle(id)),
+  }
+}
+
+export default flow(
+  DropTarget('Article', itemTarget, collect),
+  connect(mapStateToProps, mapDispatchToProps),
+)(Sidebar)

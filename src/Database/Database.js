@@ -46,13 +46,13 @@ export default class Database {
     })
   }
 
-  async update(id, article) {
+  async update(id, { title, content, author, tags }) {
     let resp = await fetcher.put(this.url + '/' + id, {
-      title: article.title,
-      content: article.content,
+      title,
+      content,
       date: Database.dateToString(new Date()),
-      author: article.author,
-      tags: article.tags,
+      author,
+      tags,
     })
     return Database.normalizeSingle(resp)
   }

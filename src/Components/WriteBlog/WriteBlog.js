@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import TextareaAutosize from 'react-autosize-textarea'
 import { WithContext as ReactTags } from 'react-tag-input'
 
-import Database from '../../Database/Database'
-import { generateUniqueId } from '../../helpers/generateUniqueId'
+import { addArticle, updateArticle } from '../../actions'
 
 import './WriteBlog.scss'
 
-export default class WriteBlog extends Component {
+class WriteBlog extends Component {
   static defaultProps = {
     keyCodes: {
       comma: 188,
@@ -20,7 +20,6 @@ export default class WriteBlog extends Component {
     this.state = props.location.state ?
       props.location.state.data :
       {
-        id: generateUniqueId(),
         title: '',
         content: '',
         author: '',
@@ -40,12 +39,10 @@ export default class WriteBlog extends Component {
   }
 
   handleSubmit = event => {
-    const database = new Database('http://localhost:3001/articles')
-    const { id } = this.state
     if (this.props.location.state === undefined)
-      database.create(this.state)
+      this.props.addNewToArticles(this.state)
     else
-      database.update(id, this.state)
+      this.props.updateExistingArticle(this.state.id, this.state)
 
     this.props.history.push('/')
     event.preventDefault()
@@ -104,3 +101,23 @@ export default class WriteBlog extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  articles: state.articles.articles,
+})
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addNewToArticles: (data) => {
+      dispatch(addArticle(data))
+    },
+    updateExistingArticle: (id, data) => {
+      dispatch(updateArticle(id, data))
+    },
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(WriteBlog)

@@ -6,7 +6,6 @@ import './Article.scss'
 
 const itemSource = {
   beginDrag(props) {
-    console.log(props)
     return props.article
   },
 
