@@ -1,0 +1,15 @@
+[ignore]
+.*/node_modules/.*
+.*/src/index\.js
+.*/src/Database/.*
+.*/src/helpers/.*
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]
