@@ -9,15 +9,23 @@ import {
   UPDATE_ARTICLE,
 } from '../actions'
 
+import type { ArticlesActions } from '../actions'
+
 const database = new Database('http://localhost:3001/articles')
 
-const initialState = {
+export type ArticleState = {
+  articles: Array<Object>,
+  loading: boolean,
+  error: null | string
+}
+
+const initialState: ArticleState = {
   articles: [],
   loading: false,
   error: null,
 }
 
-const articleReducer = (state = initialState, action) => {
+const articleReducer = (state: ArticleState = initialState, action: ArticlesActions) => {
   switch (action.type) {
     case FETCH_ARTICLES_BEGIN:
       return {

@@ -1,27 +1,54 @@
+// @flow
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import PostContainer from './PostsContainer'
+import { fetchLayoutArticles } from '../../actions'
 
-export default class Posts extends Component {
-  state = {
-    postsContainers: [],
-  }
+type PostsProps = {
+  error: null | Object,
+  loading: boolean,
+  layoutArticles: Array<any>,
+  fetchContent: () => Promise<any>,
+  location?: Object,
+  match?: Object
+}
 
+class Posts extends Component<PostsProps> {
   componentDidMount() {
-    fetch('http://localhost:3001/layoutContainers')
-      .then(resp => resp.json())
-      .then(json => {
-        this.setState({ postsContainers: json })
-      })
+    this.props.fetchContent()
   }
 
   render() {
-    const { postsContainers } = this.state
+    const { error, loading, layoutArticles } = this.props
+
+    if (error)
+      return <div>Error! {error.message}</div>
+
+    if (loading)
+      return <div>Loading...</div>
 
     return (
-      postsContainers.map(postContainer => (
-        <PostContainer post={postContainer} key={postContainer.id}/>
+      layoutArticles.map(article => (
+        <PostContainer post={article} key={article.id}/>
       ))
     )
   }
 }
+
+const mapStateToProps = state => ({
+  layoutArticles: state.layoutArticles.layoutArticles,
+  loading: state.layoutArticles.loading,
+  error: state.layoutArticles.error,
+})
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchContent: () => dispatch(fetchLayoutArticles()),
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Posts)

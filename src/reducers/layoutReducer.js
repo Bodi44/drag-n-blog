@@ -8,16 +8,23 @@ import {
   UPDATE_LAYOUT_ARTICLE,
   REMOVE_LAYOUT_ARTICLE,
 } from '../actions'
+import type { ArticlesActions } from '../actions'
 
 const database = new Database('http://localhost:3001/layoutContainers')
 
-const initialState = {
+export type LayoutArticleState = {
+  layoutArticles: Array<Object>,
+  loading: boolean,
+  error: null | string
+}
+
+const initialState: LayoutArticleState = {
   layoutArticles: [],
   loading: false,
   error: null,
 }
 
-const layoutReducer = (state = initialState, action) => {
+const layoutReducer = (state: LayoutArticleState = initialState, action: ArticlesActions) => {
   switch (action.type) {
     case FETCH_LAYOUT_ARTICLES_BEGIN:
       return {

@@ -1,8 +1,6 @@
 [ignore]
-.*/node_modules/.*
 .*/src/index\.js
-.*/src/Database/.*
-.*/src/helpers/.*
+.*/src/Database/db\.json
 
 [include]
 
@@ -11,5 +9,10 @@
 [lints]
 
 [options]
+module.file_ext=.js
+module.file_ext=.jsx
+module.file_ext=.json
+module.file_ext=.css
+module.file_ext=.scss
 
 [strict]

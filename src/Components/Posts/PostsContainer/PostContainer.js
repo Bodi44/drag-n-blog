@@ -1,9 +1,15 @@
+// @flow
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 import './PostContainer.scss'
 
-const PostContainer = (props) => {
+type PostContainerProps = {
+  post: Object,
+  key: string
+}
+
+const PostContainer = (props: PostContainerProps) => {
   const { post } = props
 
   return (
