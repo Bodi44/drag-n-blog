@@ -71,7 +71,7 @@ class LayoutArticle extends Component {
           className={'LayoutArticle__remove'}
           onClick={() => onClickRemove(article.id)}
         >
-          X
+          Remove
         </button>
         <p className={'LayoutArticle__content'}>
           {article.content

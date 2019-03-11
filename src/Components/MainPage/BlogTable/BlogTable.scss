@@ -4,6 +4,7 @@
   height: 845px;
   width: 70%;
   overflow: auto;
+  padding: 10px;
 
   &__add-container {
     display: block;
@@ -12,7 +13,8 @@
     width: 50%;
     padding: 10px;
     background: none;
-    border: 1px solid black;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.35);
+    border: none;
     font-family: Roboto, sans-serif;
     text-transform: uppercase;
   }

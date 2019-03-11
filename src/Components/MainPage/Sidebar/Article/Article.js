@@ -35,7 +35,7 @@ class Article extends Component {
       <li className={'Article'} style={{ opacity }}>
         <h4 className={'Article__title'}>{article.title}</h4>
         <div className={'Article__modifiers'}>
-          <button className={'Article__remove'} onClick={() => this.props.itemDeleter(article.id)}>X</button>
+          <button className={'Article__remove'} onClick={() => this.props.itemDeleter(article.id)}>Remove</button>
           <Link to={{ pathname: '/write_blog', state: { data: article } }}
                 className={'Article__edit'}>Edit</Link>
         </div>
