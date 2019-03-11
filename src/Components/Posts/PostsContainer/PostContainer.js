@@ -11,7 +11,6 @@ type PostContainerProps = {
 
 const PostContainer = (props: PostContainerProps) => {
   const { post } = props
-
   return (
     <Link to={{ pathname: '/view_post', state: { data: post } }} className={'PostContainer'}>
       <h2 className={'PostContainer__title'}>{post.title}</h2>

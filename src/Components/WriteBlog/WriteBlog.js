@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import TextareaAutosize from 'react-autosize-textarea'
@@ -7,7 +9,28 @@ import { addArticle, updateArticle } from '../../actions'
 
 import './WriteBlog.scss'
 
-class WriteBlog extends Component {
+type WriteBlogProps = {
+  keyCodes: Object,
+  location: Object,
+  history: Object,
+  addNewToArticles: ({id: string,
+                      title: string,
+                      content: string,
+                      author: string,
+                      tags: Array<any>}) => void,
+  updateExistingArticle: (id: string, Object) => void
+}
+
+type WriteBlogState = {
+  id: string,
+  title: string,
+  content: string,
+  author: string,
+  tags: Array<any>
+}
+
+class WriteBlog extends Component<WriteBlogProps, WriteBlogState> {
+
   static defaultProps = {
     keyCodes: {
       comma: 188,
@@ -20,6 +43,7 @@ class WriteBlog extends Component {
     this.state = props.location.state ?
       props.location.state.data :
       {
+        id: '',
         title: '',
         content: '',
         author: '',

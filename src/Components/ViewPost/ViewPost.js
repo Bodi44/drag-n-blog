@@ -1,10 +1,16 @@
+// @flow
 import React from "react";
 
 import "../../css-grid/grid.scss";
 
 import "./ViewPost.scss"
 
-const ViewPost = props => {
+type ViewPostProps = {
+  location: Object,
+  article: Object
+}
+
+const ViewPost = (props: ViewPostProps) => {
   const article  = props.location.state.data;
   return (
     <div className={"ViewPost"}>
