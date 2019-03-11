@@ -12,6 +12,8 @@
   }
 
   &__remove {
+    display: block;
+    color: #394040;
     font-size: 12px;
     font-weight: 600;
     margin: 5px 0 10px;
@@ -19,6 +21,7 @@
     background: none;
     border: none;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.35);
+
   }
 
   &__content {

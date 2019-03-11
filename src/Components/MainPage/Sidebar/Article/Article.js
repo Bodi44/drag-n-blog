@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { DragSource } from 'react-dnd'
 import { Link } from 'react-router-dom'
 
+import { shortenContent } from '../../../../helpers/shortenContent'
+
 import './Article.scss'
 
 const itemSource = {
@@ -39,7 +41,7 @@ class Article extends Component {
           <Link to={{ pathname: '/write_blog', state: { data: article } }}
                 className={'Article__edit'}>Edit</Link>
         </div>
-        <p className={'Article__content'}>{article.content.split(' ').slice(0, 50).join(' ')}</p>
+        <p className={'Article__content'}>{shortenContent(article.content, 50)}</p>
         <small className={'Article__author'}>{article.author}</small>
         <time className={'Article__date'}>{article.date}</time>
       </li>,

@@ -3,6 +3,7 @@ import { DropTarget, DragSource } from 'react-dnd'
 import flow from 'lodash/flow'
 
 import './LayoutArticle.scss'
+import { shortenContent } from '../../../../helpers/shortenContent'
 
 const itemSource = {
   beginDrag(props) {
@@ -74,10 +75,7 @@ class LayoutArticle extends Component {
           Remove
         </button>
         <p className={'LayoutArticle__content'}>
-          {article.content
-            .split(' ')
-            .slice(0, 100)
-            .join(' ')}
+          {shortenContent(article.content, 100)}
         </p>
         <small className={'LayoutArticle__author'}>{article.author}</small>
         <time className={'LayoutArticle__date'}>{article.date}</time>
@@ -89,7 +87,7 @@ class LayoutArticle extends Component {
           className={'LayoutArticle__remove'}
           onClick={() => onClickRemove(article.id)}
         >
-          X
+          Remove
         </button>
       </div>
     )
