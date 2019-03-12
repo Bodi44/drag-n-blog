@@ -43,12 +43,12 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "flow-bin": "^0.94.0",
-    "@storybook/react": "^5.0.1",
+    "@babel/core": "^7.3.4",
     "@storybook/addon-actions": "^5.0.1",
     "@storybook/addon-links": "^5.0.1",
     "@storybook/addons": "^5.0.1",
-    "@babel/core": "^7.3.4",
-    "babel-loader": "^8.0.5"
+    "@storybook/react": "^5.0.1",
+    "babel-loader": "^8.0.5",
+    "flow-bin": "^0.94.0"
   }
 }

@@ -1,20 +1,17 @@
-// @flow
-import * as React from 'react'
+import React from 'react'
+import Routes from './Routes'
+
 import Header from './Header'
 
 import '../css-grid/grid.scss'
 
-type LayoutProps = {
-  children: React.Node
-}
-
-const Layout = (props: LayoutProps) => {
+const Layout = () => {
   return (
     <div className={'container_12'}>
       <header className={'grid_12'}>
         <Header/>
       </header>
-      {props.children}
+      <Routes/>
     </div>
   )
 }

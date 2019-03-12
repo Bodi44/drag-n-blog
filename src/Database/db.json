@@ -17,23 +17,15 @@
       "tags": []
     },
     {
-      "id": "_piix3da",
-      "title": "How Top-Performing College Grads Fall Into the ‘Prestige Career’ Trap",
-      "content": "today’s society, there is a well-established prestige pathway. If you attend a high-ranking university, it’s very likely you’ll end up with a job in consulting and/or investment banking.\n\nIn 2017, nearly 40 percent of Harvard graduates took consulting or finance jobs. That statistic remains equal or higher across other Ivy League universities. Most of these graduates end up at the so-called top firms. In consulting, that’s McKinsey, Bain, BCG; in finance, it’s Goldman Sachs, Morgan Stanley, JPMorgan.\n\nThis means thousands of the brightest, most hardworking (and privileged) young adults are going to work for only a handful of firms every year. That’s a ridiculously high percentage of graduates concentrated in a couple of industries.\n\nOver decades, these firms have thoroughly and meticulously infiltrated and transformed the culture of these universities, resulting in a staggeringly high conversion rate of graduates into their ranks. As a result, fewer candidates are left for other fields that need them, such as healthcare, education, energy, and environmental science. It’s a very real — and very damaging — brain drain.\n\nEven worse, most of these students have no idea what they’re getting into. They’re doing it because of the prestige; landing one of these jobs is seen as the pinnacle of a status culture in which they’ve been immersed. Although many leave after about two years, driven away by the long hours and cutthroat culture, some stay far longer. Eventually, they realize that prestige and overachievement are no longer as important as when they were younger — but by then, they’re trapped.",
-      "date": "2019-03-11",
-      "author": "Indra Sofian",
+      "id": "_g5qps8u",
+      "title": "As a Designer, I Refuse to Call People ‘Users’",
+      "content": "ve worked in UX for the better part of a decade. From now on, I plan to remove the word “user” and any associated terms—like “UX” and “user experience”—from my vocabulary. It’ll take time. I’ll start by trying to avoid using them in conversations at work. I’ll erase them from my LinkedIn profile. I’ll find new ways to describe my job when making small talk. I will experiment and look for something better.\n\nI don’t have any strong alternatives to offer right now, but I’m confident I’ll find some. I think of it as a challenge. The U-words are everywhere in tech, but they no longer reflect my values or my approach to design and technology. I can either keep using language I disagree with, or I can begin to search for what’s next. I choose to search.",
+      "date": "2019-03-12",
+      "author": "Adam Lefton",
       "tags": []
     }
   ],
   "layoutContainers": [
-    {
-      "title": "As a Designer, I Refuse to Call People ‘Users’",
-      "content": "ve worked in UX for the better part of a decade. From now on, I plan to remove the word “user” and any associated terms—like “UX” and “user experience”—from my vocabulary. It’ll take time. I’ll start by trying to avoid using them in conversations at work. I’ll erase them from my LinkedIn profile. I’ll find new ways to describe my job when making small talk. I will experiment and look for something better.\n\nI don’t have any strong alternatives to offer right now, but I’m confident I’ll find some. I think of it as a challenge. The U-words are everywhere in tech, but they no longer reflect my values or my approach to design and technology. I can either keep using language I disagree with, or I can begin to search for what’s next. I choose to search.",
-      "date": "2019-03-11",
-      "author": "Adam Lefton",
-      "tags": [],
-      "id": "_jy06z46"
-    },
     {
       "title": "Reflecting on My Failure to Build a Billion-Dollar Company",
       "content": "I thought Gumroad would become a billion-dollar company, with hundreds of employees. It would IPO, and I would work on it until I died. Something like that.\n\nNeedless to say, that didn’t happen.\n\nNow, it may look like I am in an enviable position, running a profitable, growing, low-maintenance software business serving adoring customers. But for years, I considered myself a failure. At my lowest point, I had to lay off 75 percent of my company, including many of my best friends. I had failed.\n\nIt took me years to realize I was misguided from the outset. I no longer feel shame in the path I took to get to where I am today — but for a long time, I did. This is my journey, from the beginning.",
@@ -54,6 +46,14 @@
         }
       ],
       "id": "_4xhxitr"
+    },
+    {
+      "title": "How Top-Performing College Grads Fall Into the ‘Prestige Career’ Trap",
+      "content": "today’s society, there is a well-established prestige pathway. If you attend a high-ranking university, it’s very likely you’ll end up with a job in consulting and/or investment banking.\n\nIn 2017, nearly 40 percent of Harvard graduates took consulting or finance jobs. That statistic remains equal or higher across other Ivy League universities. Most of these graduates end up at the so-called top firms. In consulting, that’s McKinsey, Bain, BCG; in finance, it’s Goldman Sachs, Morgan Stanley, JPMorgan.\n\nThis means thousands of the brightest, most hardworking (and privileged) young adults are going to work for only a handful of firms every year. That’s a ridiculously high percentage of graduates concentrated in a couple of industries.\n\nOver decades, these firms have thoroughly and meticulously infiltrated and transformed the culture of these universities, resulting in a staggeringly high conversion rate of graduates into their ranks. As a result, fewer candidates are left for other fields that need them, such as healthcare, education, energy, and environmental science. It’s a very real — and very damaging — brain drain.\n\nEven worse, most of these students have no idea what they’re getting into. They’re doing it because of the prestige; landing one of these jobs is seen as the pinnacle of a status culture in which they’ve been immersed. Although many leave after about two years, driven away by the long hours and cutthroat culture, some stay far longer. Eventually, they realize that prestige and overachievement are no longer as important as when they were younger — but by then, they’re trapped.",
+      "date": "2019-03-12",
+      "author": "Indra Sofian",
+      "tags": [],
+      "id": "_op0wqgy"
     }
   ]
 }
