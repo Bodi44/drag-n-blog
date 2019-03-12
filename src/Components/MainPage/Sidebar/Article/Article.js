@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react'
 import { DragSource } from 'react-dnd'
 import { Link } from 'react-router-dom'
@@ -28,7 +29,16 @@ const collect = (connect, monitor) => {
   }
 }
 
-class Article extends Component {
+type ArticleProps = {
+  article: Object,
+  containerId: number,
+  itemDeleter: (number) => Object,
+  connectDragPreview: Function,
+  connectDragSource: Function,
+  isDragging: boolean,
+}
+
+class Article extends Component<ArticleProps> {
   render() {
     const { isDragging, connectDragSource, article } = this.props
     const opacity = isDragging ? 0 : 1

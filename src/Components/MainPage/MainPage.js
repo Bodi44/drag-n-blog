@@ -7,13 +7,11 @@ import BlogTable from './BlogTable'
 
 import './MainPage.scss'
 
-const jsonServerUrl = 'http://localhost:3001/'
-
 const MainPage = () => {
   return (
     <main className={'MainPage'}>
-      <Sidebar containerId={1} serverUrl={jsonServerUrl}/>
-      <BlogTable containerId={2} serverUrl={jsonServerUrl}/>
+      <Sidebar containerId={1}/>
+      <BlogTable containerId={2}/>
     </main>
   )
 }

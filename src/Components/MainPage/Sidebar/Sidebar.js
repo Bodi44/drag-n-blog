@@ -1,14 +1,15 @@
+// @flow
 import React, { Component } from 'react'
 import { DropTarget } from 'react-dnd'
 import { connect } from 'react-redux'
 import flow from 'lodash/flow'
 
-import Article from './Article'
 import {
   addArticle,
   fetchArticles,
   removeArticle,
 } from '../../../actions'
+import Article from './Article'
 
 import './Sidebar.scss'
 
@@ -41,7 +42,21 @@ const collect = (connect, monitor) => {
   }
 }
 
-class Sidebar extends Component {
+type SidebarProps = {
+  addNewToArticles: (Object) => Object,
+  articles: Array<Object>,
+  canDrop: boolean,
+  connectDropTarget: Function,
+  containerId: number,
+  error: null | Object,
+  fetchContent: () => Object | Promise<Object>,
+  hovered: boolean,
+  item?: null | Object,
+  loading: boolean,
+  removeFromArticles: (number) => Object
+}
+
+class Sidebar extends Component<SidebarProps> {
   componentDidMount() {
     this.props.fetchContent()
   }

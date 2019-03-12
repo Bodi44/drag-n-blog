@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
@@ -11,7 +12,18 @@ import LayoutArticle from './LayoutArticle'
 
 import './BlogTable.scss'
 
-class BlogTable extends Component {
+type BlogTableProps = {
+  addNewToLayoutArticles: (Object) => Object,
+  containerId: number,
+  error: null | Object,
+  fetchContent: () => Object | Promise<Object>,
+  layoutArticles: Array<Object>,
+  loading: boolean,
+  removeFromLayoutArticles: (number) => Object,
+  updateInLayoutArticle: (number, Object) => Object
+}
+
+class BlogTable extends Component<BlogTableProps> {
   componentDidMount() {
     this.props.fetchContent()
   }
@@ -29,7 +41,6 @@ class BlogTable extends Component {
 
   render() {
     const {
-      serverUrl,
       containerId,
       error,
       loading,
@@ -52,7 +63,6 @@ class BlogTable extends Component {
             article={article}
             articleId={containerId}
             key={article.id}
-            serverUrl={serverUrl}
             updateArticle={updateInLayoutArticle}
             removeArticle={removeFromLayoutArticles}
           />

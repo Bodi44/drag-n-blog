@@ -1,9 +1,10 @@
+// @flow
 import React, { Component } from 'react'
 import { DropTarget, DragSource } from 'react-dnd'
 import flow from 'lodash/flow'
 
-import './LayoutArticle.scss'
 import { shortenContent } from '../../../../helpers/shortenContent'
+import './LayoutArticle.scss'
 
 const itemSource = {
   beginDrag(props) {
@@ -28,7 +29,6 @@ const itemTarget = {
       component.addItemToContainer(
         props.article.id,
         monitor.getItem(),
-        props.serverUrl,
       )
 
     return {
@@ -53,7 +53,21 @@ const collect = (connect, monitor) => {
   }
 }
 
-class LayoutArticle extends Component {
+type LayoutArticleProps = {
+  article: Object,
+  articleId: number,
+  canDrop: boolean,
+  connectDragPreview: Function,
+  connectDragSource: Function,
+  connectDropTarget: Function,
+  hovered: boolean,
+  isDragging: boolean,
+  layoutArticles: Array<Object>,
+  removeArticle: (number) => Object,
+  updateArticle: (number, Object) => Object
+}
+
+class LayoutArticle extends Component<LayoutArticleProps> {
   addItemToContainer = (id, data) => {
     this.props.updateArticle(id, data)
   }
@@ -94,6 +108,7 @@ class LayoutArticle extends Component {
   }
 
   render() {
+    console.log(this.props)
     const {
       connectDropTarget,
       connectDragSource,
