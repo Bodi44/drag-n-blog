@@ -28,6 +28,9 @@ class Posts extends Component<PostsProps> {
     if (loading)
       return <div>Loading...</div>
 
+    if(layoutArticles.length === 0)
+      return<div>No articles yet!</div>
+
     return (
       layoutArticles.map(article => (
         <PostContainer post={article} key={article.id}/>
