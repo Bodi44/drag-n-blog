@@ -1,19 +1,31 @@
 // @flow
 import { generateUniqueId } from '../helpers/generateUniqueId'
 import Database from '../Database/Database'
+import { getAllArticles, getLayout } from '../api'
 
-export const FETCH_ARTICLES_BEGIN: string = 'FETCH_ARTICLES_BEGIN'
-export const FETCH_ARTICLES_SUCCESS: string = 'FETCH_ARTICLES_SUCCESS'
-export const FETCH_ARTICLES_FAILURE: string = 'FETCH_ARTICLES_FAILURE'
-export const FETCH_LAYOUT_ARTICLES_BEGIN: string = 'FETCH_LAYOUT_ARTICLES_BEGIN'
-export const FETCH_LAYOUT_ARTICLES_SUCCESS: string = 'FETCH_LAYOUT_ARTICLES_SUCCESS'
-export const FETCH_LAYOUT_ARTICLES_FAILURE: string = 'FETCH_LAYOUT_ARTICLES_FAILURE'
-export const ADD_ARTICLE: string = 'ADD_ARTICLE'
-export const REMOVE_ARTICLE: string = 'REMOVE_ARTICLE'
-export const UPDATE_ARTICLE: string = 'UPDATE_ARTICLE'
-export const ADD_LAYOUT_ARTICLE: string = 'ADD_LAYOUT_ARTICLE'
-export const REMOVE_LAYOUT_ARTICLE: string = 'REMOVE_LAYOUT_ARTICLE'
-export const UPDATE_LAYOUT_ARTICLE: string = 'UPDATE_LAYOUT_ARTICLE'
+export const FETCH_ARTICLES_BEGIN = 'FETCH_ARTICLES_BEGIN'
+export const FETCH_ARTICLES_SUCCESS = 'FETCH_ARTICLES_SUCCESS'
+export const FETCH_ARTICLES_FAILURE = 'FETCH_ARTICLES_FAILURE'
+export const FETCH_LAYOUT_ARTICLES_BEGIN = 'FETCH_LAYOUT_ARTICLES_BEGIN'
+export const FETCH_LAYOUT_ARTICLES_SUCCESS = 'FETCH_LAYOUT_ARTICLES_SUCCESS'
+export const FETCH_LAYOUT_ARTICLES_FAILURE = 'FETCH_LAYOUT_ARTICLES_FAILURE'
+export const ADD_ARTICLE = 'ADD_ARTICLE'
+export const REMOVE_ARTICLE = 'REMOVE_ARTICLE'
+export const UPDATE_ARTICLE = 'UPDATE_ARTICLE'
+export const ADD_LAYOUT_ARTICLE = 'ADD_LAYOUT_ARTICLE'
+export const REMOVE_LAYOUT_ARTICLE = 'REMOVE_LAYOUT_ARTICLE'
+export const UPDATE_LAYOUT_ARTICLE = 'UPDATE_LAYOUT_ARTICLE'
+
+type Dispatcher = (Object | Promise<Object>) => void
+type Error = string | null
+type Article = {
+  id: string,
+  title: string,
+  content: string,
+  date: string,
+  author: string,
+  tags?: [Object]
+}
 
 export type ArticlesActions = {
   type: string,
@@ -22,115 +34,112 @@ export type ArticlesActions = {
   content?: string,
   date?: string,
   author?: string,
-  tags?: Array<Object>,
-  payload?: Object,
+  tags?: [Object],
+  payload?: Object
 }
 
-export const addArticle = (data: Object): ArticlesActions => ({
+export const addArticle = (data: Object): { type: string, ...Article } => ({
   type: ADD_ARTICLE,
   id: generateUniqueId(),
   title: data.title,
   content: data.content,
   date: Database.dateToString(new Date()),
   author: data.author,
-  tags: data.tags,
+  tags: data.tags
 })
 
 export const removeArticle = (id: string): ArticlesActions => ({
   type: REMOVE_ARTICLE,
-  id,
+  id
 })
 
-export const updateArticle = (id: string, { title, content, author, tags }: Object): ArticlesActions => ({
+export const updateArticle = (
+  id: string,
+  { title, content, author, tags }: Object
+): ArticlesActions => ({
   type: UPDATE_ARTICLE,
   id,
   title,
   content,
   author,
-  tags,
+  tags
 })
 
 export const fetchArticlesBegin = (): ArticlesActions => ({
-  type: FETCH_ARTICLES_BEGIN,
+  type: FETCH_ARTICLES_BEGIN
 })
 
-export const fetchArticlesSuccess = (articles: Array<any>): ArticlesActions => ({
+export const fetchArticlesSuccess = (articles: [Article]): ArticlesActions => ({
   type: FETCH_ARTICLES_SUCCESS,
-  payload: { articles },
+  payload: { articles }
 })
 
-export const fetchArticlesFailure = (error: string | null): ArticlesActions => ({
+export const fetchArticlesFailure = (error: Error): ArticlesActions => ({
   type: FETCH_ARTICLES_FAILURE,
-  payload: { error },
+  payload: { error }
 })
 
-export const addLayoutArticle = (data: Object): ArticlesActions => {
-  return {
-    type: ADD_LAYOUT_ARTICLE,
-    id: generateUniqueId(),
-    title: data.title,
-    content: data.content,
-    date: Database.dateToString(new Date()),
-    author: data.author,
-    tags: data.tags,
-  }
-}
+export const addLayoutArticle = (data: Object): ArticlesActions => ({
+  type: ADD_LAYOUT_ARTICLE,
+  id: generateUniqueId(),
+  title: data.title,
+  content: data.content,
+  date: Database.dateToString(new Date()),
+  author: data.author,
+  tags: data.tags
+})
 
 export const removeLayoutArticle = (id: string): ArticlesActions => ({
   type: REMOVE_LAYOUT_ARTICLE,
-  id,
+  id
 })
 
-export const updateLayoutArticle = (id: string, { title, content, author, tags }: Object): ArticlesActions => ({
+export const updateLayoutArticle = (
+  id: string,
+  { title, content, author, tags }: Object
+): ArticlesActions => ({
   type: UPDATE_LAYOUT_ARTICLE,
   id,
   title,
   content,
   author,
-  tags,
+  tags
 })
 
 export const fetchLayoutArticlesBegin = (): ArticlesActions => ({
-  type: FETCH_LAYOUT_ARTICLES_BEGIN,
+  type: FETCH_LAYOUT_ARTICLES_BEGIN
 })
 
-export const fetchLayoutArticlesSuccess = (layoutArticles: Array<any>): ArticlesActions => ({
+export const fetchLayoutArticlesSuccess = (
+  layoutArticles: [Article]
+): ArticlesActions => ({
   type: FETCH_LAYOUT_ARTICLES_SUCCESS,
-  payload: { layoutArticles },
+  payload: { layoutArticles }
 })
 
-export const fetchLayoutArticlesFailure = (error: string | null): ArticlesActions => ({
+export const fetchLayoutArticlesFailure = (error: Error): ArticlesActions => ({
   type: FETCH_LAYOUT_ARTICLES_FAILURE,
-  payload: { error },
+  payload: { error }
 })
 
-const handleErrors = (response) => {
-  if (!response.ok)
-    throw Error(response.statusText)
-  else
-    return response
-}
-
-export const fetchArticles = () => (dispatch: (Object | Promise<Object>) => void) => {
+export const fetchArticles = () => async (dispatch: Dispatcher) => {
   dispatch(fetchArticlesBegin())
-  return fetch('http://localhost:3001/articles')
-    .then(handleErrors)
-    .then(res => res.json())
-    .then(json => {
-      dispatch(fetchArticlesSuccess(json))
-      return json
-    })
-    .catch(error => dispatch(fetchArticlesFailure(error)))
+
+  try {
+    const data = await getAllArticles()
+    dispatch(fetchArticlesSuccess(data))
+  } catch (error) {
+    dispatch(fetchArticlesFailure(error))
+  }
 }
 
-export const fetchLayoutArticles = () => (dispatch: (Object | Promise<Object>) => void) => {
+export const fetchLayoutArticles = () => async (dispatch: Dispatcher) => {
   dispatch(fetchLayoutArticlesBegin())
-  return fetch('http://localhost:3001/layoutContainers')
-    .then(handleErrors)
-    .then(res => res.json())
-    .then(json => {
-      dispatch(fetchLayoutArticlesSuccess(json))
-      return json
-    })
-    .catch(error => dispatch(fetchLayoutArticlesFailure(error)))
+
+  try {
+    const data = await getLayout()
+    dispatch(fetchLayoutArticlesSuccess(data))
+  } catch (error) {
+    dispatch(fetchLayoutArticlesFailure(error))
+  }
 }
