@@ -2,9 +2,19 @@
 
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { addArticle, updateArticle } from '../../actions'
-import { getAllArticles } from '../../reducers'
-import { withProps, compose } from 'recompose'
+import { addArticle, fetchArticles, updateArticle } from '../../actions'
+import {
+  getArticlesById,
+  isAllArticlesLoading,
+  isAllArticlesLoadingError
+} from '../../reducers'
+import {
+  withProps,
+  compose,
+  branch,
+  renderComponent,
+  flattenProp
+} from 'recompose'
 import { useFormInput } from '../../helpers/hooks'
 
 import TextareaAutosize from 'react-autosize-textarea'
@@ -27,18 +37,14 @@ const WriteBlog = props => {
   const handleTagsAddition = tag => setTags([...tags, tag])
 
   const handleSubmit = event => {
+    event.preventDefault()
     const article = {
       title: title.value,
       content: content.value,
       author: author.value,
       tags
     }
-
-    if (props.location.state === undefined) props.addNewToArticles(article)
-    else props.updateExistingArticle(props.id, article)
-
-    props.history.push('/')
-    event.preventDefault()
+    props.publishArticle(article)
   }
 
   return (
@@ -79,24 +85,57 @@ const WriteBlog = props => {
 
 const enhancer = compose(
   connect(
-    state => ({ articles: getAllArticles(state) }),
+    (state, { match }) => {
+      const { id } = match.params
+      return {
+        article: getArticlesById(id, state),
+        isLoading: isAllArticlesLoading(state),
+        isError: isAllArticlesLoadingError(state)
+      }
+    },
     {
+      fetchArticles,
       addNewToArticles: addArticle,
       updateExistingArticle: updateArticle
     }
   ),
 
-  withProps(({ location }) =>
-    location.state
-      ? location.state.data
-      : {
-          id: '',
+  withProps(({ match, article, isLoading, isError, fetchArticles }) => {
+    const { id } = match.params
+    if (!id) {
+      return {
+        article: {
           title: '',
           content: '',
           author: '',
           tags: []
         }
-  )
+      }
+    } else if (!article && !isLoading && !isError) {
+      return fetchArticles()
+    }
+  }),
+
+  branch(({ isLoading }) => isLoading, renderComponent(() => 'Loading...')),
+  branch(
+    ({ isError }) => isError,
+    renderComponent(() => 'Some error happened...')
+  ),
+  flattenProp('article'),
+  withProps(({ history, match, addNewToArticles, updateExistingArticle }) => {
+    const { id } = match.params
+
+    const publishAction = id
+      ? updateExistingArticle.bind(null, id)
+      : addNewToArticles
+
+    return {
+      publishArticle: article => {
+        publishAction(article)
+        history.push('/')
+      }
+    }
+  })
 )
 
 export default enhancer(WriteBlog)

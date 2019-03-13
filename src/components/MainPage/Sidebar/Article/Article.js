@@ -18,24 +18,24 @@ const itemSource = {
     if (dropResult && dropResult.containerId !== props.containerId) {
       props.itemDeleter(props.article.id)
     }
-  },
+  }
 }
 
 const collect = (connect, monitor) => {
   return {
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging(),
+    isDragging: monitor.isDragging()
   }
 }
 
 type ArticleProps = {
   article: Object,
   containerId: number,
-  itemDeleter: (number) => Object,
+  itemDeleter: number => Object,
   connectDragPreview: Function,
   connectDragSource: Function,
-  isDragging: boolean,
+  isDragging: boolean
 }
 
 class Article extends Component<ArticleProps> {
@@ -47,14 +47,25 @@ class Article extends Component<ArticleProps> {
       <li className={'Article'} style={{ opacity }}>
         <h4 className={'Article__title'}>{article.title}</h4>
         <div className={'Article__modifiers'}>
-          <button className={'Article__remove'} onClick={() => this.props.itemDeleter(article.id)}>Remove</button>
-          <Link to={{ pathname: '/write_blog', state: { data: article } }}
-                className={'Article__edit'}>Edit</Link>
+          <button
+            className={'Article__remove'}
+            onClick={() => this.props.itemDeleter(article.id)}
+          >
+            Remove
+          </button>
+          <Link
+            to={{ pathname: `/edit-article/${article.id}` }}
+            className={'Article__edit'}
+          >
+            Edit
+          </Link>
         </div>
-        <p className={'Article__content'}>{shortenContent(article.content, 50)}</p>
+        <p className={'Article__content'}>
+          {shortenContent(article.content, 50)}
+        </p>
         <small className={'Article__author'}>{article.author}</small>
         <time className={'Article__date'}>{article.date}</time>
-      </li>,
+      </li>
     )
   }
 }

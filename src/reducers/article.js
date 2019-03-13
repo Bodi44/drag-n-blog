@@ -1,4 +1,4 @@
-import Database from "../Database/Database";
+import Database from '../Database/Database'
 
 import {
   FETCH_ARTICLES_BEGIN,
@@ -7,23 +7,23 @@ import {
   ADD_ARTICLE,
   REMOVE_ARTICLE,
   UPDATE_ARTICLE
-} from "../actions";
+} from '../actions'
 
-import type { ArticlesActions } from "../actions";
+import type { ArticlesActions } from '../actions'
 
-const database = new Database("http://localhost:3001/articles");
+const database = new Database('http://localhost:3001/articles')
 
 export type ArticleState = {
   articles: Array<Object>,
   loading: boolean,
   error: null | string
-};
+}
 
 const initialState: ArticleState = {
   articles: [],
   loading: false,
   error: null
-};
+}
 
 const article = (
   state: ArticleState = initialState,
@@ -35,22 +35,22 @@ const article = (
         ...state,
         loading: true,
         error: null
-      };
+      }
     case FETCH_ARTICLES_SUCCESS:
       return {
         ...state,
         loading: false,
         articles: action.payload.articles
-      };
+      }
     case FETCH_ARTICLES_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
         articles: []
-      };
+      }
     case ADD_ARTICLE:
-      database.create(action);
+      database.create(action)
       return {
         ...state,
         articles: [
@@ -64,41 +64,43 @@ const article = (
             tags: action.tags
           }
         ]
-      };
+      }
     case REMOVE_ARTICLE:
-      database.delete(action.id);
+      database.delete(action.id)
       return {
         ...state,
         articles: [
           ...state.articles.filter(article => article.id !== action.id)
         ]
-      };
+      }
     case UPDATE_ARTICLE:
       database.update(action.id, {
         title: action.title,
         content: action.content,
         author: action.author,
         tags: action.tags
-      });
-      const newState = Object.assign({}, state);
+      })
+      const newState = Object.assign({}, state)
       newState.articles.forEach(article => {
         if (article.id === action.id) {
-          article.title = action.title;
-          article.content = action.content;
-          article.data = Database.dateToString(new Date());
-          article.author = action.author;
-          article.tags = action.tags;
+          article.title = action.title
+          article.content = action.content
+          article.data = Database.dateToString(new Date())
+          article.author = action.author
+          article.tags = action.tags
         }
-      });
-      return newState;
+      })
+      return newState
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default article;
+export default article
 
 // Selectors
-export const getAllArticles = state => state.articles;
-export const isAllArticlesLoading = state => state.loading;
-export const isAllArticlesLoadingError = state => state.error;
+export const getAllArticles = state => state.articles
+export const isAllArticlesLoading = state => state.loading
+export const isAllArticlesLoadingError = state => state.error
+export const getArticlesById = (searchableId, state) =>
+  state.articles.find(({ id }) => id === searchableId)

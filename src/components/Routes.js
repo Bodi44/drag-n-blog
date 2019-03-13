@@ -12,10 +12,13 @@ import '../css-grid/grid.scss'
 const Routes = () => {
   return (
     <main className={'grid_12'}>
-      <Route exact path={'/'} component={MainPage}/>
-      <Route path={'/layout'} component={Posts}/>
-      <Route path={'/write_blog'} component={WriteBlog}/>
-      <Route path={'/view_post'} component={ViewPost}/>
+      <Route exact path={'/'} component={MainPage} />
+      <Route path={'/layout'} component={Posts} />
+
+      <Route exact path={'/edit-article'} component={WriteBlog} />
+      <Route exact path={'/edit-article/:id'} component={WriteBlog} />
+
+      <Route path={'/view_post'} component={ViewPost} />
     </main>
   )
 }

@@ -6,7 +6,7 @@ import BEM from '../../helpers/BEM'
 const b = BEM('Header')
 
 const MainButton = () => (
-  <Link to={'/write_blog'} className={'Header__write-blog'}>
+  <Link to={'/edit-article'} className={'Header__write-blog'}>
     <span className={'Header__write-blog_centered'}>Write New Blog!</span>
   </Link>
 )
