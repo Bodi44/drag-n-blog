@@ -1,14 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom";
 
-import Provider from './Components/Provider'
-import configureStore from './store'
-import Layout from './Components/Layout'
+import Provider from "./components/Provider";
+import configureStore from "./configureStore";
+import Layout from "./components/Layout";
 
 ReactDOM.render(
   <Provider store={configureStore()}>
-    <Layout/>
+    <Layout />
   </Provider>,
-  document.getElementById('root'),
-)
-
+  document.getElementById("root")
+);

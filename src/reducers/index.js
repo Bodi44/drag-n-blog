@@ -1,9 +1,19 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from "redux";
 
-import articleReducer from './articleReducer'
-import layoutReducer from './layoutReducer'
+import article, * as fromArticles from "./article";
+import layout from "./layout";
 
 export default combineReducers({
-  articles: articleReducer,
-  layoutArticles: layoutReducer,
-})
+  articles: article,
+  layoutArticles: layout
+});
+
+//Article selectors
+export const getAllArticles = state =>
+  fromArticles.getAllArticles(state.articles);
+
+export const isAllArticlesLoading = state =>
+  fromArticles.isAllArticlesLoading(state.articles);
+
+export const isAllArticlesLoadingError = state =>
+  fromArticles.isAllArticlesLoadingError(state.articles);

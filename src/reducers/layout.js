@@ -24,7 +24,7 @@ const initialState: LayoutArticleState = {
   error: null,
 }
 
-const layoutReducer = (state: LayoutArticleState = initialState, action: ArticlesActions) => {
+const layout = (state: LayoutArticleState = initialState, action: ArticlesActions) => {
   switch (action.type) {
     case FETCH_LAYOUT_ARTICLES_BEGIN:
       return {
@@ -93,4 +93,4 @@ const layoutReducer = (state: LayoutArticleState = initialState, action: Article
   }
 }
 
-export default layoutReducer
+export default layout
