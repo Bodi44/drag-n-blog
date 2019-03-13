@@ -1,43 +1,33 @@
 .Header {
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
   padding: 15px 0;
 
-  &__top-content {
+  &__header {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    position: relative;
-    margin-bottom: 15px;
-
-    &_left {
-      margin-right: auto;
-    }
-
-    &_right {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-left: auto;
-    }
+    justify-content: space-between;
   }
 
-  &__logo {
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-main {
     margin: 0 auto;
     padding: 0;
-
-    &_main {
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    &_secondary {
-      font-size: 10px;
-      font-weight: lighter;
-      letter-spacing: 0.37rem;
-    }
+    font-size: 22px;
+    font-weight: bold;
   }
 
-  &__search{
+  &__logo-secondary {
+    margin: 0 auto;
+    padding: 0;
+    font-size: 10px;
+    font-weight: lighter;
+    letter-spacing: 0.37rem;
+  }
+
+  &__search {
     margin-right: 20px;
   }
 
@@ -47,7 +37,8 @@
     border-radius: 5px;
     border: 1px solid #000000;
     padding: 5px 5px 5px 40px;
-    background: url("https://res.cloudinary.com/dum2a6djw/image/upload/c_scale,w_25/v1551519983/search_icon.png") no-repeat 5% center;
+    background: url('https://res.cloudinary.com/dum2a6djw/image/upload/c_scale,w_25/v1551519983/search_icon.png')
+      no-repeat 5% center;
   }
 
   &__navigation {
@@ -90,14 +81,14 @@
     width: 155px;
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       top: 6px;
       right: 7px;
       display: block;
       width: 20px;
       height: 20px;
-      background: url("https://res.cloudinary.com/dum2a6djw/image/upload/v1551362952/rocket_icon.svg");
+      background: url('https://res.cloudinary.com/dum2a6djw/image/upload/v1551362952/rocket_icon.svg');
       background-size: contain;
     }
 
@@ -118,11 +109,11 @@
     &:after {
       position: absolute;
       top: 0;
-      content: "";
+      content: '';
       display: block;
       width: 35px;
       height: 35px;
-      background: url("https://res.cloudinary.com/dum2a6djw/image/upload/v1551362952/user_icon.svg");
+      background: url('https://res.cloudinary.com/dum2a6djw/image/upload/v1551362952/user_icon.svg');
       background-size: contain;
     }
   }

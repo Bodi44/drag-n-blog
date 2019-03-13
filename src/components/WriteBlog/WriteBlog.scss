@@ -17,7 +17,7 @@
     margin-bottom: 10px;
   }
 
-  &__author{
+  &__author {
     width: 100%;
     padding: 0 25px;
     font-size: 16px;
@@ -29,10 +29,10 @@
     border: none;
   }
 
-  &__content{
+  &__content {
     min-height: 50px;
     width: 100%;
-    resize: none;
+    resize: none !important;
     padding: 20px;
     font-family: Roboto Slab, serif;
     font-size: 28px;
@@ -44,10 +44,11 @@
     border: none;
   }
 
-  &__publish-button{
+  &__publish-button {
     position: fixed;
     top: 140px;
     right: 180px;
+
     text-align: left;
     font-family: Roboto, sans-serif;
     font-size: 15px;
@@ -56,50 +57,25 @@
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
+
     background: none;
+
     border: 1px solid black;
     height: 34px;
     width: 170px;
     border-radius: 5px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
-    &:after{
+
+    &:after {
       position: absolute;
       top: 5px;
       right: 5px;
       width: 20px;
       height: 20px;
       display: block;
-      content: "";
-      background: url("https://res.cloudinary.com/dum2a6djw/image/upload/v1551448423/publish_icon.svg");
+      content: '';
+      background: url('https://res.cloudinary.com/dum2a6djw/image/upload/v1551448423/publish_icon.svg');
       background-size: contain;
     }
-  }
-}
-
-.ReactTags {
-  &__tags {
-    margin: 10px 0;
-    padding: 0 20px;
-  }
-
-  &__tagInput {
-    display: inline-block;
-    padding: 2px;
-  }
-
-  &__tagInputField {
-    padding: 2px;
-    font-size: 16px;
-    border: none;
-    border-radius: 3px;
-  }
-
-  &__tag {
-    cursor: grab;
-    border: 1px solid #000000;
-    margin-right: 5px;
-    padding: 2px;
-    border-radius: 3px;
-    font-size: 16px;
   }
 }

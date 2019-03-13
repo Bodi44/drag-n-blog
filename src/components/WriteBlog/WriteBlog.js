@@ -1,147 +1,102 @@
 // @flow
 
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import TextareaAutosize from 'react-autosize-textarea'
-import { WithContext as ReactTags } from 'react-tag-input'
-
 import { addArticle, updateArticle } from '../../actions'
+import { getAllArticles } from '../../reducers'
+import { withProps, compose } from 'recompose'
+import { useFormInput } from '../../helpers/hooks'
+
+import TextareaAutosize from 'react-autosize-textarea'
+import Tags from '../Tags'
 
 import './WriteBlog.scss'
+import BEM from '../../helpers/BEM'
+const b = BEM('WriteBlog')
 
-type WriteBlogProps = {
-  keyCodes: Object,
-  location: Object,
-  history: Object,
-  addNewToArticles: ({id: string,
-                      title: string,
-                      content: string,
-                      author: string,
-                      tags: Array<any>}) => void,
-  updateExistingArticle: (id: string, Object) => void
-}
+const WriteBlog = props => {
+  const title = useFormInput(props.title)
+  const content = useFormInput(props.content)
+  const author = useFormInput(props.author)
 
-type WriteBlogState = {
-  id: string,
-  title: string,
-  content: string,
-  author: string,
-  tags: Array<any>
-}
+  const [tags, setTags] = useState(props.tags)
 
-class WriteBlog extends Component<WriteBlogProps, WriteBlogState> {
+  const handleTagsDelete = i =>
+    setTags(tags.filter((tag, index) => index !== i))
 
-  static defaultProps = {
-    keyCodes: {
-      comma: 188,
-      enter: 13,
-    },
-  }
+  const handleTagsAddition = tag => setTags([...tags, tag])
 
-  constructor(props) {
-    super(props)
-    this.state = props.location.state ?
-      props.location.state.data :
-      {
-        id: '',
-        title: '',
-        content: '',
-        author: '',
-        tags: [],
-      }
-  }
+  const handleSubmit = event => {
+    const article = {
+      title: title.value,
+      content: content.value,
+      author: author.value,
+      tags
+    }
 
-  handleTagsDelete = i => {
-    const { tags } = this.state
-    this.setState({
-      tags: tags.filter((tag, index) => index !== i),
-    })
-  }
+    if (props.location.state === undefined) props.addNewToArticles(article)
+    else props.updateExistingArticle(props.id, article)
 
-  handleTagsAddition = tag => {
-    this.setState(state => ({ tags: [...state.tags, tag] }))
-  }
-
-  handleSubmit = event => {
-    if (this.props.location.state === undefined)
-      this.props.addNewToArticles(this.state)
-    else
-      this.props.updateExistingArticle(this.state.id, this.state)
-
-    this.props.history.push('/')
+    props.history.push('/')
     event.preventDefault()
   }
 
-  handleChange = event => {
-    event.preventDefault()
-    this.setState({
-      [event.target.name]: event.target.value,
-    })
-  }
-
-  render() {
-    const { keyCodes } = this.props
-    const delimiters = [keyCodes.comma, keyCodes.enter]
-    const { tags } = this.state
-    return (
-      <form className={'WriteBlog'} onSubmit={this.handleSubmit}>
-        <input
-          className="WriteBlog__title"
-          placeholder="Title"
-          name={'title'}
-          onChange={this.handleChange}
-          defaultValue={this.state.title}
+  return (
+    <form className={'WriteBlog'} onSubmit={handleSubmit}>
+      <input
+        className="WriteBlog__title"
+        placeholder="Title"
+        name={'title'}
+        {...title}
+      />
+      <input
+        className="WriteBlog__author"
+        placeholder="Author"
+        name={'author'}
+        {...author}
+      />
+      <div>
+        <Tags
+          tags={tags}
+          handleDelete={handleTagsDelete}
+          handleAddition={handleTagsAddition}
         />
-        <input
-          className="WriteBlog__author"
-          placeholder="Author"
-          name={'author'}
-          onChange={this.handleChange}
-          defaultValue={this.state.author}
+      </div>
+      <div>
+        <TextareaAutosize
+          className={b('content')}
+          name="content"
+          placeholder={'Tell us your story...'}
+          {...content}
         />
-        <div>
-          <ReactTags
-            tags={tags}
-            placeholder={'#add tags'}
-            handleDelete={this.handleTagsDelete}
-            handleAddition={this.handleTagsAddition}
-            delimiters={delimiters}
-            allowDragDrop={false}
-          />
-        </div>
-        <div>
-          <TextareaAutosize
-            className={'WriteBlog__content'}
-            name="content"
-            placeholder={'Tell us your story...'}
-            onChange={this.handleChange}
-            defaultValue={this.state.content}
-          />
-        </div>
-        <button className={'WriteBlog__publish-button'} type="submit">
-          Ready To Publish?
-        </button>
-      </form>
-    )
-  }
+      </div>
+      <button className={b('publish-button')} type="submit">
+        Ready To Publish?
+      </button>
+    </form>
+  )
 }
 
-const mapStateToProps = state => ({
-  articles: state.articles.articles,
-})
+const enhancer = compose(
+  connect(
+    state => ({ articles: getAllArticles(state) }),
+    {
+      addNewToArticles: addArticle,
+      updateExistingArticle: updateArticle
+    }
+  ),
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addNewToArticles: (data) => {
-      dispatch(addArticle(data))
-    },
-    updateExistingArticle: (id, data) => {
-      dispatch(updateArticle(id, data))
-    },
-  }
-}
+  withProps(({ location }) =>
+    location.state
+      ? location.state.data
+      : {
+          id: '',
+          title: '',
+          content: '',
+          author: '',
+          tags: []
+        }
+  )
+)
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(WriteBlog)
+export default enhancer(WriteBlog)

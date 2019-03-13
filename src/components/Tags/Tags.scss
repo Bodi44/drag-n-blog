@@ -1,0 +1,27 @@
+.ReactTags {
+  &__tags {
+    margin: 10px 0;
+    padding: 0 20px;
+  }
+
+  &__tagInput {
+    display: inline-block;
+    padding: 2px;
+  }
+
+  &__tagInputField {
+    padding: 2px;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+  }
+
+  &__tag {
+    cursor: grab;
+    border: 1px solid #000000;
+    margin-right: 5px;
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+}
