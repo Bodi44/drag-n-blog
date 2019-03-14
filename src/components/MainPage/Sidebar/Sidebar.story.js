@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import Provider from '../../Provider'
-import configureStore from '../../../store'
+import configureStore from '../../../configureStore'
 
 import Sidebar from './Sidebar'
 

@@ -11,7 +11,7 @@ import '../css-grid/grid.scss'
 
 const Routes = () => {
   return (
-    <main className={'grid_12'}>
+    <main className={'grid-12'}>
       <Route exact path={'/'} component={MainPage} />
       <Route path={'/layout'} component={Posts} />
 

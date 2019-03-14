@@ -2,16 +2,19 @@ $gutter-width: 10px;
 $column-number: 12;
 $basic-cell-width: calc(100%/12 - 2* #{$gutter-width});
 
-.container_12 {
-  max-width:1200px;
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: auto;
+.grid{
+
+  &-container {
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   $i: 1;
   @while $column-number >= $i{
-    .grid_#{$i} {
+    &-#{$i} {
       margin-left: $gutter-width;
       margin-right: $gutter-width;
       width: calc(#{$basic-cell-width} * #{$i} + 2 * #{$gutter-width}* (#{$i} - 1));
@@ -21,19 +24,19 @@ $basic-cell-width: calc(100%/12 - 2* #{$gutter-width});
 
   $i: 1;
   @while $column-number > $i{
-    .prefix_#{$i} {
+    .prefix-#{$i} {
       padding-left: calc(#{$basic-cell-width} + #{$gutter-width}*#{$i});
     }
 
-    .suffix_#{$i} {
+    .suffix-#{$i} {
       padding-right: calc(#{$basic-cell-width} + #{$gutter-width}*#{$i});
     }
 
-    .push_#{$i} {
+    .push-#{$i} {
       left: calc(#{$basic-cell-width} + #{$gutter-width}*#{$i});
     }
 
-    .pull_#{$i} {
+    .pull-#{$i} {
       left: calc(-1* (#{$basic-cell-width} + #{$gutter-width}*#{$i}));
     }
     $i: $i + 1
