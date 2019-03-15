@@ -56,7 +56,6 @@ class BlogTable extends Component<BlogTableProps> {
       updateInLayoutArticle
     } = this.props
 
-    console.log(this.props)
 
     if (error)
       return <div>Error! {error.message}</div>

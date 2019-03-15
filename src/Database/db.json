@@ -1,14 +1,6 @@
 {
   "articles": [
     {
-      "title": "A Technique for Deciding When to Say No",
-      "content": "In a culture that tends toward the myth of no limits, acknowledging that we can’t do everything seems restrictive. Our industrial naïveté proudly proclaims that we have unlimited time, unlimited resources, and unlimited capacity. Our enlightened progress that emerged in modernism has told us that supply is infinite, demand is infinite, and we, too, are infinit.",
-      "date": "2019-03-13",
-      "author": "Adam Frank",
-      "tags": [],
-      "id": "_g3jqng2"
-    },
-    {
       "id": "_g5qps8u",
       "title": "As a Designer, I Refuse to Call People ‘Users’",
       "content": "ve worked in UX for the better part of a decade. From now on, I plan to remove the word “user” and any associated terms—like “UX” and “user experience”—from my vocabulary. It’ll take time. I’ll start by trying to avoid using them in conversations at work. I’ll erase them from my LinkedIn profile. I’ll find new ways to describe my job when making small talk. I will experiment and look for something better.\n\nI don’t have any strong alternatives to offer right now, but I’m confident I’ll find some. I think of it as a challenge. The U-words are everywhere in tech, but they no longer reflect my values or my approach to design and technology. I can either keep using language I disagree with, or I can begin to search for what’s next. I choose to search.",
@@ -17,17 +9,17 @@
       "tags": []
     },
     {
+      "id": "_5gs142p",
       "title": "asdfasdf =====>",
       "content": "asdfasdf",
-      "date": "2019-03-13",
+      "date": "2019-03-15",
       "author": "asdfasdf",
       "tags": [
         {
           "id": "asdfasdf",
           "text": "asdfasdf"
         }
-      ],
-      "id": "_54m72gt"
+      ]
     }
   ],
   "layoutContainers": [
@@ -53,12 +45,12 @@
       "id": "_4xhxitr"
     },
     {
-      "id": "_qqp2mzd",
-      "title": "",
-      "content": "",
-      "date": "2019-03-14",
-      "author": "",
-      "tags": []
+      "title": "A Technique for Deciding When to Say No",
+      "content": "In a culture that tends toward the myth of no limits, acknowledging that we can’t do everything seems restrictive. Our industrial naïveté proudly proclaims that we have unlimited time, unlimited resources, and unlimited capacity. Our enlightened progress that emerged in modernism has told us that supply is infinite, demand is infinite, and we, too, are infinit.",
+      "date": "2019-03-15",
+      "author": "Adam Frank",
+      "tags": [],
+      "id": "_qqp2mzd"
     }
   ]
 }

@@ -1,7 +1,8 @@
 // @flow
 import React, { Component } from 'react'
 import { DropTarget, DragSource } from 'react-dnd'
-import { compose } from 'recompose'
+import flow from 'lodash/flow';
+
 
 import { shortenContent } from '../../../../helpers/shortenContent'
 import './LayoutArticle.scss'
@@ -121,7 +122,7 @@ class LayoutArticle extends Component<LayoutArticleProps> {
   }
 }
 
-export default compose(
+export default flow(
   DropTarget('Article', itemTarget, collect),
   DragSource('Article', itemSource, (connect, monitor) => ({
     connectDragSource: connect.dragSource(),

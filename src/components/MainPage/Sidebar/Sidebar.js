@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { DropTarget } from 'react-dnd'
 import { connect } from 'react-redux'
-import { compose } from 'recompose'
+import flow from 'lodash/flow'
 
 import { addArticle, fetchArticles, removeArticle } from '../../../actions'
 import Article from './Article'
@@ -17,6 +17,7 @@ import {
 const itemTarget = {
   drop(props, monitor, component) {
     const { containerId } = props
+    console.log(props)
     const result = props.articles.filter(
       item => item.id === monitor.getItem().id
     )
@@ -70,7 +71,6 @@ class Sidebar extends Component<SidebarProps> {
   }
 
   render() {
-    console.log('Sidebar:', this.props)
     const {
       connectDropTarget,
       hovered,
@@ -117,7 +117,7 @@ const mapDispatchToProps = {
   removeFromArticles: removeArticle
 }
 
-export default compose(
+export default flow(
   DropTarget('Article', itemTarget, collect),
   connect(
     mapStateToProps,
