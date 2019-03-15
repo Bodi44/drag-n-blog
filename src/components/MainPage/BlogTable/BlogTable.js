@@ -6,8 +6,15 @@ import {
   addLayoutArticle,
   fetchLayoutArticles,
   removeLayoutArticle,
-  updateLayoutArticle,
+  updateLayoutArticle
 } from '../../../actions'
+
+import {
+  getAllLayoutArticles,
+  isAllLayoutArticlesLoading,
+  isAllLayoutArticlesLoadingError
+} from '../../../reducers'
+
 import LayoutArticle from './LayoutArticle'
 
 import './BlogTable.scss'
@@ -33,7 +40,7 @@ class BlogTable extends Component<BlogTableProps> {
       title: '',
       content: '',
       author: '',
-      tags: [],
+      tags: []
     }
 
     this.props.addNewToLayoutArticles(newItem)
@@ -46,8 +53,10 @@ class BlogTable extends Component<BlogTableProps> {
       loading,
       layoutArticles,
       removeFromLayoutArticles,
-      updateInLayoutArticle,
+      updateInLayoutArticle
     } = this.props
+
+    console.log(this.props)
 
     if (error)
       return <div>Error! {error.message}</div>
@@ -79,25 +88,19 @@ class BlogTable extends Component<BlogTableProps> {
 }
 
 const mapStateToProps = state => ({
-  layoutArticles: state.layoutArticles.layoutArticles,
-  loading: state.layoutArticles.loading,
-  error: state.layoutArticles.error,
+  layoutArticles: getAllLayoutArticles(state),
+  loading: isAllLayoutArticlesLoading(state),
+  error: isAllLayoutArticlesLoadingError(state)
 })
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addNewToLayoutArticles: (data) => {
-      dispatch(addLayoutArticle(data))
-    },
-    fetchContent: () => dispatch(fetchLayoutArticles()),
-    removeFromLayoutArticles: (id) => dispatch(removeLayoutArticle(id)),
-    updateInLayoutArticle: (id, data) => {
-      dispatch(updateLayoutArticle(id, data))
-    },
-  }
+const mapDispatchToProps = {
+  addNewToLayoutArticles: addLayoutArticle,
+  fetchContent: fetchLayoutArticles,
+  removeFromLayoutArticles: removeLayoutArticle,
+  updateInLayoutArticle: updateLayoutArticle
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(BlogTable)

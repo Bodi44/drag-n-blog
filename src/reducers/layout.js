@@ -6,7 +6,7 @@ import {
   FETCH_LAYOUT_ARTICLES_FAILURE,
   ADD_LAYOUT_ARTICLE,
   UPDATE_LAYOUT_ARTICLE,
-  REMOVE_LAYOUT_ARTICLE,
+  REMOVE_LAYOUT_ARTICLE
 } from '../actions'
 import type { ArticlesActions } from '../actions'
 
@@ -21,7 +21,7 @@ export type LayoutArticleState = {
 const initialState: LayoutArticleState = {
   layoutArticles: [],
   loading: false,
-  error: null,
+  error: null
 }
 
 const layout = (state: LayoutArticleState = initialState, action: ArticlesActions) => {
@@ -30,20 +30,20 @@ const layout = (state: LayoutArticleState = initialState, action: ArticlesAction
       return {
         ...state,
         loading: true,
-        error: null,
+        error: null
       }
     case FETCH_LAYOUT_ARTICLES_SUCCESS:
       return {
         ...state,
         loading: false,
-        layoutArticles: action.payload.layoutArticles,
+        layoutArticles: action.payload.layoutArticles
       }
     case FETCH_LAYOUT_ARTICLES_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        layoutArticles: [],
+        layoutArticles: []
       }
     case ADD_LAYOUT_ARTICLE:
       database.create(action)
@@ -57,9 +57,9 @@ const layout = (state: LayoutArticleState = initialState, action: ArticlesAction
             content: action.content,
             date: action.date,
             author: action.author,
-            tags: action.tags,
-          },
-        ],
+            tags: action.tags
+          }
+        ]
       }
     case REMOVE_LAYOUT_ARTICLE:
       database.delete(action.id)
@@ -67,15 +67,15 @@ const layout = (state: LayoutArticleState = initialState, action: ArticlesAction
         ...state,
         layoutArticles: [
           ...state.layoutArticles.filter(article =>
-            article.id !== action.id,
-          )],
+            article.id !== action.id
+          )]
       }
     case UPDATE_LAYOUT_ARTICLE:
       database.update(action.id, {
         title: action.title,
         content: action.content,
         author: action.author,
-        tags: action.tags,
+        tags: action.tags
       })
       const newState = Object.assign({}, state)
       newState.layoutArticles.forEach(article => {
@@ -94,3 +94,11 @@ const layout = (state: LayoutArticleState = initialState, action: ArticlesAction
 }
 
 export default layout
+
+// Selectors
+export const getAllLayoutArticles = state => state.layoutArticles
+export const isAllLayoutArticlesLoading = state => state.loading
+export const isAllLayoutArticlesLoadingError = state => state.error
+export const getLayoutArticleById = (searchableId, state) =>
+  state.layoutArticles.find(({ id }) => id === searchableId)
+

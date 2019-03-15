@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
 import article, * as fromArticles from './article'
-import layout from './layout'
+import layout, * as fromLayoutArticles from './layout'
 
 export default combineReducers({
   articles: article,
@@ -20,3 +20,15 @@ export const isAllArticlesLoadingError = state =>
 
 export const getArticlesById = (id, state) =>
   fromArticles.getArticlesById(id, state.articles)
+
+export const getAllLayoutArticles = state =>
+  fromLayoutArticles.getAllLayoutArticles(state.layoutArticles)
+
+export const isAllLayoutArticlesLoading = state =>
+  fromLayoutArticles.isAllLayoutArticlesLoading(state.layoutArticles)
+
+export const isAllLayoutArticlesLoadingError = state =>
+  fromLayoutArticles.isAllLayoutArticlesLoadingError(state.layoutArticles)
+
+export const getLayoutArticlesById = (id, state) =>
+  fromLayoutArticles.getLayoutArticleById(id, state.layoutArticles)

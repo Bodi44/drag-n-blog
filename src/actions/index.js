@@ -22,7 +22,7 @@ type Article = {
   id: string,
   title: string,
   content: string,
-  date: string,
+  date?: string,
   author: string,
   tags?: [Object]
 }
@@ -48,7 +48,7 @@ export const addArticle = (data: Object): { type: string, ...Article } => ({
   tags: data.tags
 })
 
-export const removeArticle = (id: string): ArticlesActions => ({
+export const removeArticle = (id: string): { type: string, id: string } => ({
   type: REMOVE_ARTICLE,
   id
 })
@@ -56,7 +56,7 @@ export const removeArticle = (id: string): ArticlesActions => ({
 export const updateArticle = (
   id: string,
   { title, content, author, tags }: Object
-): ArticlesActions => ({
+): { type: string, ...Article } => ({
   type: UPDATE_ARTICLE,
   id,
   title,
@@ -65,21 +65,21 @@ export const updateArticle = (
   tags
 })
 
-export const fetchArticlesBegin = (): ArticlesActions => ({
+export const fetchArticlesBegin = (): { type: string } => ({
   type: FETCH_ARTICLES_BEGIN
 })
 
-export const fetchArticlesSuccess = (articles: [Article]): ArticlesActions => ({
+export const fetchArticlesSuccess = (articles: [Article]): { type: string, payload: { articles: [Article] } } => ({
   type: FETCH_ARTICLES_SUCCESS,
   payload: { articles }
 })
 
-export const fetchArticlesFailure = (error: Error): ArticlesActions => ({
+export const fetchArticlesFailure = (error: Error): { type: string, payload: { error: Error } } => ({
   type: FETCH_ARTICLES_FAILURE,
   payload: { error }
 })
 
-export const addLayoutArticle = (data: Object): ArticlesActions => ({
+export const addLayoutArticle = (data: Object): { type: string, ...Article } => ({
   type: ADD_LAYOUT_ARTICLE,
   id: generateUniqueId(),
   title: data.title,
@@ -89,7 +89,7 @@ export const addLayoutArticle = (data: Object): ArticlesActions => ({
   tags: data.tags
 })
 
-export const removeLayoutArticle = (id: string): ArticlesActions => ({
+export const removeLayoutArticle = (id: string): { type: string, id: string } => ({
   type: REMOVE_LAYOUT_ARTICLE,
   id
 })
@@ -97,7 +97,7 @@ export const removeLayoutArticle = (id: string): ArticlesActions => ({
 export const updateLayoutArticle = (
   id: string,
   { title, content, author, tags }: Object
-): ArticlesActions => ({
+): { type: string, ...Article } => ({
   type: UPDATE_LAYOUT_ARTICLE,
   id,
   title,
@@ -106,18 +106,18 @@ export const updateLayoutArticle = (
   tags
 })
 
-export const fetchLayoutArticlesBegin = (): ArticlesActions => ({
+export const fetchLayoutArticlesBegin = (): { type: string } => ({
   type: FETCH_LAYOUT_ARTICLES_BEGIN
 })
 
 export const fetchLayoutArticlesSuccess = (
   layoutArticles: [Article]
-): ArticlesActions => ({
+): { type: string, payload: { layoutArticles: [Article] } } => ({
   type: FETCH_LAYOUT_ARTICLES_SUCCESS,
   payload: { layoutArticles }
 })
 
-export const fetchLayoutArticlesFailure = (error: Error): ArticlesActions => ({
+export const fetchLayoutArticlesFailure = (error: Error): { type: string, payload: { error: Error } } => ({
   type: FETCH_LAYOUT_ARTICLES_FAILURE,
   payload: { error }
 })
