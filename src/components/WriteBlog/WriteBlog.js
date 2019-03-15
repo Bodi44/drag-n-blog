@@ -69,7 +69,7 @@ const WriteBlog = props => {
         />
       </div>
       <div>
-        <TextareaAutosize
+        <textarea
           className={b('content')}
           name="content"
           placeholder={'Tell us your story...'}
