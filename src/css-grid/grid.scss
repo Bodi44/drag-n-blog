@@ -11,7 +11,7 @@ $basic-cell-width: calc(100%/12 - 2* #{$gutter-width});
 
   $i: 1;
   @while $column-number >= $i{
-    &__cell--#{$i} {
+    &__cell_#{$i} {
       margin-left: $gutter-width;
       margin-right: $gutter-width;
       width: calc(#{$basic-cell-width} * #{$i} + 2 * #{$gutter-width}* (#{$i} - 1));

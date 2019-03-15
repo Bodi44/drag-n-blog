@@ -8,7 +8,7 @@ import '../css-grid/grid.scss'
 const Layout = () => {
   return (
     <div className={'grid'}>
-      <header className={'grid__cell--12'}>
+      <header className={'grid__cell_12'}>
         <Header/>
       </header>
       <Routes/>
