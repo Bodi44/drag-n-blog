@@ -1,7 +1,6 @@
 // @flow
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { branch, compose, renderComponent, withProps } from 'recompose'
 
 import PostContainer from './PostsContainer'
 import { fetchLayoutArticles } from '../../actions'
@@ -21,9 +20,14 @@ type PostsProps = {
 }
 
 const Posts = (props: PostsProps) => {
-  const { layoutArticles } = props
+  const { layoutArticles, error, loading } = props
 
-  console.log(props)
+  useEffect(() => {
+    props.fetchLayoutArticles()
+  }, layoutArticles.length)
+
+  if (error) return <div>Error! {error.message}</div>
+  if (loading) return <div>Loading...</div>
 
   return (
     layoutArticles.map(article => (
@@ -32,26 +36,11 @@ const Posts = (props: PostsProps) => {
   )
 }
 
-const enhancer = compose(
-  connect(
-    state => ({
-      layoutArticles: getAllLayoutArticles(state),
-      loading: isAllLayoutArticlesLoading(state),
-      error: isAllLayoutArticlesLoadingError(state)
-    }),
-    { fetchLayoutArticles }
-  ),
-
-  withProps(({ layoutArticles, error, loading }) => {
-    if (!layoutArticles && !loading && !error)
-      return fetchLayoutArticles()
+export default connect(
+  state => ({
+    layoutArticles: getAllLayoutArticles(state),
+    loading: isAllLayoutArticlesLoading(state),
+    error: isAllLayoutArticlesLoadingError(state)
   }),
-
-  branch(({ loading }) => loading, renderComponent(() => 'Loading...')),
-  branch(
-    ({ error }) => error,
-    renderComponent(() => 'Some error happened...')
-  )
-)
-
-export default enhancer(Posts)
+  { fetchLayoutArticles }
+)(Posts)
