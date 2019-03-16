@@ -9,10 +9,10 @@
       "tags": []
     },
     {
-      "id": "_5gs142p",
+      "id": "_890f004",
       "title": "asdfasdf =====>",
       "content": "asdfasdf",
-      "date": "2019-03-15",
+      "date": "2019-03-16",
       "author": "asdfasdf",
       "tags": [
         {
@@ -24,9 +24,17 @@
   ],
   "layoutContainers": [
     {
+      "title": "A Technique for Deciding When to Say No",
+      "content": "In a culture that tends toward the myth of no limits, acknowledging that we can’t do everything seems restrictive. Our industrial naïveté proudly proclaims that we have unlimited time, unlimited resources, and unlimited capacity. Our enlightened progress that emerged in modernism has told us that supply is infinite, demand is infinite, and we, too, are infinit.",
+      "date": "2019-03-15",
+      "author": "Adam Frank",
+      "tags": [],
+      "id": "_ekyboc7"
+    },
+    {
       "title": "Reflecting on My Failure to Build a Billion-Dollar Company",
       "content": "I thought Gumroad would become a billion-dollar company, with hundreds of employees. It would IPO, and I would work on it until I died. Something like that.\n\nNeedless to say, that didn’t happen.\n\nNow, it may look like I am in an enviable position, running a profitable, growing, low-maintenance software business serving adoring customers. But for years, I considered myself a failure. At my lowest point, I had to lay off 75 percent of my company, including many of my best friends. I had failed.\n\nIt took me years to realize I was misguided from the outset. I no longer feel shame in the path I took to get to where I am today — but for a long time, I did. This is my journey, from the beginning.",
-      "date": "2019-03-11",
+      "date": "2019-03-15",
       "author": "Max Voloskiy",
       "tags": [
         {
@@ -42,15 +50,7 @@
           "text": "#success"
         }
       ],
-      "id": "_4xhxitr"
-    },
-    {
-      "title": "A Technique for Deciding When to Say No",
-      "content": "In a culture that tends toward the myth of no limits, acknowledging that we can’t do everything seems restrictive. Our industrial naïveté proudly proclaims that we have unlimited time, unlimited resources, and unlimited capacity. Our enlightened progress that emerged in modernism has told us that supply is infinite, demand is infinite, and we, too, are infinit.",
-      "date": "2019-03-15",
-      "author": "Adam Frank",
-      "tags": [],
-      "id": "_ekyboc7"
+      "id": "_vfgcnp2"
     }
   ]
 }

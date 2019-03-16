@@ -3,7 +3,7 @@ $column-number: 12;
 $basic-cell-width: calc(100%/12 - 2* #{$gutter-width});
 
 .grid{
-  max-width: 1200px;
+  max-width: 1440px;
   display: flex;
   flex-wrap: wrap;
   margin-left: auto;

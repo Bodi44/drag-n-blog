@@ -6,14 +6,15 @@ import Sidebar from './Sidebar'
 import BlogTable from './BlogTable'
 
 import './MainPage.scss'
+import BEM from '../../helpers/BEM'
 
-const MainPage = () => {
-  return (
-    <main className={'MainPage'}>
-      <Sidebar containerId={1}/>
-      <BlogTable containerId={2}/>
-    </main>
-  )
-}
+const b = BEM('MainPage')
+
+const MainPage = () => (
+  <main className={b()}>
+    <Sidebar containerId={1}/>
+    <BlogTable containerId={2}/>
+  </main>
+)
 
 export default DragDropContext(HTML5Backend)(MainPage)

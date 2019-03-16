@@ -1,5 +1,4 @@
 // @flow
-
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { addArticle, fetchArticles, updateArticle } from '../../actions'
@@ -69,7 +68,7 @@ const WriteBlog = props => {
         />
       </div>
       <div>
-        <textarea
+        <TextareaAutosize
           className={b('content')}
           name="content"
           placeholder={'Tell us your story...'}

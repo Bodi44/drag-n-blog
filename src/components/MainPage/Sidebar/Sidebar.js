@@ -4,15 +4,20 @@ import { DropTarget } from 'react-dnd'
 import { connect } from 'react-redux'
 import flow from 'lodash/flow'
 
-import { addArticle, fetchArticles, removeArticle } from '../../../actions'
-import Article from './Article'
-
-import './Sidebar.scss'
 import {
   getAllArticles,
   isAllArticlesLoading,
   isAllArticlesLoadingError
 } from '../../../reducers'
+import { addArticle, fetchArticles, removeArticle } from '../../../actions'
+import Article from './Article'
+
+import { updateLocalStorage } from '../../../helpers/manageLocalStorage'
+
+import './Sidebar.scss'
+import BEM from '../../../helpers/BEM'
+
+const b = BEM('Sidebar')
 
 const itemTarget = {
   drop(props, monitor, component) {
@@ -52,10 +57,22 @@ type SidebarProps = {
   hovered: boolean,
   item?: null | Object,
   loading: boolean,
-  removeFromArticles: number => Object
-};
+  removeFromArticles: number => Object,
+}
 
 class Sidebar extends Component<SidebarProps> {
+  state = {
+    dragging: false,
+    style: (localStorage.getItem('sidebarStyles')) ?
+      JSON.parse(localStorage.getItem('sidebarStyles'))
+      : {
+        minWidth: '300px',
+        maxWidth: '300px'
+      },
+    initX: 300,
+    initialMaxWidth: 300
+  }
+
   componentDidMount() {
     this.props.fetchContent()
   }
@@ -70,6 +87,53 @@ class Sidebar extends Component<SidebarProps> {
     else return '#ecf0f1'
   }
 
+  updateSize = width => {
+    const newStyles = {
+      minWidth: width,
+      maxWidth: width
+    }
+
+    this.setState(Object.assign({}, this.state, {
+      style: newStyles
+    }))
+    updateLocalStorage(newStyles, 'sidebarStyles')
+  }
+
+  addEventListener = e => {
+    e.preventDefault()
+    if (!this.state.dragging) {
+      this.setState({ dragging: true })
+      window.addEventListener('mouseup', this.removeEventListener)
+      window.addEventListener('mousemove', this.onMouseMove)
+    }
+  }
+
+  removeEventListener = () => {
+    if (this.state.dragging) {
+      this.setState({ dragging: false, initX: null })
+      window.removeEventListener('mousemove', this.onMouseMove)
+    }
+  }
+
+  onMouseMove = e => {
+    if (this.state.dragging) {
+      if (!this.state.initX) {
+        const initialMaxWidth = parseInt(this.state.style.maxWidth.replace('px', ''))
+        this.setState(state => ({
+          ...state,
+          initX: e.pageX,
+          initialMaxWidth: initialMaxWidth
+        }))
+
+      } else {
+        const delta = e.pageX - this.state.initX
+        const maxWidth = `${this.state.initialMaxWidth + delta}px`
+        if (this.state.initialMaxWidth + delta < 500 && this.state.initialMaxWidth + delta > 200)
+          this.updateSize(maxWidth)
+      }
+    }
+  }
+
   render() {
     const {
       connectDropTarget,
@@ -82,6 +146,8 @@ class Sidebar extends Component<SidebarProps> {
       removeFromArticles
     } = this.props
 
+    const { dragging } = this.state
+
     const backgroundColor = this.getHoveredColor(hovered, canDrop)
 
     if (error) return <div>Error! {error.message}</div>
@@ -89,8 +155,12 @@ class Sidebar extends Component<SidebarProps> {
     if (loading) return <div>Loading...</div>
 
     return connectDropTarget(
-      <aside className={'Sidebar'} style={{ background: backgroundColor }}>
-        <ul className={'Sidebar__blog-list'}>
+      <aside className={b()} style={{
+        background: backgroundColor,
+        minWidth: this.state.style.minWidth,
+        maxWidth: this.state.style.maxWidth
+      }}>
+        <ul className={b('blog-list')}>
           {articles.map(article => (
             <Article
               article={article}
@@ -100,6 +170,14 @@ class Sidebar extends Component<SidebarProps> {
             />
           ))}
         </ul>
+        {dragging ?
+          <div className={b('resize-bar', ['active'])} onMouseDown={e => this.addEventListener(e)}>
+            control-size
+          </div>
+          : <div className={b('resize-bar')} onMouseDown={e => this.addEventListener(e)}>
+            control-size
+          </div>
+        }
       </aside>
     )
   }
