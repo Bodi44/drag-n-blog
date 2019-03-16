@@ -1,57 +1,57 @@
 // @flow
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
+import { branch, compose, renderComponent, withProps } from 'recompose'
 
 import PostContainer from './PostsContainer'
 import { fetchLayoutArticles } from '../../actions'
+import {
+  getAllLayoutArticles,
+  isAllLayoutArticlesLoading,
+  isAllLayoutArticlesLoadingError
+} from '../../reducers'
 
 type PostsProps = {
   error: null | Object,
   loading: boolean,
   layoutArticles: Array<any>,
-  fetchContent: () => Promise<any>,
+  fetchLayoutArticles: () => Promise<any>,
   location?: Object,
   match?: Object
 }
 
-class Posts extends Component<PostsProps> {
-  componentDidMount() {
-    this.props.fetchContent()
-  }
+const Posts = (props: PostsProps) => {
+  const { layoutArticles } = props
 
-  render() {
-    const { error, loading, layoutArticles } = this.props
+  console.log(props)
 
-    if (error)
-      return <div>Error! {error.message}</div>
-
-    if (loading)
-      return <div>Loading...</div>
-
-    if(layoutArticles.length === 0)
-      return<div>No articles yet!</div>
-
-    return (
-      layoutArticles.map(article => (
-        <PostContainer post={article} key={article.id}/>
-      ))
-    )
-  }
+  return (
+    layoutArticles.map(article => (
+      <PostContainer post={article} key={article.id}/>
+    ))
+  )
 }
 
-const mapStateToProps = state => ({
-  layoutArticles: state.layoutArticles.layoutArticles,
-  loading: state.layoutArticles.loading,
-  error: state.layoutArticles.error,
-})
+const enhancer = compose(
+  connect(
+    state => ({
+      layoutArticles: getAllLayoutArticles(state),
+      loading: isAllLayoutArticlesLoading(state),
+      error: isAllLayoutArticlesLoadingError(state)
+    }),
+    { fetchLayoutArticles }
+  ),
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchContent: () => dispatch(fetchLayoutArticles()),
-  }
-}
+  withProps(({ layoutArticles, error, loading }) => {
+    if (!layoutArticles && !loading && !error)
+      return fetchLayoutArticles()
+  }),
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Posts)
+  branch(({ loading }) => loading, renderComponent(() => 'Loading...')),
+  branch(
+    ({ error }) => error,
+    renderComponent(() => 'Some error happened...')
+  )
+)
+
+export default enhancer(Posts)
