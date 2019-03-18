@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { DropTarget } from 'react-dnd'
 import { connect } from 'react-redux'
 import flow from 'lodash/flow'
@@ -12,39 +12,10 @@ import {
 import { addArticle, fetchArticles, removeArticle } from '../../../actions'
 import Article from './Article'
 
-import { updateLocalStorage } from '../../../helpers/manageLocalStorage'
-
 import './Sidebar.scss'
 import BEM from '../../../helpers/BEM'
 
 const b = BEM('Sidebar')
-
-const itemTarget = {
-  drop(props, monitor, component) {
-    const { containerId } = props
-    console.log(props)
-    const result = props.articles.filter(
-      item => item.id === monitor.getItem().id
-    )
-
-    if (result.length === 0) component.addItem(monitor.getItem())
-
-    return { containerId }
-  },
-
-  canDrop(props, monitor) {
-    return monitor.getItem().content !== ''
-  }
-}
-
-const collect = (connect, monitor) => {
-  return {
-    connectDropTarget: connect.dropTarget(),
-    hovered: monitor.isOver(),
-    item: monitor.getItem(),
-    canDrop: monitor.canDrop()
-  }
-}
 
 type SidebarProps = {
   addNewToArticles: Object => Object,
@@ -57,148 +28,143 @@ type SidebarProps = {
   hovered: boolean,
   item?: null | Object,
   loading: boolean,
-  removeFromArticles: number => Object,
+  removeArticle: number => Object,
 }
 
-class Sidebar extends Component<SidebarProps> {
-  state = {
-    dragging: false,
-    style: (localStorage.getItem('sidebarStyles')) ?
-      JSON.parse(localStorage.getItem('sidebarStyles'))
-      : {
-        minWidth: '300px',
-        maxWidth: '300px'
-      },
-    initX: 300,
-    initialMaxWidth: 300
+const Sidebar = (props: SidebarProps) => {
+  const [dragging, setDragging] = useState(false)
+  const [styles, setStyles] = useState({ minWidth: '300px', maxWidth: '300px' })
+  const [initX, setInitX] = useState(300)
+  const [initialMaxWidth, setInitialMaxWidth] = useState(300)
+
+  useEffect(() => {
+    props.fetchArticles()
+  }, props.articles.length)
+
+  const updateSize = width => {
+    setStyles({ minWidth: width, maxWidth: width })
   }
 
-  componentDidMount() {
-    this.props.fetchContent()
+  const onMouseMove = e => {
+    if (dragging === true) {
+      if (!initX) {
+        setInitialMaxWidth(parseInt(styles.maxWidth.replace('px', '')))
+        setInitX(e.pageX)
+      } else {
+        const delta = e.pageX - initX
+        const maxWidth = `${initialMaxWidth + delta}px`
+        if (initialMaxWidth + delta < 500 && initialMaxWidth + delta > 200)
+          updateSize(maxWidth)
+      }
+    }
   }
 
-  addItem = data => {
-    this.props.addNewToArticles(data)
+  const removeEventListener = () => {
+    if (dragging === true) {
+      setDragging(dragging => !dragging)
+      setInitX(null)
+      window.removeEventListener('mousemove', onMouseMove)
+    }
   }
 
-  getHoveredColor = (hovered, canDrop) => {
+  const addEventListener = e => {
+    e.preventDefault()
+    if (dragging === false) {
+      setDragging(dragging => !dragging)
+      window.addEventListener('mousemove', onMouseMove)
+      window.addEventListener('mouseup', removeEventListener)
+    }
+  }
+
+  const getHoveredColor = (hovered, canDrop) => {
     if (hovered && canDrop) return '#2ecc71'
     else if (hovered && !canDrop) return '#e74c3c'
     else return '#ecf0f1'
   }
 
-  updateSize = width => {
-    const newStyles = {
-      minWidth: width,
-      maxWidth: width
-    }
+  const {
+    connectDropTarget,
+    hovered,
+    canDrop,
+    containerId,
+    error,
+    loading,
+    articles,
+    removeArticle
+  } = props
 
-    this.setState(Object.assign({}, this.state, {
-      style: newStyles
-    }))
-    updateLocalStorage(newStyles, 'sidebarStyles')
-  }
+  const backgroundColor = getHoveredColor(hovered, canDrop)
 
-  addEventListener = e => {
-    e.preventDefault()
-    if (!this.state.dragging) {
-      this.setState({ dragging: true })
-      window.addEventListener('mouseup', this.removeEventListener)
-      window.addEventListener('mousemove', this.onMouseMove)
-    }
-  }
+  if (error) return <div>Error! {error.message}</div>
 
-  removeEventListener = () => {
-    if (this.state.dragging) {
-      this.setState({ dragging: false, initX: null })
-      window.removeEventListener('mousemove', this.onMouseMove)
-    }
-  }
+  if (loading) return <div>Loading...</div>
 
-  onMouseMove = e => {
-    if (this.state.dragging) {
-      if (!this.state.initX) {
-        const initialMaxWidth = parseInt(this.state.style.maxWidth.replace('px', ''))
-        this.setState(state => ({
-          ...state,
-          initX: e.pageX,
-          initialMaxWidth: initialMaxWidth
-        }))
-
-      } else {
-        const delta = e.pageX - this.state.initX
-        const maxWidth = `${this.state.initialMaxWidth + delta}px`
-        if (this.state.initialMaxWidth + delta < 500 && this.state.initialMaxWidth + delta > 200)
-          this.updateSize(maxWidth)
+  return connectDropTarget(
+    <aside className={b()} style={{
+      background: backgroundColor,
+      minWidth: styles.minWidth,
+      maxWidth: styles.maxWidth
+    }}>
+      <ul className={b('blog-list')}>
+        {articles.map(article => (
+          <Article
+            article={article}
+            key={article.id}
+            containerId={containerId}
+            itemDeleter={removeArticle}
+          />
+        ))}
+      </ul>
+      {dragging === true ?
+        <div className={b('resize-bar', ['active'])} onMouseDown={(e) => addEventListener(e)}>
+          control-size
+        </div>
+        : <div className={b('resize-bar')} onMouseDown={e => addEventListener(e)}>
+          control-size
+        </div>
       }
-    }
-  }
-
-  render() {
-    const {
-      connectDropTarget,
-      hovered,
-      canDrop,
-      containerId,
-      error,
-      loading,
-      articles,
-      removeFromArticles
-    } = this.props
-
-    const { dragging } = this.state
-
-    const backgroundColor = this.getHoveredColor(hovered, canDrop)
-
-    if (error) return <div>Error! {error.message}</div>
-
-    if (loading) return <div>Loading...</div>
-
-    return connectDropTarget(
-      <aside className={b()} style={{
-        background: backgroundColor,
-        minWidth: this.state.style.minWidth,
-        maxWidth: this.state.style.maxWidth
-      }}>
-        <ul className={b('blog-list')}>
-          {articles.map(article => (
-            <Article
-              article={article}
-              key={article.id}
-              containerId={containerId}
-              itemDeleter={removeFromArticles}
-            />
-          ))}
-        </ul>
-        {dragging ?
-          <div className={b('resize-bar', ['active'])} onMouseDown={e => this.addEventListener(e)}>
-            control-size
-          </div>
-          : <div className={b('resize-bar')} onMouseDown={e => this.addEventListener(e)}>
-            control-size
-          </div>
-        }
-      </aside>
-    )
-  }
-}
-
-const mapStateToProps = state => ({
-  articles: getAllArticles(state),
-  loading: isAllArticlesLoading(state),
-  error: isAllArticlesLoadingError(state)
-})
-
-const mapDispatchToProps = {
-  addNewToArticles: addArticle,
-  fetchContent: fetchArticles,
-  removeFromArticles: removeArticle
+    </aside>
+  )
 }
 
 export default flow(
-  DropTarget('Article', itemTarget, collect),
+  DropTarget(
+    'Article',
+    {
+      drop(props, monitor) {
+        const { containerId } = props
+        const result = props.articles.filter(
+          item => item.id === monitor.getItem().id
+        )
+
+        if (result.length === 0) props.addArticle(monitor.getItem())
+
+        return { containerId }
+      },
+
+      canDrop(props, monitor) {
+        return monitor.getItem().content !== ''
+      }
+    },
+    (connect, monitor) => (
+      {
+        connectDropTarget: connect.dropTarget(),
+        hovered: monitor.isOver(),
+        item: monitor.getItem(),
+        canDrop: monitor.canDrop()
+      }
+    )
+  ),
   connect(
-    mapStateToProps,
-    mapDispatchToProps
+    state => ({
+      articles: getAllArticles(state),
+      loading: isAllArticlesLoading(state),
+      error: isAllArticlesLoadingError(state)
+    }),
+    {
+      addArticle,
+      fetchArticles,
+      removeArticle
+    }
   )
 )(Sidebar)
