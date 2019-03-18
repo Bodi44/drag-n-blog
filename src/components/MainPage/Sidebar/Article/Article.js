@@ -1,33 +1,14 @@
 // @flow
-import React, { Component } from 'react'
+import React from 'react'
 import { DragSource } from 'react-dnd'
 import { Link } from 'react-router-dom'
 
 import { shortenContent } from '../../../../helpers/shortenContent'
 
 import './Article.scss'
+import BEM from '../../../../helpers/BEM'
 
-const itemSource = {
-  beginDrag(props) {
-    return props.article
-  },
-
-  endDrag(props, monitor) {
-    const dropResult = monitor.getDropResult()
-
-    if (dropResult && dropResult.containerId !== props.containerId) {
-      props.itemDeleter(props.article.id)
-    }
-  }
-}
-
-const collect = (connect, monitor) => {
-  return {
-    connectDragSource: connect.dragSource(),
-    connectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging()
-  }
-}
+const b = BEM('Article')
 
 type ArticleProps = {
   article: Object,
@@ -38,36 +19,53 @@ type ArticleProps = {
   isDragging: boolean
 }
 
-class Article extends Component<ArticleProps> {
-  render() {
-    const { isDragging, connectDragSource, article } = this.props
-    const opacity = isDragging ? 0 : 1
+const Article = (props: ArticleProps) => {
+  const { isDragging, connectDragSource, article } = props
 
-    return connectDragSource(
-      <li className={'Article'} style={{ opacity }}>
-        <h4 className={'Article__title'}>{article.title}</h4>
-        <div className={'Article__modifiers'}>
-          <button
-            className={'Article__remove'}
-            onClick={() => this.props.itemDeleter(article.id)}
-          >
-            Remove
-          </button>
-          <Link
-            to={{ pathname: `/edit-article/${article.id}` }}
-            className={'Article__edit'}
-          >
-            Edit
-          </Link>
-        </div>
-        <p className={'Article__content'}>
-          {shortenContent(article.content, 50)}
-        </p>
-        <small className={'Article__author'}>{article.author}</small>
-        <time className={'Article__date'}>{article.date}</time>
-      </li>
-    )
-  }
+  return connectDragSource(
+    <li className={b()} style={{ opacity: isDragging ? 0 : 1 }}>
+      <h4 className={b('title')}>{article.title}</h4>
+      <div className={b('modifiers')}>
+        <button
+          className={b('remove')}
+          onClick={() => props.itemDeleter(article.id)}
+        >
+          Remove
+        </button>
+        <Link
+          to={{ pathname: `/edit-article/${article.id}` }}
+          className={b('edit')}
+        >
+          Edit
+        </Link>
+      </div>
+      <p className={b('content')}>
+        {shortenContent(article.content, 50)}
+      </p>
+      <small className={b('author')}>{article.author}</small>
+      <time className={b('date')}>{article.date}</time>
+    </li>
+  )
 }
 
-export default DragSource('Article', itemSource, collect)(Article)
+export default DragSource(
+  'Article',
+  {
+    beginDrag(props) {
+      return props.article
+    },
+
+    endDrag(props, monitor) {
+      const dropResult = monitor.getDropResult()
+
+      if (dropResult && dropResult.containerId !== props.containerId) {
+        props.itemDeleter(props.article.id)
+      }
+    }
+  },
+  (connect, monitor) => ({
+    connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview(),
+    isDragging: monitor.isDragging()
+  })
+)(Article)

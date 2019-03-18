@@ -34,7 +34,7 @@ type SidebarProps = {
 const Sidebar = (props: SidebarProps) => {
   const [dragging, setDragging] = useState(false)
   const [styles, setStyles] = useState({ minWidth: '300px', maxWidth: '300px' })
-  const [initX, setInitX] = useState(300)
+  const [initX, setInitX] = useState(null)
   const [initialMaxWidth, setInitialMaxWidth] = useState(300)
 
   useEffect(() => {
@@ -116,7 +116,7 @@ const Sidebar = (props: SidebarProps) => {
         ))}
       </ul>
       {dragging === true ?
-        <div className={b('resize-bar', ['active'])} onMouseDown={(e) => addEventListener(e)}>
+        <div className={b('resize-bar', ['active'])} onMouseDown={e => addEventListener(e)}>
           control-size
         </div>
         : <div className={b('resize-bar')} onMouseDown={e => addEventListener(e)}>
