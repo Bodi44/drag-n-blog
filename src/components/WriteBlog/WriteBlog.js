@@ -16,7 +16,6 @@ import {
 } from 'recompose'
 import { useFormInput } from '../../helpers/hooks'
 
-import TextareaAutosize from 'react-autosize-textarea'
 import Tags from '../Tags'
 
 import './WriteBlog.scss'
@@ -68,7 +67,7 @@ const WriteBlog = props => {
         />
       </div>
       <div>
-        <TextareaAutosize
+        <textarea
           className={b('content')}
           name="content"
           placeholder={'Tell us your story...'}
