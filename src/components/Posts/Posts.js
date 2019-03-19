@@ -19,12 +19,10 @@ type PostsProps = {
   match?: Object
 }
 
-const Posts = (props: PostsProps) => {
-  const { layoutArticles, error, loading } = props
-
+const Posts = ({ layoutArticles, error, loading, fetchLayoutArticles }: PostsProps) => {
   useEffect(() => {
-    props.fetchLayoutArticles()
-  }, layoutArticles.length)
+    fetchLayoutArticles()
+  }, [])
 
   if (error) return <div>Error! {error.message}</div>
   if (loading) return <div>Loading...</div>

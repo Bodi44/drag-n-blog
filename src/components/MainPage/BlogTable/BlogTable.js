@@ -47,22 +47,10 @@ const BlogTable = (props: BlogTableProps) => {
 
   useEffect(() => {
     fetchLayoutArticles()
-  }, layoutArticles.length)
+  }, [])
 
-  const addArticleToLayout = () => {
-    addLayoutArticle({
-      title: '',
-      content: '',
-      author: '',
-      tags: []
-    })
-  }
-
-  if (error)
-    return <div>Error! {error.message}</div>
-
-  if (loading)
-    return <div>Loading...</div>
+  if (error) return <div>Error! {error.message}</div>
+  if (loading) return <div>Loading...</div>
 
   return (
     <div className={b()}>
@@ -78,7 +66,12 @@ const BlogTable = (props: BlogTableProps) => {
       ))}
       <button
         className={b('add-container')}
-        onClick={addArticleToLayout}
+        onClick={() => addLayoutArticle({
+          title: '',
+          content: '',
+          author: '',
+          tags: []
+        })}
       >
         Add container
       </button>

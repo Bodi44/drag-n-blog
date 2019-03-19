@@ -1,5 +1,5 @@
 // @flow
-import React, { useState, useEffect } from 'react'
+import React, { Component } from 'react'
 import { DropTarget } from 'react-dnd'
 import { connect } from 'react-redux'
 import flow from 'lodash/flow'
@@ -11,6 +11,8 @@ import {
 } from '../../../reducers'
 import { addArticle, fetchArticles, removeArticle } from '../../../actions'
 import Article from './Article'
+
+import { updateLocalStorage } from '../../../helpers/manageLocalStorage'
 
 import './Sidebar.scss'
 import BEM from '../../../helpers/BEM'
@@ -31,100 +33,123 @@ type SidebarProps = {
   removeArticle: number => Object,
 }
 
-const Sidebar = (props: SidebarProps) => {
-  const [dragging, setDragging] = useState(false)
-  const [styles, setStyles] = useState({ minWidth: '300px', maxWidth: '300px' })
-  const [initX, setInitX] = useState(null)
-  const [initialMaxWidth, setInitialMaxWidth] = useState(300)
-
-  useEffect(() => {
-    props.fetchArticles()
-  }, props.articles.length)
-
-  const updateSize = width => {
-    setStyles({ minWidth: width, maxWidth: width })
+class Sidebar extends Component<SidebarProps> {
+  state = {
+    dragging: false,
+    style: (localStorage.getItem('sidebarStyles')) ?
+      JSON.parse(localStorage.getItem('sidebarStyles'))
+      : {
+        minWidth: '300px',
+        maxWidth: '300px'
+      },
+    initX: 300,
+    initialMaxWidth: 300
   }
 
-  const onMouseMove = e => {
-    if (dragging === true) {
-      if (!initX) {
-        setInitialMaxWidth(parseInt(styles.maxWidth.replace('px', '')))
-        setInitX(e.pageX)
-      } else {
-        const delta = e.pageX - initX
-        const maxWidth = `${initialMaxWidth + delta}px`
-        if (initialMaxWidth + delta < 500 && initialMaxWidth + delta > 200)
-          updateSize(maxWidth)
-      }
-    }
+  componentDidMount() {
+    this.props.fetchArticles()
   }
 
-  const removeEventListener = () => {
-    if (dragging === true) {
-      setDragging(dragging => !dragging)
-      setInitX(null)
-      window.removeEventListener('mousemove', onMouseMove)
-    }
-  }
-
-  const addEventListener = e => {
-    e.preventDefault()
-    if (dragging === false) {
-      setDragging(dragging => !dragging)
-      window.addEventListener('mousemove', onMouseMove)
-      window.addEventListener('mouseup', removeEventListener)
-    }
-  }
-
-  const getHoveredColor = (hovered, canDrop) => {
+  getHoveredColor = (hovered, canDrop) => {
     if (hovered && canDrop) return '#2ecc71'
     else if (hovered && !canDrop) return '#e74c3c'
     else return '#ecf0f1'
   }
 
-  const {
-    connectDropTarget,
-    hovered,
-    canDrop,
-    containerId,
-    error,
-    loading,
-    articles,
-    removeArticle
-  } = props
+  updateSize = width => {
+    updateLocalStorage({
+      minWidth: width,
+      maxWidth: width
+    }, 'sidebarStyles')
 
-  const backgroundColor = getHoveredColor(hovered, canDrop)
+    this.setState(Object.assign({}, this.state, {
+      style: JSON.parse(localStorage.getItem('sidebarStyles'))
+    }))
 
-  if (error) return <div>Error! {error.message}</div>
+  }
 
-  if (loading) return <div>Loading...</div>
+  addEventListener = e => {
+    e.preventDefault()
+    if (!this.state.dragging) {
+      this.setState({ dragging: true })
+      window.addEventListener('mouseup', this.removeEventListener)
+      window.addEventListener('mousemove', this.onMouseMove)
+    }
+  }
 
-  return connectDropTarget(
-    <aside className={b()} style={{
-      background: backgroundColor,
-      minWidth: styles.minWidth,
-      maxWidth: styles.maxWidth
-    }}>
-      <ul className={b('blog-list')}>
-        {articles.map(article => (
-          <Article
-            article={article}
-            key={article.id}
-            containerId={containerId}
-            itemDeleter={removeArticle}
-          />
-        ))}
-      </ul>
-      {dragging === true ?
-        <div className={b('resize-bar', ['active'])} onMouseDown={e => addEventListener(e)}>
-          control-size
-        </div>
-        : <div className={b('resize-bar')} onMouseDown={e => addEventListener(e)}>
-          control-size
-        </div>
+  removeEventListener = () => {
+    if (this.state.dragging) {
+      this.setState({ dragging: false, initX: null })
+      window.removeEventListener('mousemove', this.onMouseMove)
+    }
+  }
+
+  onMouseMove = e => {
+    if (this.state.dragging) {
+      if (!this.state.initX) {
+        const initialMaxWidth = parseInt(this.state.style.maxWidth.replace('px', ''))
+        this.setState(state => ({
+          ...state,
+          initX: e.pageX,
+          initialMaxWidth: initialMaxWidth
+        }))
+
+      } else {
+        const delta = e.pageX - this.state.initX
+        const maxWidth = `${this.state.initialMaxWidth + delta}px`
+        if (this.state.initialMaxWidth + delta < 500 && this.state.initialMaxWidth + delta > 200)
+          this.updateSize(maxWidth)
       }
-    </aside>
-  )
+    }
+  }
+
+  render() {
+    const {
+      connectDropTarget,
+      hovered,
+      canDrop,
+      containerId,
+      error,
+      loading,
+      articles,
+      removeFromArticles
+    } = this.props
+
+    const { dragging } = this.state
+
+    const backgroundColor = this.getHoveredColor(hovered, canDrop)
+
+    if (error) return <div>Error! {error.message}</div>
+
+    if (loading) return <div>Loading...</div>
+
+    return connectDropTarget(
+      <aside className={b()} style={{
+        background: backgroundColor,
+        minWidth: this.state.style.minWidth,
+        maxWidth: this.state.style.maxWidth
+      }}>
+        <ul className={b('blog-list')}>
+          {articles.map(article => (
+            <Article
+              article={article}
+              key={article.id}
+              containerId={containerId}
+              itemDeleter={removeFromArticles}
+            />
+          ))}
+        </ul>
+        {dragging ?
+          <div className={b('resize-bar', ['active'])} onMouseDown={e => this.addEventListener(e)}>
+            control-size
+          </div>
+          : <div className={b('resize-bar')} onMouseDown={e => this.addEventListener(e)}>
+            control-size
+          </div>
+        }
+      </aside>
+    )
+  }
 }
 
 export default flow(

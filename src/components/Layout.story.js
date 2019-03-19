@@ -8,7 +8,7 @@ import Layout from './Layout'
 
 const store = configureStore()
 
-const withProvider = (story) => (
+const withProvider = story => (
   <Provider store={store}>
     {story()}
   </Provider>

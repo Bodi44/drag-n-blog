@@ -19,7 +19,7 @@ const ViewPost = (props: ViewPostProps) => {
       <p className={"ViewPost__content"}>{article.content}</p>
       <ul className={"ViewPost__tags"}>
         {article.tags.map(tag => (
-          <li className={"ViewPost__tags_tag"}>{tag.text}</li>
+          <li className={"ViewPost__tags_tag"} key={tag.id}>{tag.text}</li>
         ))}
       </ul>
     </div>

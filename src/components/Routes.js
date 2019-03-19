@@ -9,18 +9,17 @@ import ViewPost from './ViewPost/ViewPost'
 
 import '../css-grid/grid.scss'
 
-const Routes = () => {
-  return (
-    <main className={'grid__cell_12'}>
-      <Route exact path={'/'} component={MainPage} />
-      <Route path={'/layout'} component={Posts} />
+const Routes = () => (
+  <main className={'grid__cell_12'}>
+    <Route exact path={'/'} component={MainPage}/>
+    <Route path={'/layout'} component={Posts}/>
 
-      <Route exact path={'/edit-article'} component={WriteBlog} />
-      <Route exact path={'/edit-article/:id'} component={WriteBlog} />
+    <Route exact path={'/edit-article'} component={WriteBlog}/>
+    <Route exact path={'/edit-article/:id'} component={WriteBlog}/>
 
-      <Route path={'/view_post'} component={ViewPost} />
-    </main>
-  )
-}
+    <Route path={'/view_post'} component={ViewPost}/>
+  </main>
+)
+
 
 export default Routes

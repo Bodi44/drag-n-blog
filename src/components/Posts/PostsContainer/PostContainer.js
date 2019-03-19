@@ -7,11 +7,10 @@ import { shortenContent } from '../../../helpers/shortenContent'
 
 type PostContainerProps = {
   post: Object,
-  key: string
+  key?: string
 }
 
-const PostContainer = (props: PostContainerProps) => {
-  const { post } = props
+const PostContainer = ({ post }: PostContainerProps) => {
   return (
     <Link to={{ pathname: '/view_post', state: { data: post } }} className={'PostContainer'}>
       <h2 className={'PostContainer__title'}>{post.title}</h2>

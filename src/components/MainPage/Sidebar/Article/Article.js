@@ -19,16 +19,14 @@ type ArticleProps = {
   isDragging: boolean
 }
 
-const Article = (props: ArticleProps) => {
-  const { isDragging, connectDragSource, article } = props
-
-  return connectDragSource(
+const Article = ({ isDragging, connectDragSource, article, itemDeleter }: ArticleProps) => (
+  connectDragSource(
     <li className={b()} style={{ opacity: isDragging ? 0 : 1 }}>
       <h4 className={b('title')}>{article.title}</h4>
       <div className={b('modifiers')}>
         <button
           className={b('remove')}
-          onClick={() => props.itemDeleter(article.id)}
+          onClick={() => itemDeleter(article.id)}
         >
           Remove
         </button>
@@ -46,7 +44,7 @@ const Article = (props: ArticleProps) => {
       <time className={b('date')}>{article.date}</time>
     </li>
   )
-}
+)
 
 export default DragSource(
   'Article',
