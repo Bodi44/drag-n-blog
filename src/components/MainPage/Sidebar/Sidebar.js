@@ -42,7 +42,7 @@ class Sidebar extends Component<SidebarProps> {
         minWidth: '300px',
         maxWidth: '300px'
       },
-    initX: 300,
+    initX: null,
     initialMaxWidth: 300
   }
 
@@ -68,38 +68,38 @@ class Sidebar extends Component<SidebarProps> {
 
   }
 
-  addEventListener = e => {
+  handleMouseDown = e => {
     e.preventDefault()
-    if (!this.state.dragging) {
+    if (!this.state.dragging)
       this.setState({ dragging: true })
-      window.addEventListener('mouseup', this.removeEventListener)
-      window.addEventListener('mousemove', this.onMouseMove)
-    }
+
+    window.addEventListener('mouseup', this.handleMouseUp)
+    window.addEventListener('mousemove', this.handleMouseMove)
   }
 
-  removeEventListener = () => {
-    if (this.state.dragging) {
+  handleMouseUp = () => {
+    if (this.state.dragging)
       this.setState({ dragging: false, initX: null })
-      window.removeEventListener('mousemove', this.onMouseMove)
-    }
+
+    window.removeEventListener('mousemove', this.handleMouseMove)
   }
 
-  onMouseMove = e => {
-    if (this.state.dragging) {
-      if (!this.state.initX) {
-        const initialMaxWidth = parseInt(this.state.style.maxWidth.replace('px', ''))
-        this.setState(state => ({
-          ...state,
-          initX: e.pageX,
-          initialMaxWidth: initialMaxWidth
-        }))
+  handleMouseMove = e => {
+    e.preventDefault()
 
-      } else {
-        const delta = e.pageX - this.state.initX
-        const maxWidth = `${this.state.initialMaxWidth + delta}px`
-        if (this.state.initialMaxWidth + delta < 500 && this.state.initialMaxWidth + delta > 200)
-          this.updateSize(maxWidth)
-      }
+    if (!this.state.initX) {
+      const initialMaxWidth = parseInt(this.state.style.maxWidth.replace('px', ''))
+      this.setState(state => ({
+        ...state,
+        initX: e.pageX,
+        initialMaxWidth: initialMaxWidth
+      }))
+
+    } else {
+      const delta = e.pageX - this.state.initX
+      const maxWidth = `${this.state.initialMaxWidth + delta}px`
+      if (this.state.initialMaxWidth + delta < 500 && this.state.initialMaxWidth + delta > 200)
+        this.updateSize(maxWidth)
     }
   }
 
@@ -140,10 +140,10 @@ class Sidebar extends Component<SidebarProps> {
           ))}
         </ul>
         {dragging ?
-          <div className={b('resize-bar', ['active'])} onMouseDown={e => this.addEventListener(e)}>
+          <div className={b('resize-bar', ['active'])} onMouseDown={e => this.handleMouseDown(e)}>
             control-size
           </div>
-          : <div className={b('resize-bar')} onMouseDown={e => this.addEventListener(e)}>
+          : <div className={b('resize-bar')} onMouseDown={e => this.handleMouseDown(e)}>
             control-size
           </div>
         }
