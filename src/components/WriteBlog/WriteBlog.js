@@ -15,6 +15,7 @@ import {
   flattenProp
 } from 'recompose'
 import { useFormInput } from '../../helpers/hooks'
+import Textarea from 'react-textarea-autosize';
 
 import Tags from '../Tags'
 
@@ -67,7 +68,7 @@ const WriteBlog = props => {
         />
       </div>
       <div>
-        <textarea
+        <Textarea
           className={b('content')}
           name="content"
           placeholder={'Tell us your story...'}
