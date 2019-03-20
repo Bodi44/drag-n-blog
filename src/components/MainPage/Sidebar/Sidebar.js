@@ -112,7 +112,7 @@ class Sidebar extends Component<SidebarProps> {
       error,
       loading,
       articles,
-      removeFromArticles
+      removeArticle
     } = this.props
 
     const { dragging } = this.state
@@ -135,7 +135,7 @@ class Sidebar extends Component<SidebarProps> {
               article={article}
               key={article.id}
               containerId={containerId}
-              itemDeleter={removeFromArticles}
+              itemDeleter={removeArticle}
             />
           ))}
         </ul>
