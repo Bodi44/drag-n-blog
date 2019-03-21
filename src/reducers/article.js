@@ -94,8 +94,6 @@ const article = (
       })
       return newState
     case MOVE_ARTICLE:
-      database.update(action.dragArticle.id, action.overArticle)
-      database.update(action.overArticle.id, action.dragArticle)
       return update(
         state, {
           articles: {
