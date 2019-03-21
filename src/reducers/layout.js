@@ -1,4 +1,5 @@
 import Database from '../Database/Database'
+import dateToString from '../helpers/dateToString'
 
 import {
   FETCH_LAYOUT_ARTICLES_BEGIN,
@@ -82,7 +83,7 @@ const layout = (state: LayoutArticleState = initialState, action: ArticlesAction
         if (article.id === action.id) {
           article.title = action.title
           article.content = action.content
-          article.data = Database.dateToString(new Date())
+          article.data = dateToString(new Date())
           article.author = action.author
           article.tags = action.tags
         }

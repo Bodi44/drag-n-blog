@@ -1,6 +1,6 @@
 // @flow
 import { generateUniqueId } from '../helpers/generateUniqueId'
-import Database from '../Database/Database'
+import dateToString from '../helpers/dateToString'
 import { getAllArticles, getLayout } from '../api'
 
 export const FETCH_ARTICLES_BEGIN = 'FETCH_ARTICLES_BEGIN'
@@ -39,7 +39,8 @@ export type ArticlesActions = {
   payload?: Object,
   index: Number,
   overIndex: Number,
-  dragArticle: Article
+  dragArticle: Article,
+  overArticle: Article
 }
 
 export const addArticle = (data: Object): { type: string, ...Article } => ({
@@ -47,7 +48,7 @@ export const addArticle = (data: Object): { type: string, ...Article } => ({
   id: generateUniqueId(),
   title: data.title,
   content: data.content,
-  date: Database.dateToString(new Date()),
+  date: dateToString(new Date()),
   author: data.author,
   tags: data.tags
 })
@@ -69,11 +70,12 @@ export const updateArticle = (
   tags
 })
 
-export const moveArticle = (index, overIndex, dragArticle) => ({
+export const moveArticle = (index, overIndex, dragArticle, overArticle) => ({
   type: MOVE_ARTICLE,
   index: index,
   overIndex: overIndex,
-  dragArticle: dragArticle
+  dragArticle: dragArticle,
+  overArticle: overArticle
 })
 
 export const fetchArticlesBegin = (): { type: string } => ({
@@ -95,7 +97,7 @@ export const addLayoutArticle = (data: Object): { type: string, ...Article } => 
   id: generateUniqueId(),
   title: data.title,
   content: data.content,
-  date: Database.dateToString(new Date()),
+  date: dateToString(new Date()),
   author: data.author,
   tags: data.tags
 })

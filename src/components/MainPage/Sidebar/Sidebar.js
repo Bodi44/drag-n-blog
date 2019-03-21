@@ -16,7 +16,6 @@ import { updateLocalStorage } from '../../../helpers/manageLocalStorage'
 
 import './Sidebar.scss'
 import BEM from '../../../helpers/BEM'
-import article from '../../../reducers/article'
 
 const b = BEM('Sidebar')
 

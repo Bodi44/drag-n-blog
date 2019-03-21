@@ -1,4 +1,6 @@
 // @flow
+import dateToString from '../helpers/dateToString'
+
 const fetcher = require('./fetcher')
 
 export default class Database {
@@ -18,10 +20,6 @@ export default class Database {
     return data
   }
 
-  static dateToString(date: Date) {
-    return date.toISOString().substring(0, 10)
-  }
-
   async get(url: string) {
     let resp = await fetcher.get(url)
     return this.normalize(resp)
@@ -34,24 +32,24 @@ export default class Database {
 
   create = async (article: Object) => {
     const { id, title, content, author, tags } = article
-    const date = Database.dateToString(new Date())
+    const date = dateToString(new Date())
     return await this.createFromJson({
       id,
       title,
       content,
       date,
       author,
-      tags,
+      tags
     })
   }
 
-  async update(id: string, { title, content, author, tags }: Object) {
+  async update(id: string, { title, content, author, tags, date = dateToString(new Date()) }: Object) {
     let resp = await fetcher.put(this.url + '/' + id, {
       title,
       content,
-      date: Database.dateToString(new Date()),
+      date,
       author,
-      tags,
+      tags
     })
     return Database.normalizeSingle(resp)
   }

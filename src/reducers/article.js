@@ -1,5 +1,6 @@
 import update from 'immutability-helper'
 import Database from '../Database/Database'
+import dateToString from '../helpers/dateToString'
 
 import type { ArticlesActions } from '../actions'
 import {
@@ -86,13 +87,15 @@ const article = (
         if (article.id === action.id) {
           article.title = action.title
           article.content = action.content
-          article.data = Database.dateToString(new Date())
+          article.data = dateToString(new Date())
           article.author = action.author
           article.tags = action.tags
         }
       })
       return newState
     case MOVE_ARTICLE:
+      database.update(action.dragArticle.id, action.overArticle)
+      database.update(action.overArticle.id, action.dragArticle)
       return update(
         state, {
           articles: {

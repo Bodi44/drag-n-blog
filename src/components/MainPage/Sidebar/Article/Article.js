@@ -81,9 +81,9 @@ export default flow(
         const overId = props.article.id
         if (draggedId !== overId) {
           const { article: dragArticle, index } = props.findArticle(draggedId)
-          const { index: overIndex } = props.findArticle(overId)
-
-          props.moveArticle(index, overIndex, dragArticle)
+          const { article: overArticle, index: overIndex } = props.findArticle(overId)
+          if (dragArticle !== undefined && overId !== undefined)
+            props.moveArticle(index, overIndex, dragArticle, overArticle)
         }
       }
     },
