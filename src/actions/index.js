@@ -12,6 +12,7 @@ export const FETCH_LAYOUT_ARTICLES_FAILURE = 'FETCH_LAYOUT_ARTICLES_FAILURE'
 export const ADD_ARTICLE = 'ADD_ARTICLE'
 export const REMOVE_ARTICLE = 'REMOVE_ARTICLE'
 export const UPDATE_ARTICLE = 'UPDATE_ARTICLE'
+export const MOVE_ARTICLE = 'MOVE_ARTICLE'
 export const ADD_LAYOUT_ARTICLE = 'ADD_LAYOUT_ARTICLE'
 export const REMOVE_LAYOUT_ARTICLE = 'REMOVE_LAYOUT_ARTICLE'
 export const UPDATE_LAYOUT_ARTICLE = 'UPDATE_LAYOUT_ARTICLE'
@@ -35,7 +36,10 @@ export type ArticlesActions = {
   date?: string,
   author?: string,
   tags?: [Object],
-  payload?: Object
+  payload?: Object,
+  index: Number,
+  overIndex: Number,
+  dragArticle: Article
 }
 
 export const addArticle = (data: Object): { type: string, ...Article } => ({
@@ -63,6 +67,13 @@ export const updateArticle = (
   content,
   author,
   tags
+})
+
+export const moveArticle = (index, overIndex, dragArticle) => ({
+  type: MOVE_ARTICLE,
+  index: index,
+  overIndex: overIndex,
+  dragArticle: dragArticle
 })
 
 export const fetchArticlesBegin = (): { type: string } => ({

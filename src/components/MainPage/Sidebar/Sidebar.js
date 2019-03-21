@@ -9,13 +9,14 @@ import {
   isAllArticlesLoading,
   isAllArticlesLoadingError
 } from '../../../reducers'
-import { addArticle, fetchArticles, removeArticle } from '../../../actions'
+import { addArticle, fetchArticles, removeArticle, moveArticle } from '../../../actions'
 import Article from './Article'
 
 import { updateLocalStorage } from '../../../helpers/manageLocalStorage'
 
 import './Sidebar.scss'
 import BEM from '../../../helpers/BEM'
+import article from '../../../reducers/article'
 
 const b = BEM('Sidebar')
 
@@ -103,6 +104,14 @@ class Sidebar extends Component<SidebarProps> {
     }
   }
 
+  findArticle = id => {
+    const article = this.props.articles.filter(article => article.id === id)[0]
+    return {
+      article,
+      index: this.props.articles.indexOf(article)
+    }
+  }
+
   render() {
     const {
       connectDropTarget,
@@ -112,7 +121,8 @@ class Sidebar extends Component<SidebarProps> {
       error,
       loading,
       articles,
-      removeArticle
+      removeArticle,
+      moveArticle
     } = this.props
 
     const { dragging } = this.state
@@ -136,6 +146,8 @@ class Sidebar extends Component<SidebarProps> {
               key={article.id}
               containerId={containerId}
               itemDeleter={removeArticle}
+              moveArticle={moveArticle}
+              findArticle={this.findArticle}
             />
           ))}
         </ul>
@@ -189,7 +201,8 @@ export default flow(
     {
       addArticle,
       fetchArticles,
-      removeArticle
+      removeArticle,
+      moveArticle
     }
   )
 )(Sidebar)

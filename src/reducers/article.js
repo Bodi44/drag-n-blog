@@ -1,15 +1,16 @@
+import update from 'immutability-helper'
 import Database from '../Database/Database'
 
+import type { ArticlesActions } from '../actions'
 import {
-  FETCH_ARTICLES_BEGIN,
-  FETCH_ARTICLES_SUCCESS,
-  FETCH_ARTICLES_FAILURE,
   ADD_ARTICLE,
+  FETCH_ARTICLES_BEGIN,
+  FETCH_ARTICLES_FAILURE,
+  FETCH_ARTICLES_SUCCESS,
+  MOVE_ARTICLE,
   REMOVE_ARTICLE,
   UPDATE_ARTICLE
 } from '../actions'
-
-import type { ArticlesActions } from '../actions'
 
 const database = new Database('http://localhost:3001/articles')
 
@@ -91,6 +92,14 @@ const article = (
         }
       })
       return newState
+    case MOVE_ARTICLE:
+      return update(
+        state, {
+          articles: {
+            $splice: [[action.index, 1], [action.overIndex, 0, action.dragArticle]]
+          }
+        }
+      )
     default:
       return state
   }
