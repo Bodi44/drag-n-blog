@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 
-import article, * as fromArticles from './article'
+import articles, * as fromArticles from './articles'
 import layout, * as fromLayoutArticles from './layout'
 
 export default combineReducers({
-  articles: article,
+  articles: articles,
   layoutArticles: layout
 })
 
