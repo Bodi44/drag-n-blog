@@ -1,4 +1,4 @@
-import { FETCH_ARTICLES_BEGIN, FETCH_ARTICLES_FAILURE, FETCH_ARTICLES_SUCCESS } from '../actions'
+import { FETCH_ARTICLES_BEGIN, FETCH_ARTICLES_FAILURE, FETCH_ARTICLES_SUCCESS } from '../../actions'
 
 const error = (state, action) => {
   switch (action.type) {
