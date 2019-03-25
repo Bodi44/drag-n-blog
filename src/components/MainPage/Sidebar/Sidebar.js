@@ -50,6 +50,10 @@ class Sidebar extends Component<SidebarProps> {
     this.props.fetchArticles()
   }
 
+  // componentDidUpdate(){
+  //   this.props.fetchArticles()
+  // }
+
   getHoveredColor = (hovered, canDrop) => {
     if (hovered && canDrop) return '#2ecc71'
     else if (hovered && !canDrop) return '#e74c3c'

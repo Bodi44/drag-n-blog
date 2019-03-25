@@ -1,23 +1,6 @@
 {
   "articles": [
     {
-      "title": "Reflecting ",
-      "content": "Now, it may look like I am in an enviable position, running a profitable, growing, low-maintenance software business serving adoring customers. But for years, I considered myself a failure. At my lowest point, I had to lay off 75 percent of my company, including many of my best friends. I had failed.\n\nIt took me years to realize I was misguided from the outset. I no longer feel shame in the path I took to get to where I am today — but for a long time, I did. This is my journey, from the beginning.",
-      "date": "2019-03-21",
-      "author": "Max",
-      "tags": [
-        {
-          "id": "#business",
-          "text": "#business"
-        },
-        {
-          "id": "#success",
-          "text": "#success"
-        }
-      ],
-      "id": "_4jnw0lc"
-    },
-    {
       "title": "Reflecting on My Failure to Build a Billion-Dollar Company",
       "content": "I thought Gumroad would become a billion-dollar company, with hundreds of employees. It would IPO, and I would work on it until I died. Something like that.\n\nNeedless to say, that didn’t happen.\n\nNow, it may look like I am in an enviable position, running a profitable, growing, low-maintenance software business serving adoring customers. But for years, I considered myself a failure. At my lowest point, I had to lay off 75 percent of my company, including many of my best friends. I had failed.\n\nIt took me years to realize I was misguided from the outset. I no longer feel shame in the path I took to get to where I am today — but for a long time, I did. This is my journey, from the beginning.",
       "date": "2019-03-21",
@@ -39,25 +22,6 @@
       "id": "_i011nno"
     },
     {
-      "title": "Reflecting fnvnkfsnvksnvknvsk",
-      "content": "It may look like I am in an enviable position, running a profitable, growing, low-maintenance software business \nIt took me years to realize I was misguided from the outset. I no longer feel shame in the path I took to get to where I am today — but for a long time, I did. This is my journey, from the beginning.",
-      "date": "2019-03-21",
-      "author": "Maxvfsvsvvs",
-      "tags": [
-        {
-          "id": "#business",
-          "text": "#business"
-        },
-        {
-          "id": "#success",
-          "text": "#success"
-        }
-      ],
-      "id": "_ulcs0zf"
-    }
-  ],
-  "layoutContainers": [
-    {
       "title": "A Technique for Deciding When to Say No",
       "content": "In a culture that tends toward the myth of no limits, acknowledging that we can’t do everything seems restrictive. Our industrial naïveté proudly proclaims that we have unlimited time, unlimited resources, and unlimited capacity. Our enlightened progress that emerged in modernism has told us that supply is infinite, demand is infinite, and we, too, are infinit.",
       "date": "2019-03-21",
@@ -72,6 +36,38 @@
       "author": "Adam Leftonggg",
       "tags": [],
       "id": "_z9cfukj"
+    }
+  ],
+  "layoutContainers": [
+    {
+      "title": "some new123",
+      "content": "vfsvmfd;mvfsvfsvspm p pmfsp mspmpmsvm mp m m psm psm sp mp msfp ms psfm ps mps msp msp sm",
+      "date": "2019-03-24",
+      "author": "sdnvbfksbvks",
+      "tags": [
+        {
+          "id": "some",
+          "text": "some"
+        }
+      ],
+      "id": "_7wpllth"
+    },
+    {
+      "title": "Reflecting fnvnkfsnvksnvknvsk 11",
+      "content": "It may look like I am in an enviable position, running a profitable, growing, low-maintenance software business \nIt took me years to realize I was misguided from the outset. I no longer feel shame in the path I took to get to where I am today — but for a long time, I did. This is my journey, from the beginning.",
+      "date": "2019-03-24",
+      "author": "Maxvfsvsvvs",
+      "tags": [
+        {
+          "id": "#business",
+          "text": "#business"
+        },
+        {
+          "id": "#success",
+          "text": "#success"
+        }
+      ],
+      "id": "_7p3porq"
     }
   ]
 }
