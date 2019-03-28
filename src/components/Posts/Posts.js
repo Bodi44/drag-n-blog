@@ -3,12 +3,8 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import PostContainer from './PostsContainer'
-import { fetchLayoutArticles } from '../../actions'
-import {
-  getAllLayoutArticles,
-  isAllLayoutArticlesLoading,
-  isAllLayoutArticlesLoadingError
-} from '../../reducers'
+import { fetchLayoutArticles, fetchArticles } from '../../actions'
+import { getAllArticles, getArticlesInLayout } from '../../reducers'
 
 type PostsProps = {
   error: null | Object,
@@ -19,13 +15,11 @@ type PostsProps = {
   match?: Object
 }
 
-const Posts = ({ layoutArticles, error, loading, fetchLayoutArticles }: PostsProps) => {
+const Posts = ({ layoutArticles, fetchLayoutArticles, fetchArticles }: PostsProps) => {
   useEffect(() => {
+    fetchArticles()
     fetchLayoutArticles()
   }, [])
-
-  if (error) return <div>Error! {error.message}</div>
-  if (loading) return <div>Loading...</div>
 
   return (
     layoutArticles.map(article => (
@@ -36,9 +30,7 @@ const Posts = ({ layoutArticles, error, loading, fetchLayoutArticles }: PostsPro
 
 export default connect(
   state => ({
-    layoutArticles: getAllLayoutArticles(state),
-    loading: isAllLayoutArticlesLoading(state),
-    error: isAllLayoutArticlesLoadingError(state)
+    layoutArticles: getAllArticles(state).filter(article => getArticlesInLayout(state).indexOf(article.id) !== -1)
   }),
-  { fetchLayoutArticles }
+  { fetchLayoutArticles, fetchArticles }
 )(Posts)

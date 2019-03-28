@@ -9,7 +9,7 @@ import {
   isAllArticlesLoading,
   isAllArticlesLoadingError
 } from '../../../reducers'
-import { addArticle, fetchArticles, removeArticle, moveArticle } from '../../../actions'
+import { addArticle, fetchArticles, removeArticle, moveArticle, updateArticle } from '../../../actions'
 import Article from './Article'
 
 import { updateLocalStorage } from '../../../helpers/manageLocalStorage'
@@ -48,16 +48,6 @@ class Sidebar extends Component<SidebarProps> {
 
   componentDidMount() {
     this.props.fetchArticles()
-  }
-
-  // componentDidUpdate(){
-  //   this.props.fetchArticles()
-  // }
-
-  getHoveredColor = (hovered, canDrop) => {
-    if (hovered && canDrop) return '#2ecc71'
-    else if (hovered && !canDrop) return '#e74c3c'
-    else return '#ecf0f1'
   }
 
   updateSize = width => {
@@ -119,7 +109,6 @@ class Sidebar extends Component<SidebarProps> {
     const {
       connectDropTarget,
       hovered,
-      canDrop,
       containerId,
       error,
       loading,
@@ -130,15 +119,13 @@ class Sidebar extends Component<SidebarProps> {
 
     const { dragging } = this.state
 
-    const backgroundColor = this.getHoveredColor(hovered, canDrop)
-
     if (error) return <div>Error! {error.message}</div>
 
     if (loading) return <div>Loading...</div>
 
     return connectDropTarget(
       <aside className={b()} style={{
-        background: backgroundColor,
+        background: hovered ? '#bdc3c7' : '#ecf0f1',
         minWidth: this.state.style.minWidth,
         maxWidth: this.state.style.maxWidth
       }}>
@@ -173,31 +160,31 @@ export default flow(
     {
       drop(props, monitor) {
         const { containerId } = props
-        const result = props.articles.filter(
-          item => item.id === monitor.getItem().id
-        )
+        const result = props.articles.filter(article => article.id === monitor.getItem().id)
 
-        if (result.length === 0) props.addArticle(monitor.getItem())
+        if (monitor.getItem().inLayout === true && result.length === 0)
+          props.updateArticle(monitor.getItem().id, {
+            title: monitor.getItem().title,
+            content: monitor.getItem().content,
+            author: monitor.getItem().author,
+            tags: monitor.getItem().tags,
+            inLayout: false
+          })
 
         return { containerId }
-      },
-
-      canDrop(props, monitor) {
-        return monitor.getItem().content !== ''
       }
     },
     (connect, monitor) => (
       {
         connectDropTarget: connect.dropTarget(),
         hovered: monitor.isOver(),
-        item: monitor.getItem(),
-        canDrop: monitor.canDrop()
+        item: monitor.getItem()
       }
     )
   ),
   connect(
     state => ({
-      articles: getAllArticles(state),
+      articles: getAllArticles(state).filter(article => article.inLayout === false),
       loading: isAllArticlesLoading(state),
       error: isAllArticlesLoadingError(state)
     }),
@@ -205,7 +192,8 @@ export default flow(
       addArticle,
       fetchArticles,
       removeArticle,
-      moveArticle
+      moveArticle,
+      updateArticle
     }
   )
 )(Sidebar)

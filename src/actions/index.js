@@ -25,7 +25,8 @@ type Article = {
   content: string,
   date?: string,
   author: string,
-  tags?: [Object]
+  tags?: [Object],
+  inLayout: boolean
 }
 
 export type ArticlesActions = {
@@ -36,6 +37,7 @@ export type ArticlesActions = {
   date?: string,
   author?: string,
   tags?: [Object],
+  inLayout: boolean,
   payload?: Object,
   index: Number,
   overIndex: Number,
@@ -50,7 +52,8 @@ export const addArticle = (data: Object): { type: string, ...Article } => ({
   content: data.content,
   date: dateToString(new Date()),
   author: data.author,
-  tags: data.tags
+  tags: data.tags,
+  inLayout: data.inLayout
 })
 
 export const removeArticle = (id: string): { type: string, id: string } => ({
@@ -60,14 +63,15 @@ export const removeArticle = (id: string): { type: string, id: string } => ({
 
 export const updateArticle = (
   id: string,
-  { title, content, author, tags }: Object
+  { title, content, author, tags, inLayout }: Object
 ): { type: string, ...Article } => ({
   type: UPDATE_ARTICLE,
   id,
   title,
   content,
   author,
-  tags
+  tags,
+  inLayout
 })
 
 export const moveArticle = (index, overIndex, dragArticle, overArticle) => ({
@@ -92,14 +96,12 @@ export const fetchArticlesFailure = (error: Error): { type: string, payload: { e
   payload: { error }
 })
 
-export const addLayoutArticle = (data: Object): { type: string, ...Article } => ({
+export const addLayoutArticle = ({ id, col, row, size }) => ({
   type: ADD_LAYOUT_ARTICLE,
-  id: generateUniqueId(),
-  title: data.title,
-  content: data.content,
-  date: dateToString(new Date()),
-  author: data.author,
-  tags: data.tags
+  id,
+  col,
+  row,
+  size
 })
 
 export const removeLayoutArticle = (id: string): { type: string, id: string } => ({
@@ -109,14 +111,13 @@ export const removeLayoutArticle = (id: string): { type: string, id: string } =>
 
 export const updateLayoutArticle = (
   id: string,
-  { title, content, author, tags }: Object
+  { col, row, size }: Object
 ): { type: string, ...Article } => ({
   type: UPDATE_LAYOUT_ARTICLE,
   id,
-  title,
-  content,
-  author,
-  tags
+  col,
+  row,
+  size
 })
 
 export const fetchLayoutArticlesBegin = (): { type: string } => ({

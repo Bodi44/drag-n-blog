@@ -31,7 +31,7 @@ export default class Database {
   }
 
   create = async (article: Object) => {
-    const { id, title, content, author, tags } = article
+    const { id, title, content, author, tags, inLayout } = article
     const date = dateToString(new Date())
     return await this.createFromJson({
       id,
@@ -39,17 +39,42 @@ export default class Database {
       content,
       date,
       author,
-      tags
+      tags,
+      inLayout
     })
   }
 
-  async update(id: string, { title, content, author, tags, date = dateToString(new Date()) }: Object) {
+  createInLayout = async (layout: Object) => {
+    const { id, col, row, size } = layout
+    return await this.createFromJson({
+      id,
+      col,
+      row,
+      size
+    })
+  }
+
+  async update(id: string,
+               {
+                 title, content, author,
+                 tags, date = dateToString(new Date()), inLayout
+               }: Object) {
     let resp = await fetcher.put(this.url + '/' + id, {
       title,
       content,
       date,
       author,
-      tags
+      tags,
+      inLayout
+    })
+    return Database.normalizeSingle(resp)
+  }
+
+  async updateInLayout(id: string, { col, row, size }: Object) {
+    let resp = await fetcher.put(this.url + '/' + id, {
+      col,
+      row,
+      size
     })
     return Database.normalizeSingle(resp)
   }

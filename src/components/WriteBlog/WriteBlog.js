@@ -15,12 +15,13 @@ import {
   flattenProp
 } from 'recompose'
 import { useFormInput } from '../../helpers/hooks'
-import Textarea from 'react-textarea-autosize';
+import Textarea from 'react-textarea-autosize'
 
 import Tags from '../Tags'
 
 import './WriteBlog.scss'
 import BEM from '../../helpers/BEM'
+
 const b = BEM('WriteBlog')
 
 const WriteBlog = props => {
@@ -41,7 +42,8 @@ const WriteBlog = props => {
       title: title.value,
       content: content.value,
       author: author.value,
-      tags
+      tags,
+      inLayout: false
     }
     props.publishArticle(article)
   }
@@ -107,7 +109,8 @@ const enhancer = compose(
           title: '',
           content: '',
           author: '',
-          tags: []
+          tags: [],
+          inLayout: false
         }
       }
     } else if (!article && !isLoading && !isError) {

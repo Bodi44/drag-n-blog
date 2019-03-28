@@ -1,18 +1,22 @@
 // @flow
 import React, { useEffect } from 'react'
+import { DropTarget } from 'react-dnd'
 import { connect } from 'react-redux'
+import flow from 'lodash/flow'
 
 import {
-  addLayoutArticle,
+  fetchArticles,
   fetchLayoutArticles,
+  addLayoutArticle,
+  updateArticle,
   removeLayoutArticle,
   updateLayoutArticle
 } from '../../../actions'
 
 import {
-  getAllLayoutArticles,
-  isAllLayoutArticlesLoading,
-  isAllLayoutArticlesLoadingError
+  getAllArticles,
+  getArticlesInLayout,
+  getLayoutArticlesSizes
 } from '../../../reducers'
 
 import LayoutArticle from './LayoutArticle'
@@ -35,60 +39,88 @@ type BlogTableProps = {
 
 const BlogTable = (props: BlogTableProps) => {
   const {
+    connectDropTarget,
     containerId,
-    error,
-    loading,
-    addLayoutArticle,
     layoutArticles,
     fetchLayoutArticles,
+    fetchArticles,
     removeLayoutArticle,
-    updateLayoutArticle
+    updateArticle,
+    hovered
   } = props
 
   useEffect(() => {
+    fetchArticles()
     fetchLayoutArticles()
   }, [])
 
-  if (error) return <div>Error! {error.message}</div>
-  if (loading) return <div>Loading...</div>
-
-  return (
-    <div className={b()}>
+  return connectDropTarget(
+    <div className={b()} style={{backgroundColor: hovered? '#ecf0f1' : '#ffffff'}}>
       {layoutArticles.map(article => (
         <LayoutArticle
           layoutArticles={layoutArticles}
           article={article}
           articleId={containerId}
           key={article.id}
-          updateArticle={updateLayoutArticle}
+          updateArticle={updateArticle}
           removeArticle={removeLayoutArticle}
         />
       ))}
-      <button
-        className={b('add-container')}
-        onClick={() => addLayoutArticle({
-          title: '',
-          content: '',
-          author: '',
-          tags: []
-        })}
-      >
-        Add container
-      </button>
     </div>
   )
 }
 
-export default connect(
-  state => ({
-    layoutArticles: getAllLayoutArticles(state),
-    loading: isAllLayoutArticlesLoading(state),
-    error: isAllLayoutArticlesLoadingError(state)
-  }),
-  {
-    addLayoutArticle,
-    fetchLayoutArticles,
-    removeLayoutArticle,
-    updateLayoutArticle
-  }
-)(BlogTable)
+export default flow(
+  DropTarget(
+    'Article',
+    {
+      drop(props, monitor) {
+        const { containerId } = props
+        props.addLayoutArticle({
+          id: monitor.getItem().id,
+          col: '',
+          row: '',
+          size: {
+            minWidth: '500px',
+            maxWidth: '500px'
+          }
+        })
+        props.updateArticle(monitor.getItem().id,
+          {
+            title: monitor.getItem().title,
+            content: monitor.getItem().content,
+            author: monitor.getItem().author,
+            tags: monitor.getItem().tags,
+            inLayout: true
+          })
+
+        return { containerId }
+      },
+
+      canDrop(props, monitor) {
+        return props.layoutArticles.filter(article => article.id === monitor.getItem().id).length === 0
+      }
+    },
+    (connect, monitor) => (
+      {
+        connectDropTarget: connect.dropTarget(),
+        hovered: monitor.isOver(),
+        item: monitor.getItem(),
+        canDrop: monitor.canDrop()
+      }
+    )
+  ),
+  connect(
+    state => ({
+      layoutArticles: getAllArticles(state).filter(article => getArticlesInLayout(state).indexOf(article.id) !== -1),
+      layoutArticlesSizes: getLayoutArticlesSizes(state)
+    }),
+    {
+      fetchArticles,
+      updateArticle,
+      fetchLayoutArticles,
+      addLayoutArticle,
+      removeLayoutArticle,
+      updateLayoutArticle
+    }
+  ))(BlogTable)

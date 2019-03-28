@@ -68,9 +68,7 @@ const allIds = (state = [], action) => {
           newState[newState.indexOf(id)] = action.id
         }
       })
-
-      console.log(newState)
-      return state
+      return newState
     case MOVE_ARTICLE:
       return update(
         state, {
