@@ -6,14 +6,8 @@
       "date": "2019-03-28",
       "author": "Maxvfsvsvvs",
       "tags": [
-        {
-          "id": "#business",
-          "text": "#business"
-        },
-        {
-          "id": "#success",
-          "text": "#success"
-        }
+        "#business",
+        "#success"
       ],
       "inLayout": false,
       "id": "_os1acb7"
@@ -21,9 +15,13 @@
     {
       "title": "As a Designer, I Refuse to Call People ‘Users’1",
       "content": "ve worked in UX for the better part of a decade. From now on, I plan to remove the word “user” and any associated terms—like “UX” and “user experience”—from my vocabulary. It’ll take time. I’ll start by trying to avoid using them in conversations at work. I’ll erase them from my LinkedIn profile. I’ll find new ways to describe my job when making small talk. I will experiment and look for something better.\n\nI don’t have any strong alternatives to offer right now, but I’m confident I’ll find some. I think of it as a challenge. The U-words are everywhere in tech, but they no longer reflect my values or my approach to design and technology. I can either keep using language I disagree with, or I can begin to search for what’s next. I choose to search.",
-      "date": "2019-03-28",
+      "date": "2019-04-08",
       "author": "Adam Leftonggg",
-      "tags": [],
+      "tags": [
+        "dfvdf",
+        "fdsvdfsvsfv",
+        "hjdbhdf"
+      ],
       "inLayout": false,
       "id": "_8j39hx0"
     },
@@ -33,10 +31,7 @@
       "date": "2019-03-28",
       "author": "Sebastian Eschweiler",
       "tags": [
-        {
-          "id": "javascript",
-          "text": "javascript"
-        }
+        "javascript"
       ],
       "inLayout": true,
       "id": "_rkf0wce"
@@ -47,12 +42,9 @@
       "date": "2019-03-28",
       "author": "Alex Heath",
       "tags": [
-        {
-          "id": "instagram",
-          "text": "instagram"
-        }
+        "instagram"
       ],
-      "inLayout": true,
+      "inLayout": false,
       "id": "_xphhxtz"
     },
     {
@@ -61,27 +53,21 @@
       "date": "2019-03-28",
       "author": "Lance Ulanoff",
       "tags": [
-        {
-          "id": "technologies",
-          "text": "technologies"
-        }
+        "technologies"
       ],
-      "inLayout": false,
+      "inLayout": true,
       "id": "_de7jbhz"
     },
     {
-      "id": "_ksmzj28",
       "title": "What If Mark Zuckerberg Had Stayed in School?",
       "content": "This month, Facebook founder Mark Zuckerberg has announced yet another new direction for his famously bad-acting company. Now, he says, the platform once responsible for the Cambridge Analytica election fiasco and countless other personal invasions will become the poster child for privacy and encryption. Maybe after all the evasions, missteps, and pivots, Zuckerberg is finally learning from his experiences.\n\nBut as I watch Mark Zuckerberg zig and zag his way through one disaster after another, I can’t help but muse on one of the ways he could have spared himself — and the rest of humanity — all this trouble. What if he had simply stayed in school?\n\nAt the end of his sophomore year, Mark Zuckerberg dropped out of Harvard’s class of 2006 in order to pursue development of Facebook. The social networking platform was already the 10th most trafficked site on the internet, so young Zuck decided to follow in the footsteps of Harvard dropout Bill Gates and pursue Silicon Valley venture capitalists over Cambridge academics.\n\nAfter all, at least by the logic of lean startups, Harvard had already served its purpose. Young Zuck had gained enough programming chops in computer science to build his minimum viable product, and — perhaps more important — he had leveraged the elite student population of Harvard to find the partners and ideas he needed to get a company up and running.\n\nBut by forgoing a college education, Zuckerberg may have denied himself — and the world — the benefit of some historical, cultural, economic, and political context for his work. And we are all now paying the price for his impatience. What if Mark Zuckerberg had decided to stay in school instead? Looking back through Harvard’s course catalogs for 2005 and 2006, one finds a bounty of offerings, from sociology and psychology to philosophy and literature, that would have challenged the assumptions underlying Silicon Valley dogma and might just have given Zuckerberg the insight he needed to build a platform that promoted human cognition and connection, and even democracy itself, instead of undermining them.\n\nFor example, over his four semesters as an upperclassman, Zuckerberg could have availed himself of Harvard professors, including Greg Manciw, former chairman of the President’s Council of Economic Advisers. If Zuck had taken Manciw’s “Principles of Economics” class, he may have recognized that there is a growth-based economic operating system running beneath every Silicon Valley unicorn — one that ultimately demands turning users into products or, worse, data fodder for the algorithms. He may have realized that taking the most investment at the highest valuation would only put his company at the mercy of its shareholders and obligate him to grow by any means necessary.\n\nOr what if he had chosen to study with superstar literary critic Helen Vendler, whose undergraduate course “Literature and the Arts” offered “a study of poetry as the history and science of feeling”? Might Zuckerberg have later been able to predict his platform’s bias for emotional insensitivity, or could he have curtailed the use of language as cognitive weapon?\n\nMaybe that inquiry would have been even better informed by taking Steven Pinker’s course that spring, “The Human Mind,” which covered psychoanalysis, behavioralism, cognitive neuroscience, and evolutionary psychology. Imagine if Zuckerberg had considered human consciousness in an academic or ethical context before setting upon entraining the collective psyche through his news feed algorithms?",
-      "date": "2019-03-28",
+      "date": "2019-04-10",
       "author": " Douglas Rushkoff",
       "tags": [
-        {
-          "id": "facebook",
-          "text": "facebook"
-        }
+        "facebook"
       ],
-      "inLayout": false
+      "inLayout": false,
+      "id": "_ksmzj28"
     },
     {
       "title": "Silicon Valley’s Grow-or-Die Culture Is Costing Us",
@@ -89,25 +75,13 @@
       "date": "2019-03-28",
       "author": " James Stanier",
       "tags": [
-        {
-          "id": "technologies",
-          "text": "technologies"
-        }
+        "technologies"
       ],
       "inLayout": true,
       "id": "_3q4hofk"
     }
   ],
   "layoutContainers": [
-    {
-      "id": "_xphhxtz",
-      "col": "",
-      "row": "",
-      "size": {
-        "minWidth": "500px",
-        "maxWidth": "500px"
-      }
-    },
     {
       "id": "_rkf0wce",
       "col": "",
@@ -119,6 +93,15 @@
     },
     {
       "id": "_3q4hofk",
+      "col": "",
+      "row": "",
+      "size": {
+        "minWidth": "500px",
+        "maxWidth": "500px"
+      }
+    },
+    {
+      "id": "_de7jbhz",
       "col": "",
       "row": "",
       "size": {

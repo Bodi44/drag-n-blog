@@ -1,17 +1,33 @@
 import React from 'react'
-import { WithContext as ReactTags } from 'react-tag-input'
 import './Tags.scss'
+import BEM from '../../helpers/BEM'
 
-const SPACE_KYE_CODE = 32
-const ENTER_KEY_CODE = 13
+const b = BEM('Tags')
 
-const Tags = props => (
-  <ReactTags
-    placeholder={'#add tags'}
-    delimiters={[SPACE_KYE_CODE, ENTER_KEY_CODE]}
-    allowDragDrop={false}
-    {...props}
-  />
-)
+const Tags = props => {
 
-export default Tags
+  return props.tags ? (
+    <label className={props.className}>
+      <ul className={b('container')}>
+        {props.tags.map((item, tag) =>
+          <li key={tag} className={b('item')}>
+            {item}
+            <span className={b('item_delete')} onClick={props.handleDelete.bind(this, tag)}>
+                  <img src="https://res.cloudinary.com/dum2a6djw/image/upload/c_scale,w_12/v1552900349/delete.png"/>
+                </span>
+          </li>
+        )}
+        <input
+          className={b('input')}
+          placeholder={'#add tags'}
+          value={props.input}
+          onChange={props.handleInputChange}
+          onKeyDown={props.handleInputKeyDown}/>
+      </ul>
+    </label>
+  ) : (
+    <p/>
+  )
+}
+
+export default Tags;
