@@ -15,14 +15,14 @@ import {
   flattenProp
 } from 'recompose'
 import { useFormInput } from '../../helpers/hooks'
-import Textarea from 'react-textarea-autosize'
-
 import Tags from '../Tags'
+import Textarea from '../Textarea'
 
 import './WriteBlog.scss'
 import BEM from '../../helpers/BEM'
 
 const b = BEM('WriteBlog')
+const SPACE_KYE_CODE = 32
 
 const WriteBlog = props => {
   const title = useFormInput(props.title)
@@ -30,11 +30,23 @@ const WriteBlog = props => {
   const author = useFormInput(props.author)
 
   const [tags, setTags] = useState(props.tags)
+  const [input, setInput] = useState('')
 
-  const handleTagsDelete = i =>
-    setTags(tags.filter((tag, index) => index !== i))
+  const handleInputChange = e => setInput(e.target.value)
+  const handleInputKeyDown = e => {
+    if ( e.keyCode === SPACE_KYE_CODE ) {
+      const {value} = e.target;
+      setTags([...tags, value])
+      setInput('')
+    }
+    if ( tags.length && e.keyCode === 8 && !input.length ) {
+      setTags(tags.slice(0, tags.length - 1))
+    }
+  }
+  const handleRemoveTag = tag => {
+    setTags(tags.filter((item, index) => index !== tag))
+  }
 
-  const handleTagsAddition = tag => setTags([...tags, tag])
 
   const handleSubmit = event => {
     event.preventDefault()
@@ -50,32 +62,31 @@ const WriteBlog = props => {
   return (
     <form className={'WriteBlog'} onSubmit={handleSubmit}>
       <input
-        className="WriteBlog__title"
+        className={b('title')}
         placeholder="Title"
         name={'title'}
         {...title}
       />
       <input
-        className="WriteBlog__author"
+        className={b('author')}
         placeholder="Author"
         name={'author'}
         {...author}
       />
-      <div>
-        <Tags
-          tags={tags}
-          handleDelete={handleTagsDelete}
-          handleAddition={handleTagsAddition}
-        />
-      </div>
-      <div>
-        <Textarea
-          className={b('content')}
-          name="content"
-          placeholder={'Tell us your story...'}
-          {...content}
-        />
-      </div>
+      <Tags
+        className={b('tags')}
+        tags={tags}
+        input={input}
+        handleDelete={handleRemoveTag}
+        handleInputKeyDown={handleInputKeyDown}
+        handleInputChange={handleInputChange}
+      />
+      <Textarea
+        className={b('content')}
+        name="content"
+        placeholder={'Tell us your story...'}
+        {...content}
+      />
       <button className={b('publish-button')} type="submit">
         Ready To Publish?
       </button>
@@ -135,7 +146,7 @@ const enhancer = compose(
         history.push('/')
       }
     }
-  })
+  }),
 )
 
 export default enhancer(WriteBlog)

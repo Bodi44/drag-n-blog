@@ -1,57 +1,57 @@
-.ReactTags {
-  &__tags {
-    margin: 10px 0;
-    padding: 0 20px;
-  }
-
-  &__tagInput {
-    display: inline-block;
-    padding: 2px;
-  }
-
-  &__tagInputField {
-    padding: 2px;
-    font-size: 16px;
-    border: none;
-    border-radius: 3px;
-  }
-
-  &__tag {
-    cursor: grab;
-    border: 1px solid #000000;
-    margin-right: 5px;
-    padding: 2px;
-    border-radius: 3px;
-    font-size: 16px;
-  }
-}
-
-//.Tags{
-//
-//  &__container{
-//    border-radius: 5px;
-//    font-size: 16px;
-//    padding: 0 20px;
+//.ReactTags {
+//  &__tags {
 //    margin: 10px 0;
+//    padding: 0 20px;
 //  }
 //
-//  &__item{
+//  &__tagInput {
 //    display: inline-block;
+//    padding: 2px;
+//  }
+//
+//  &__tagInputField {
+//    padding: 2px;
+//    font-size: 16px;
+//    border: none;
+//    border-radius: 3px;
+//  }
+//
+//  &__tag {
+//    cursor: grab;
+//    border: 1px solid #000000;
 //    margin-right: 5px;
 //    padding: 2px;
-//    border: 1px solid #000000;
 //    border-radius: 3px;
-//
-//    &_delete{
-//      margin-left: 8px;
-//      margin-right: 4px;
-//      cursor: pointer;
-//    }
-//  }
-//
-//  &__input{
-//    outline: none;
-//    border: none;
-//    padding: 2px;
+//    font-size: 16px;
 //  }
 //}
+
+.Tags{
+
+  &__container{
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 0 20px;
+    margin: 10px 0;
+  }
+
+  &__item{
+    display: inline-block;
+    margin-right: 5px;
+    padding: 2px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+
+    &_delete{
+      margin-left: 8px;
+      margin-right: 4px;
+      cursor: pointer;
+    }
+  }
+
+  &__input{
+    outline: none;
+    border: none;
+    padding: 2px;
+  }
+}
