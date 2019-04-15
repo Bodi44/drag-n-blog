@@ -42,8 +42,7 @@ const WriteBlog = props => {
       title: title.value,
       content: content.value,
       author: author.value,
-      tags,
-      inLayout: false
+      tags
     }
     props.publishArticle(article)
   }
@@ -109,8 +108,7 @@ const enhancer = compose(
           title: '',
           content: '',
           author: '',
-          tags: [],
-          inLayout: false
+          tags: []
         }
       }
     } else if (!article && !isLoading && !isError) {

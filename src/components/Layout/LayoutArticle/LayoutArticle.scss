@@ -1,11 +1,9 @@
 .LayoutArticle {
   position: relative;
-  padding: 10px;
+  display: flex;
   min-height: 200px;
-  align-self: center;
-  margin-bottom: 20px;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.35);
-
+  background-color: white;
 
   &__title {
     max-width: 36em;
@@ -27,11 +25,14 @@
 
   &__content {
     padding: 0;
-    margin: 0 0 10px;
+    margin: 0 0 20px;
   }
 
   &__author {
     color: #394040;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
     font-size: 14px;
   }
 
@@ -41,5 +42,18 @@
     position: absolute;
     right: 10px;
     bottom: 10px;
+  }
+
+  &__resize {
+    transition: 0.3s;
+    color: transparent;
+    cursor: col-resize;
+    min-width: 5px;
+    max-width: 5px;
+    background-color: grey;
+  }
+
+  &__content-container{
+    padding: 10px;
   }
 }

@@ -1,0 +1,114 @@
+import React, { useEffect, useState } from 'react'
+import { DropTarget } from 'react-dnd/lib/index'
+import { connect } from 'react-redux'
+import flow from 'lodash/flow'
+
+import {
+  addArticleToLayout,
+  removeArticleFromLayout,
+  removeArticleFromRow,
+  updateLayout
+} from '../../../actions'
+import LayoutArticle from '../LayoutArticle'
+
+import './Row.scss'
+import '../../../grid.scss'
+import BEM from '../../../helpers/BEM'
+
+const b = BEM('Row')
+
+const Row = ({ row, articlesInRow, parameters, connectDropTarget, articlesIdsInRow }) => {
+  const [dimension, setDimension] = useState(null)
+  let container
+
+  useEffect(() => {
+    setDimension(container.offsetWidth)
+  })
+
+  return connectDropTarget(
+    <section className={`grid grid_no-transition ${b()}`} ref={el => container = el}>
+      {articlesInRow.map(
+        (article, i) => articlesInRow[articlesInRow.length - 1] === article ?
+          < LayoutArticle
+            key={article.id}
+            index={i}
+            rowId={row}
+            containerWidth={dimension}
+            article={article}
+            allArticlesInRow={articlesIdsInRow}
+            parameters={parameters.filter(param => param.id === article.id)[0]}
+            resize={false}
+          /> :
+          <LayoutArticle
+            key={article.id}
+            index={i}
+            rowId={row}
+            containerWidth={dimension}
+            article={article}
+            allArticlesInRow={articlesIdsInRow}
+            parameters={parameters.filter(param => param.id === article.id)[0]}
+            resize={true}
+          />
+      )}
+    </section>
+  )
+}
+
+export default flow(
+  DropTarget(
+    'Article',
+    {
+      drop: (props, monitor) => {
+        if (props.articlesIdsInRow.indexOf(monitor.getItem().id) === -1) {
+          if (!monitor.getItem().row) {
+            if (props.parameters.length !== 0) {
+              props.parameters.map(article => props.updateLayout(
+                article.id,
+                `${12 / (props.parameters.length + 1)}`,
+                props.row
+              ))
+              props.addArticleToLayout({
+                id: monitor.getItem().id,
+                col: `${12 / (props.parameters.length + 1)}`,
+                row: props.row
+              })
+            } else {
+              props.addArticleToLayout({
+                id: monitor.getItem().id,
+                col: '12',
+                row: props.row
+              })
+            }
+          } else {
+            props.removeArticleFromRow(monitor.getItem().row, monitor.getItem().id)
+
+            const paramsInRow = props.allParameters.filter(param =>
+              param.row === monitor.getItem().row && param.id !== monitor.getItem().id)
+
+            paramsInRow.map(param => props.updateLayout(
+              param.id,
+              `${12 / (paramsInRow.length - 1)}`,
+              param.row
+            ))
+
+            props.updateLayout(monitor.getItem().id, monitor.getItem().col, props.row)
+          }
+        }
+      }
+    },
+    (connect, monitor) => ({
+      connectDropTarget: connect.dropTarget(),
+      hovered: monitor.isOver(),
+      item: monitor.getItem()
+    })
+  ),
+  connect(
+    null,
+    {
+      addArticleToLayout,
+      removeArticleFromLayout,
+      updateLayout,
+      removeArticleFromRow
+    }
+  )
+)(Row)

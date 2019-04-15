@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 
-import "../../css-grid/grid.scss";
+import "../../grid.scss";
 
 import "./ViewPost.scss"
 

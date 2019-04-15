@@ -7,7 +7,7 @@ import Posts from './Posts'
 import WriteBlog from './WriteBlog'
 import ViewPost from './ViewPost/ViewPost'
 
-import '../css-grid/grid.scss'
+import '../grid.scss'
 
 const Routes = () => (
   <main className={'grid__cell_12'}>

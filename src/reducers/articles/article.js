@@ -1,4 +1,4 @@
-import Database from '../../Database/Database'
+import Database from '../../Database'
 import dateToString from '../../helpers/dateToString'
 
 import {
@@ -8,7 +8,7 @@ import {
   UPDATE_ARTICLE
 } from '../../actions'
 
-const database = new Database('http://localhost:3001/articles')
+const database = new Database('http://localhost:4000/articles')
 
 const article = (state, action) => {
   switch (action.type) {
@@ -22,8 +22,7 @@ const article = (state, action) => {
         content: action.content,
         date: action.date,
         author: action.author,
-        tags: action.tags,
-        inLayout: action.inLayout
+        tags: action.tags
       }
     case REMOVE_ARTICLE:
       database.delete(action.id)
@@ -33,8 +32,7 @@ const article = (state, action) => {
         title: action.title,
         content: action.content,
         author: action.author,
-        tags: action.tags,
-        inLayout: action.inLayout
+        tags: action.tags
       })
       return {
         id: action.id,
@@ -42,8 +40,7 @@ const article = (state, action) => {
         content: action.content,
         date: dateToString(new Date()),
         author: action.author,
-        tags: action.tags,
-        inLayout: action.inLayout
+        tags: action.tags
       }
     default:
       return state

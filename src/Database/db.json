@@ -15,7 +15,6 @@
           "text": "#success"
         }
       ],
-      "inLayout": false,
       "id": "_os1acb7"
     },
     {
@@ -24,7 +23,6 @@
       "date": "2019-03-28",
       "author": "Adam Leftonggg",
       "tags": [],
-      "inLayout": false,
       "id": "_8j39hx0"
     },
     {
@@ -38,7 +36,6 @@
           "text": "javascript"
         }
       ],
-      "inLayout": true,
       "id": "_rkf0wce"
     },
     {
@@ -52,7 +49,6 @@
           "text": "instagram"
         }
       ],
-      "inLayout": true,
       "id": "_xphhxtz"
     },
     {
@@ -66,7 +62,6 @@
           "text": "technologies"
         }
       ],
-      "inLayout": false,
       "id": "_de7jbhz"
     },
     {
@@ -80,8 +75,7 @@
           "id": "facebook",
           "text": "facebook"
         }
-      ],
-      "inLayout": false
+      ]
     },
     {
       "title": "Silicon Valley’s Grow-or-Die Culture Is Costing Us",
@@ -94,37 +88,51 @@
           "text": "technologies"
         }
       ],
-      "inLayout": true,
       "id": "_3q4hofk"
     }
   ],
-  "layoutContainers": [
+  "layoutParameters": [
     {
-      "id": "_xphhxtz",
-      "col": "",
-      "row": "",
-      "size": {
-        "minWidth": "500px",
-        "maxWidth": "500px"
-      }
+      "col": "4",
+      "row": "_k1bpx5x",
+      "id": "_3q4hofk"
     },
     {
-      "id": "_rkf0wce",
-      "col": "",
-      "row": "",
-      "size": {
-        "minWidth": "500px",
-        "maxWidth": "500px"
-      }
+      "col": "NaN",
+      "row": "_a5bp6no",
+      "id": "_ksmzj28"
     },
     {
-      "id": "_3q4hofk",
-      "col": "",
-      "row": "",
-      "size": {
-        "minWidth": "500px",
-        "maxWidth": "500px"
-      }
+      "col": "4",
+      "row": "_k1bpx5x",
+      "id": "_rkf0wce"
+    },
+    {
+      "col": "4",
+      "row": "_k1bpx5x",
+      "id": "_os1acb7"
+    },
+    {
+      "col": "4",
+      "row": "_k1bpx5x",
+      "id": "_8j39hx0"
+    }
+  ],
+  "rowsInLayout": [
+    {
+      "id": "_k1bpx5x",
+      "articlesInRow": [
+        "_3q4hofk",
+        "_rkf0wce",
+        "_os1acb7",
+        "_8j39hx0"
+      ]
+    },
+    {
+      "id": "_a5bp6no",
+      "articlesInRow": [
+        "_ksmzj28"
+      ]
     }
   ]
 }

@@ -1,11 +1,10 @@
-import update from 'immutability-helper'
-
 import {
   ADD_ARTICLE,
   FETCH_ARTICLES_BEGIN,
   FETCH_ARTICLES_FAILURE,
-  FETCH_ARTICLES_SUCCESS, MOVE_ARTICLE,
-  REMOVE_ARTICLE, UPDATE_ARTICLE
+  FETCH_ARTICLES_SUCCESS,
+  REMOVE_ARTICLE,
+  UPDATE_ARTICLE
 } from '../../actions'
 
 import article from './article'
@@ -17,8 +16,8 @@ const byId = (state = {}, action = {}) => {
     case FETCH_ARTICLES_BEGIN:
       return state
     case FETCH_ARTICLES_SUCCESS:
-      return article(state.articles, action).reverse().reduce((obj, article) => {
-        obj[article.id] = article
+      return article(state.articles, action).reverse().reduce((obj, item) => {
+        obj[item.id] = item
         return obj
       }, {})
     case FETCH_ARTICLES_FAILURE:
@@ -37,13 +36,6 @@ const byId = (state = {}, action = {}) => {
       return Object.assign({}, state, {
         [action.id]: article(state[action.id], action)
       })
-    case MOVE_ARTICLE:
-      const newOrder = {}
-      update(
-        Object.keys(state),
-        { $splice: [[action.index, 1], [action.overIndex, 0, action.dragArticle.id]] }
-      ).forEach(key => newOrder[key] = state[key])
-      return newOrder
     default:
       return state
   }
@@ -69,12 +61,6 @@ const allIds = (state = [], action) => {
         }
       })
       return newState
-    case MOVE_ARTICLE:
-      return update(
-        state, {
-          $splice: [[action.index, 1], [action.overIndex, 0, action.dragArticle.id]]
-        }
-      )
     default:
       return state
   }
@@ -100,7 +86,7 @@ const allErrors = (state = null, action) => {
     case FETCH_ARTICLES_SUCCESS:
       return null
     case FETCH_ARTICLES_FAILURE:
-      return null
+      return action.payload.error
     default:
       return state
   }

@@ -2,22 +2,28 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import './PostContainer.scss'
 import { shortenContent } from '../../../helpers/shortenContent'
 
-type PostContainerProps = {
-  post: Object,
-  key?: string
-}
+import './PostContainer.scss'
+import '../../../grid.scss'
+import BEM from '../../../helpers/BEM'
 
-const PostContainer = ({ post }: PostContainerProps) => {
+const b = BEM('PostContainer')
+
+const PostContainer = ({ articlesInRow, parametersOfRowArticles }) => {
   return (
-    <Link to={{ pathname: '/view_post', state: { data: post } }} className={'PostContainer'}>
-      <h2 className={'PostContainer__title'}>{post.title}</h2>
-      <p className={'PostContainer__content'}>{shortenContent(post.content, 100)}</p>
-      <small className={'PostContainer__author'}>{post.author}</small>
-      <time className={'PostContainer__date'}>{post.date}</time>
-    </Link>
+    <div className={'grid grid_no-transition'}>
+      {articlesInRow.map(article => (
+          <Link to={{ pathname: '/view_post', state: { data: article } }}
+                className={`grid__cell_${parametersOfRowArticles.filter(param => param.id === article.id)[0].col} ${b()}`}>
+            <h2 className={b('title')}>{article.title}</h2>
+            <p className={b('content')}>{shortenContent(article.content, 100)}</p>
+            <small className={b('author')}>{article.author}</small>
+            <time className={b('date')}>{article.date}</time>
+          </Link>
+        )
+      )}
+    </div>
   )
 }
 

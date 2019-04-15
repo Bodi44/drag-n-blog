@@ -1,19 +1,18 @@
 // @flow
 import React from 'react'
-import { DragSource } from 'react-dnd'
+import { DragSource } from 'react-dnd/lib/index'
 import { Link } from 'react-router-dom'
 import flow from 'lodash/flow'
 
-import { shortenContent } from '../../../../helpers/shortenContent'
+import { shortenContent } from '../../../helpers/shortenContent'
 
 import './Article.scss'
-import BEM from '../../../../helpers/BEM'
+import BEM from '../../../helpers/BEM'
 
 const b = BEM('Article')
 
 type ArticleProps = {
   article: Object,
-  containerId: number,
   itemDeleter: number => Object,
   connectDragPreview: Function,
   connectDragSource: Function,
@@ -50,9 +49,8 @@ export default flow(
   DragSource(
     'Article',
     {
-      beginDrag(props) {
-        return props.article
-      }
+      beginDrag: (props) =>
+        props.article
     },
     (connect, monitor) => ({
       connectDragSource: connect.dragSource(),
@@ -60,25 +58,4 @@ export default flow(
       isDragging: monitor.isDragging()
     })
   )
-  // DropTarget(
-  //   'Article',
-  //   {
-  //     canDrop() {
-  //       return false
-  //     },
-  //     hover(props, monitor) {
-  //       const draggedId = monitor.getItem().id
-  //       const overId = props.article.id
-  //       if (draggedId !== overId) {
-  //         const { article: dragArticle, index } = props.findArticle(draggedId)
-  //         const { article: overArticle, index: overIndex } = props.findArticle(overId)
-  //         if (dragArticle !== undefined && overId !== undefined)
-  //           props.moveArticle(index, overIndex, dragArticle, overArticle)
-  //       }
-  //     }
-  //   },
-  //   connect => ({
-  //     connectDropTarget: connect.dropTarget()
-  //   })
-  // )
 )(Article)

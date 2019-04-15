@@ -3,34 +3,41 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import PostContainer from './PostsContainer'
-import { fetchLayoutArticles, fetchArticles } from '../../actions'
-import { getAllArticles, getArticlesInLayout } from '../../reducers'
+import { fetchLayout, fetchArticles, fetchRows } from '../../actions'
+import { getAllArticles, getAllRows, getIdsInLayout, getLayoutParameters } from '../../reducers'
 
-type PostsProps = {
-  error: null | Object,
-  loading: boolean,
-  layoutArticles: Array<any>,
-  fetchLayoutArticles: () => Promise<any>,
-  location?: Object,
-  match?: Object
-}
+import '../../grid.scss'
 
-const Posts = ({ layoutArticles, fetchLayoutArticles, fetchArticles }: PostsProps) => {
+const Posts = ({ articlesInLayout, layoutParameters, fetchLayout, fetchArticles, fetchRows, rows }) => {
   useEffect(() => {
     fetchArticles()
-    fetchLayoutArticles()
+  }, [])
+
+  useEffect(() => {
+    fetchLayout()
+  }, [])
+
+  useEffect(() => {
+    fetchRows()
   }, [])
 
   return (
-    layoutArticles.map(article => (
-      <PostContainer post={article} key={article.id}/>
-    ))
+    rows.map(row =>
+      <PostContainer
+        key={row.id}
+        articleIdsInRow={row.articlesInRow}
+        articlesInRow={articlesInLayout.filter(article => row.articlesInRow.indexOf(article.id) !== -1)}
+        parametersOfRowArticles={layoutParameters.filter(param => row.articlesInRow.indexOf(param.id !== -1))}
+      />
+    )
   )
 }
 
 export default connect(
   state => ({
-    layoutArticles: getAllArticles(state).filter(article => getArticlesInLayout(state).indexOf(article.id) !== -1)
+    articlesInLayout: getAllArticles(state).filter(article => getIdsInLayout(state).indexOf(article.id) !== -1),
+    layoutParameters: getLayoutParameters(state),
+    rows: getAllRows(state)
   }),
-  { fetchLayoutArticles, fetchArticles }
+  { fetchLayout, fetchArticles, fetchRows }
 )(Posts)

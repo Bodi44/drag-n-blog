@@ -3,9 +3,9 @@ import Routes from './Routes'
 
 import Header from './Header'
 
-import '../css-grid/grid.scss'
+import '../grid.scss'
 
-const Layout = () => (
+const App = () => (
   <div className={'grid'}>
     <header className={'grid__cell_12'}>
       <Header/>
@@ -15,4 +15,4 @@ const Layout = () => (
   </div>
 )
 
-export default Layout
+export default App

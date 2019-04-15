@@ -1,21 +1,30 @@
 // @flow
 import React, { Component } from 'react'
-import { DropTarget } from 'react-dnd'
+import { DropTarget } from 'react-dnd/lib/index'
 import { connect } from 'react-redux'
 import flow from 'lodash/flow'
 
 import {
   getAllArticles,
   isAllArticlesLoading,
-  isAllArticlesLoadingError
-} from '../../../reducers'
-import { addArticle, fetchArticles, removeArticle, moveArticle, updateArticle } from '../../../actions'
+  isAllArticlesLoadingError,
+  getIdsInLayout,
+  getAllRows,
+  getLayoutParameters
+} from '../../reducers'
+import {
+  deleteRowFromLayout,
+  fetchArticles, fetchLayout, fetchRows,
+  removeArticle,
+  removeArticleFromLayout,
+  updateArticle, updateLayout
+} from '../../actions'
 import Article from './Article'
 
-import { updateLocalStorage } from '../../../helpers/manageLocalStorage'
+import { updateLocalStorage } from '../../helpers/manageLocalStorage'
 
 import './Sidebar.scss'
-import BEM from '../../../helpers/BEM'
+import BEM from '../../helpers/BEM'
 
 const b = BEM('Sidebar')
 
@@ -24,7 +33,6 @@ type SidebarProps = {
   articles: Array<Object>,
   canDrop: boolean,
   connectDropTarget: Function,
-  containerId: number,
   error: null | Object,
   fetchContent: () => Object | Promise<Object>,
   hovered: boolean,
@@ -48,6 +56,8 @@ class Sidebar extends Component<SidebarProps> {
 
   componentDidMount() {
     this.props.fetchArticles()
+    this.props.fetchLayout()
+    this.props.fetchRows()
   }
 
   updateSize = width => {
@@ -76,6 +86,7 @@ class Sidebar extends Component<SidebarProps> {
       this.setState({ dragging: false, initX: null })
 
     window.removeEventListener('mousemove', this.handleMouseMove)
+    window.removeEventListener('mouseup', this.handleMouseUp)
   }
 
   handleMouseMove = e => {
@@ -97,24 +108,14 @@ class Sidebar extends Component<SidebarProps> {
     }
   }
 
-  findArticle = id => {
-    const article = this.props.articles.filter(article => article.id === id)[0]
-    return {
-      article,
-      index: this.props.articles.indexOf(article)
-    }
-  }
-
   render() {
     const {
       connectDropTarget,
       hovered,
-      containerId,
       error,
       loading,
       articles,
-      removeArticle,
-      moveArticle
+      removeArticle
     } = this.props
 
     const { dragging } = this.state
@@ -134,10 +135,7 @@ class Sidebar extends Component<SidebarProps> {
             <Article
               article={article}
               key={article.id}
-              containerId={containerId}
               itemDeleter={removeArticle}
-              moveArticle={moveArticle}
-              findArticle={this.findArticle}
             />
           ))}
         </ul>
@@ -158,42 +156,46 @@ export default flow(
   DropTarget(
     'Article',
     {
-      drop(props, monitor) {
-        const { containerId } = props
+      drop: (props, monitor) => {
         const result = props.articles.filter(article => article.id === monitor.getItem().id)
 
-        if (monitor.getItem().inLayout === true && result.length === 0)
-          props.updateArticle(monitor.getItem().id, {
-            title: monitor.getItem().title,
-            content: monitor.getItem().content,
-            author: monitor.getItem().author,
-            tags: monitor.getItem().tags,
-            inLayout: false
-          })
+        if (result.length === 0) {
+          props.removeArticleFromLayout(monitor.getItem().id, monitor.getItem().row)
+          props.layoutParameters.filter(param => param.row === monitor.getItem().row && param.id !== monitor.getItem().id)
+            .map(param => props.updateLayout(
+              param.id,
+              `${12 / (props.layoutParameters.length - 1)}`,
+              param.row
+            ))
 
-        return { containerId }
+          if (props.layoutRows.filter(row => row.id === monitor.getItem().row)[0].articlesInRow.length === 1)
+            props.deleteRowFromLayout(monitor.getItem().row)
+        }
       }
     },
-    (connect, monitor) => (
-      {
-        connectDropTarget: connect.dropTarget(),
-        hovered: monitor.isOver(),
-        item: monitor.getItem()
-      }
-    )
+    (connect, monitor) => ({
+      connectDropTarget: connect.dropTarget(),
+      hovered: monitor.isOver(),
+      item: monitor.getItem()
+    })
   ),
   connect(
     state => ({
-      articles: getAllArticles(state).filter(article => article.inLayout === false),
+      articles: getAllArticles(state).filter(article => getIdsInLayout(state).indexOf(article.id) === -1),
       loading: isAllArticlesLoading(state),
-      error: isAllArticlesLoadingError(state)
+      error: isAllArticlesLoadingError(state),
+      layoutRows: getAllRows(state),
+      layoutParameters: getLayoutParameters(state)
     }),
     {
-      addArticle,
       fetchArticles,
       removeArticle,
-      moveArticle,
-      updateArticle
+      updateArticle,
+      removeArticleFromLayout,
+      deleteRowFromLayout,
+      updateLayout,
+      fetchRows,
+      fetchLayout
     }
   )
 )(Sidebar)

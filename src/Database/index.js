@@ -31,7 +31,7 @@ export default class Database {
   }
 
   create = async (article: Object) => {
-    const { id, title, content, author, tags, inLayout } = article
+    const { id, title, content, author, tags } = article
     const date = dateToString(new Date())
     return await this.createFromJson({
       id,
@@ -39,43 +39,52 @@ export default class Database {
       content,
       date,
       author,
-      tags,
-      inLayout
+      tags
     })
   }
 
-  createInLayout = async (layout: Object) => {
-    const { id, col, row, size } = layout
+  createInLayout = async (layoutParameters: Object) => {
+    const { id, col, row } = layoutParameters
     return await this.createFromJson({
       id,
       col,
-      row,
-      size
+      row
     })
   }
 
-  async update(id: string,
-               {
-                 title, content, author,
-                 tags, date = dateToString(new Date()), inLayout
-               }: Object) {
+  createRow = async (row) => {
+    const { id, articlesInRow } = row
+    return await this.createFromJson({
+      id,
+      articlesInRow
+    })
+  }
+
+  async update(id: string, { title, content, author, tags, date = dateToString(new Date()) }: Object) {
     let resp = await fetcher.put(this.url + '/' + id, {
       title,
       content,
       date,
       author,
-      tags,
-      inLayout
+      tags
     })
     return Database.normalizeSingle(resp)
   }
 
-  async updateInLayout(id: string, { col, row, size }: Object) {
+  async updateInLayout(id: string, { col, row }: Object) {
     let resp = await fetcher.put(this.url + '/' + id, {
       col,
-      row,
-      size
+      row
     })
+    return Database.normalizeSingle(resp)
+  }
+
+  async updateRow(id, articlesInRow) {
+    let resp = await fetcher.put(this.url + '/' + id, {
+      id,
+      articlesInRow
+    })
+
     return Database.normalizeSingle(resp)
   }
 
