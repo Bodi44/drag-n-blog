@@ -14,7 +14,6 @@ const b = BEM('Article')
 type ArticleProps = {
   article: Object,
   itemDeleter: number => Object,
-  connectDragPreview: Function,
   connectDragSource: Function,
   isDragging: boolean
 }
@@ -49,7 +48,7 @@ export default flow(
   DragSource(
     'Article',
     {
-      beginDrag: (props) =>
+      beginDrag: props =>
         props.article
     },
     (connect, monitor) => ({

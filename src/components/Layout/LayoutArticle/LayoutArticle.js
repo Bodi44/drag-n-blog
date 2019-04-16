@@ -4,12 +4,6 @@ import { DragSource, DropTarget } from 'react-dnd/lib/index'
 import { connect } from 'react-redux'
 import flow from 'lodash/flow'
 
-import { shortenContent } from '../../../helpers/shortenContent'
-import isOdd from '../../../helpers/isOdd'
-
-import '../../../grid.scss'
-import './LayoutArticle.scss'
-import BEM from '../../../helpers/BEM'
 import {
   deleteRowFromLayout,
   removeArticleFromLayout,
@@ -18,19 +12,31 @@ import {
 } from '../../../actions'
 import { getLayoutParameters } from '../../../reducers'
 
+import { shortenContent } from '../../../helpers/shortenContent'
+
+import '../../../grid.scss'
+import './LayoutArticle.scss'
+import BEM from '../../../helpers/BEM'
+
 const b = BEM('LayoutArticle')
 
 type LayoutArticleProps = {
+  index: number,
+  allArticlesInRow: Array<string>,
+  allRowParameters: Array<Object>,
   article: Object,
-  canDrop: boolean,
   connectDragPreview: Function,
   connectDragSource: Function,
   connectDropTarget: Function,
-  hovered: boolean,
+  containerWidth: number,
+  parameters: Object,
+  rowId: string,
+  deleteRowFromLayout: number => Object,
+  removeArticleFromLayout: Function,
+  reorderArticleInRow: Function,
+  updateLayout: Object => Object,
   isDragging: boolean,
-  layoutArticles: Array<Object>,
-  removeArticle: number => Object,
-  updateArticle: (number, Object) => Object
+  resize: boolean,
 }
 
 class LayoutArticle extends Component<LayoutArticleProps> {
@@ -38,65 +44,24 @@ class LayoutArticle extends Component<LayoutArticleProps> {
     dragging: false,
     initX: null,
     initialMaxWidth: null,
-    size: null,
-    columns: []
+    size: null
   }
 
   setArticlesCells = (size, articleId) => {
-    if (this.props.allArticlesInRow.length < 3) {
-      articleId !== this.props.parameters.id ?
-        this.props.updateLayout(
-          articleId,
-          `${12 - size}`,
-          this.props.rowId
-        ) :
-        this.props.updateLayout(
-          this.props.parameters.id,
-          `${size}`,
-          this.props.rowId
-        )
-    } else if (this.props.allArticlesInRow.length > 3 && isOdd(12 - size)) {
-      if (articleId !== this.props.parameters.id) {
-        if (this.state.columns.length < 2) {
-          this.props.updateLayout(
-            articleId,
-            `${Math.round((12 - size) / this.props.allArticlesInRow.length - 1)}`,
-            this.props.rowId
-          )
-          this.setState(state => ({
-            ...state,
-            columns: [...state.columns, Math.round((12 - size) / this.props.allArticlesInRow.length - 1)]
-          }))
-        } else {
-          this.props.updateLayout(
-            articleId,
-            `${size - Math.round((12 - size) / this.props.allArticlesInRow.length - 1)}`,
-            this.props.rowId
-          )
-        }
-      } else {
-        this.props.updateLayout(
-          this.props.parameters.id,
-          `${size}`,
-          this.props.rowId
-        )
-        this.setState(state => ({
-          ...state,
-          columns: [...state.columns, size]
-        }))
-      }
-    } else {
-      articleId !== this.props.parameters.id ?
-        this.props.updateLayout(
-          articleId,
-          `${Math.round((12 - size) / this.props.allArticlesInRow.length - 1)}`,
-          this.props.rowId
-        ) :
-        this.props.updateLayout(
-          this.props.parameters.id,
-          `${size}`,
-          this.props.rowId
-        )
+    const { allArticlesInRow, updateLayout, rowId, parameters } = this.props
+
+    if (allArticlesInRow.length < 3) {
+      articleId !== parameters.id ?
+        updateLayout(articleId, `${12 - size}`, rowId) :
+        updateLayout(articleId, `${size}`, rowId)
+    } else if (allArticlesInRow.length === 3) {
+      articleId !== parameters.id ?
+        updateLayout(articleId, `${Math.round((12 - size) / 2)}`, rowId) :
+        updateLayout(articleId, `${size}`, rowId)
+    } else if (allArticlesInRow.length > 3) {
+      articleId !== parameters.id ?
+        updateLayout(articleId, `${Math.round((12 - size) / 3)}`, rowId) :
+        updateLayout(articleId, `${size}`, rowId)
     }
   }
 
@@ -123,13 +88,12 @@ class LayoutArticle extends Component<LayoutArticleProps> {
         dragging: false
       }))
 
-    if (this.props.containerWidth / 12  < this.state.size < this.props.containerWidth / 12 * 11)
-      this.props.allArticlesInRow.map(articleId =>
-        this.setArticlesCells(Math.round(this.state.size / (this.props.containerWidth / 12)), articleId)
-      )
-
     window.removeEventListener('mousemove', this.handleMouseMove)
     window.removeEventListener('mouseup', this.handleMouseUp)
+
+    this.props.allArticlesInRow.map(articleId =>
+      this.setArticlesCells(Math.round(this.state.size / (this.props.containerWidth / 12)), articleId)
+    )
   }
 
   handleMouseMove = e => {
@@ -152,6 +116,7 @@ class LayoutArticle extends Component<LayoutArticleProps> {
   }
 
   render() {
+    console.log(this.props)
     const { size } = this.state
     const {
       parameters,

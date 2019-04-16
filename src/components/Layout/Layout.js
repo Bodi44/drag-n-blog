@@ -9,9 +9,8 @@ import {
   fetchLayout,
   fetchRows,
   addArticleToLayout,
-  updateArticle,
   removeArticleFromLayout,
-  addNewRowToLayout, deleteRowFromLayout
+  addNewRowToLayout
 } from '../../actions'
 import {
   getAllArticles, getAllRows,
@@ -24,17 +23,22 @@ import BEM from '../../helpers/BEM'
 
 const b = BEM('Layout')
 
-type BlogTableProps = {
-  addArticleToLayout: (Object) => Object,
-  error: null | Object,
-  fetchLayoutArticles: () => Object | Promise<Object>,
-  layout: Array<Object>,
-  loading: boolean,
-  removeArticleFromLayout: (number) => Object,
-  updateLayout: (number, Object) => Object
+type LayoutProps = {
+  fetchLayout: () => Object | Promise<Object>,
+  fetchArticles: () => Object | Promise<Object>,
+  fetchRows: () => Object | Promise<Object>,
+  articlesInLayout: Array<Object>,
+  layoutParameters: Array<Object>,
+  rows: Array<any>,
+  addArticleToLayout: Object => Object,
+  addNewRowToLayout: Object => Object,
+  removeArticleFromLayout: number => Object,
+  hovered: boolean,
+  canDrop: boolean,
+  connectDropTarget: Object => Object
 }
 
-const Layout = (props: BlogTableProps) => {
+const Layout = (props: LayoutProps) => {
   const {
     connectDropTarget,
     articlesInLayout,
@@ -95,7 +99,6 @@ export default flow(
       {
         connectDropTarget: connect.dropTarget(),
         hovered: monitor.isOver(),
-        item: monitor.getItem(),
         canDrop: monitor.canDrop()
       }
     )
@@ -108,12 +111,10 @@ export default flow(
     }),
     {
       fetchArticles,
-      updateArticle,
       fetchLayout,
       fetchRows,
       addArticleToLayout,
       removeArticleFromLayout,
-      addNewRowToLayout,
-      deleteRowFromLayout
+      addNewRowToLayout
     }
   ))(Layout)

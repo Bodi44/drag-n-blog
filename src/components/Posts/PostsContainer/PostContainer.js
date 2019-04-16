@@ -10,7 +10,12 @@ import BEM from '../../../helpers/BEM'
 
 const b = BEM('PostContainer')
 
-const PostContainer = ({ articlesInRow, parametersOfRowArticles }) => {
+type PostContainerProps = {
+  articlesInRow: Array<string>,
+  parametersOfRowArticles: Array<Object>
+}
+
+const PostContainer = ({ articlesInRow, parametersOfRowArticles }: PostContainerProps) => {
   return (
     <div className={'grid grid_no-transition'}>
       {articlesInRow.map(article => (

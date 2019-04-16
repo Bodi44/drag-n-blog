@@ -1,3 +1,4 @@
+// @flow
 import React, { useEffect, useState } from 'react'
 import { DropTarget } from 'react-dnd/lib/index'
 import { connect } from 'react-redux'
@@ -17,7 +18,15 @@ import BEM from '../../../helpers/BEM'
 
 const b = BEM('Row')
 
-const Row = ({ row, articlesInRow, parameters, connectDropTarget, articlesIdsInRow }) => {
+type RowProps = {
+  row: string,
+  articlesInRow: Array<Object>,
+  parameters: Array<Object>,
+  connectDropTarget: Object => Object,
+  articlesIdsInRow: Array<string>
+}
+
+const Row = ({ row, articlesInRow, parameters, connectDropTarget, articlesIdsInRow }: RowProps) => {
   const [dimension, setDimension] = useState(null)
   let container
 
@@ -58,6 +67,9 @@ export default flow(
   DropTarget(
     'Article',
     {
+      canDrop: props =>
+        props.articlesInRow.length < 4
+      ,
       drop: (props, monitor) => {
         if (props.articlesIdsInRow.indexOf(monitor.getItem().id) === -1) {
           if (!monitor.getItem().row) {

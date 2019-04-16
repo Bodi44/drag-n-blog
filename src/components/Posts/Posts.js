@@ -8,7 +8,16 @@ import { getAllArticles, getAllRows, getIdsInLayout, getLayoutParameters } from 
 
 import '../../grid.scss'
 
-const Posts = ({ articlesInLayout, layoutParameters, fetchLayout, fetchArticles, fetchRows, rows }) => {
+type PostsProps = {
+  articlesInLayout: Array<Object>,
+  layoutParameters: Array<Object>,
+  fetchLayout: Function,
+  fetchArticles: Function,
+  fetchRows: Function,
+  rows: Array<string>
+}
+
+const Posts = ({ articlesInLayout, layoutParameters, fetchLayout, fetchArticles, fetchRows, rows }: PostsProps) => {
   useEffect(() => {
     fetchArticles()
   }, [])

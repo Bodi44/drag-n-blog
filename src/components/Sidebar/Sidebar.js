@@ -36,9 +36,14 @@ type SidebarProps = {
   error: null | Object,
   fetchContent: () => Object | Promise<Object>,
   hovered: boolean,
-  item?: null | Object,
   loading: boolean,
   removeArticle: number => Object,
+  removeArticleFromLayout: Function,
+  updateArticle: Function,
+  updateLayout: Object => Object,
+  deleteRowFromLayout: number => Object,
+  layoutRows: Array<Object>,
+  layoutParameters: Array<Object>
 }
 
 class Sidebar extends Component<SidebarProps> {
@@ -175,8 +180,7 @@ export default flow(
     },
     (connect, monitor) => ({
       connectDropTarget: connect.dropTarget(),
-      hovered: monitor.isOver(),
-      item: monitor.getItem()
+      hovered: monitor.isOver()
     })
   ),
   connect(

@@ -36,21 +36,6 @@ type Article = {
   tags?: [Object],
 }
 
-export type ArticlesActions = {
-  type: string,
-  id?: string,
-  title?: string,
-  content?: string,
-  date?: string,
-  author?: string,
-  tags?: [Object],
-  payload?: Object,
-  index: Number,
-  overIndex: Number,
-  dragArticle: Article,
-  overArticle: Article
-}
-
 //Articles actions
 export const addArticle = (data: Object): { type: string, ...Article } => ({
   type: ADD_ARTICLE,
@@ -105,20 +90,26 @@ export const fetchArticles = () => async (dispatch: Dispatcher) => {
 }
 
 //Layout actions
-export const addArticleToLayout = ({ id, col, row }) => ({
+type Layout = {
+  id: string,
+  col: string,
+  row: string
+}
+
+export const addArticleToLayout = ({ id, col, row }: Object): { type: string, ...Layout } => ({
   type: ADD_ARTICLE_TO_LAYOUT,
   id,
   col,
   row
 })
 
-export const removeArticleFromLayout = (id: string, rowId: string): { type: string, id: string } => ({
+export const removeArticleFromLayout = (id: string, rowId: string): { type: string, id: string, rowId: string } => ({
   type: REMOVE_ARTICLE_FROM_LAYOUT,
   id,
   rowId
 })
 
-export const updateLayout = (id, col, row) => ({
+export const updateLayout = (id: string, col: string, row: string): { type: string, ...Layout } => ({
   type: UPDATE_LAYOUT,
   id,
   col,
@@ -178,26 +169,28 @@ export const fetchRows = () => async (dispatch: Dispatcher) => {
   }
 }
 
-export const addNewRowToLayout = () => ({
+export const addNewRowToLayout = (): { type: string, id: string } => ({
   type: ADD_NEW_ROW_TO_LAYOUT,
   id: generateUniqueId()
 })
 
-export const deleteRowFromLayout = id => ({
+export const deleteRowFromLayout = (id: string): { type: string, id: string } => ({
   type: DELETE_ROW_FROM_LAYOUT,
   id
 })
 
-export const reorderArticleInRow = (rowId, index, overIndex, draggedId, overId) => ({
-  type: REORDER_ARTICLE_IN_ROW,
-  id: rowId,
-  index: index,
-  overIndex: overIndex,
-  draggedId: draggedId,
-  overId: overId
-})
+export const reorderArticleInRow = (rowId: string, index: number, overIndex: number, draggedId: string, overId: string):
+  { type: string, id: string, index: number, overIndex: number, draggedId: string, overId: string } =>
+  ({
+    type: REORDER_ARTICLE_IN_ROW,
+    id: rowId,
+    index: index,
+    overIndex: overIndex,
+    draggedId: draggedId,
+    overId: overId
+  })
 
-export const removeArticleFromRow = (rowId, articleId) => ({
+export const removeArticleFromRow = (rowId: string, articleId: string): { type: string, id: string, articleId: string } => ({
   type: REMOVE_ARTICLE_FROM_ROW,
   id: rowId,
   articleId: articleId
