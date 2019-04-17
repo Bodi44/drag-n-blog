@@ -13,8 +13,9 @@ import {
   addNewRowToLayout
 } from '../../actions'
 import {
-  getAllArticles, getAllRows,
-  getIdsInLayout, getLayoutParameters
+  getAllArticlesInLayout,
+  getAllRows,
+  getLayoutParameters
 } from '../../reducers'
 import Row from './Row'
 
@@ -68,6 +69,7 @@ const Layout = (props: LayoutProps) => {
         <Row key={row.id}
              row={row.id}
              parameters={layoutParameters.filter(param => param.row === row.id)}
+             allRows={rows}
              allParameters={layoutParameters}
              articlesInRow={row.articlesInRow.map(
                id => articlesInLayout.filter(article => article.id === id)[0]
@@ -105,7 +107,7 @@ export default flow(
   ),
   connect(
     state => ({
-      articlesInLayout: getAllArticles(state).filter(article => getIdsInLayout(state).indexOf(article.id) !== -1),
+      articlesInLayout: getAllArticlesInLayout(state),
       layoutParameters: getLayoutParameters(state),
       rows: getAllRows(state)
     }),

@@ -10,7 +10,6 @@ import {
   reorderArticleInRow,
   updateLayout
 } from '../../../actions'
-import { getLayoutParameters } from '../../../reducers'
 
 import { shortenContent } from '../../../helpers/shortenContent'
 
@@ -116,7 +115,6 @@ class LayoutArticle extends Component<LayoutArticleProps> {
   }
 
   render() {
-    console.log(this.props)
     const { size } = this.state
     const {
       parameters,
@@ -216,9 +214,7 @@ export default flow(
     })
   ),
   connect(
-    state => ({
-      allRowParameters: getLayoutParameters(state).filter(param => param.id)
-    }),
+    null,
     {
       reorderArticleInRow,
       updateLayout,

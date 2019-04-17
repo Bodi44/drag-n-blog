@@ -21,6 +21,9 @@ export const isAllArticlesLoadingError = state =>
 export const getArticlesById = (id, state) =>
   fromArticles.getArticlesById(id, state.articles)
 
+export const getAllArticlesInLayout = state =>
+  fromArticles.getAllArticles(state.articles).filter(article => fromLayout.getIdsInLayout(state.layout).indexOf(article.id) !== -1)
+
 //Layout selectors
 export const getIdsInLayout = state =>
   fromLayout.getIdsInLayout(state.layout)

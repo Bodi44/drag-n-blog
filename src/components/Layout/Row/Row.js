@@ -8,7 +8,8 @@ import {
   addArticleToLayout,
   removeArticleFromLayout,
   removeArticleFromRow,
-  updateLayout
+  updateLayout,
+  deleteRowFromLayout
 } from '../../../actions'
 import LayoutArticle from '../LayoutArticle'
 
@@ -94,6 +95,9 @@ export default flow(
           } else {
             props.removeArticleFromRow(monitor.getItem().row, monitor.getItem().id)
 
+            if (props.allRows.filter(row => monitor.getItem().row === row.id)[0].articlesInRow.length === 1)
+              props.deleteRowFromLayout(monitor.getItem().row)
+
             const paramsInRow = props.allParameters.filter(param =>
               param.row === monitor.getItem().row && param.id !== monitor.getItem().id)
 
@@ -120,7 +124,8 @@ export default flow(
       addArticleToLayout,
       removeArticleFromLayout,
       updateLayout,
-      removeArticleFromRow
+      removeArticleFromRow,
+      deleteRowFromLayout
     }
   )
 )(Row)
