@@ -1,14 +1,21 @@
-import React, { useEffect, useRef } from "react";
-import autosize from "autosize";
+//@flow
+import React, { useEffect, useRef } from 'react'
+import autosize from 'autosize'
 
-const Textarea = props => {
+type TextareaProps = {
+  classname: string,
+  name: string,
+  onChange: Function,
+  placeholder: string,
+  value: ?string
+}
 
-  const textarea = useRef()
+const Textarea = (props: TextareaProps) => {
+  const textarea = useRef(null)
 
   useEffect(() => {
-    autosize(textarea.current);
+    autosize(textarea.current)
   })
-
 
   return (
     <textarea
