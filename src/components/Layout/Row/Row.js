@@ -27,7 +27,7 @@ type RowProps = {
   articlesIdsInRow: Array<string>
 }
 
-const Row = ({ row, articlesInRow, parameters, connectDropTarget, articlesIdsInRow }: RowProps) => {
+const Row = ({ row, articlesInRow, parameters, connectDropTarget, articlesIdsInRow, hovered, canDrop }: RowProps) => {
   const [dimension, setDimension] = useState(null)
   let container
 
@@ -35,8 +35,17 @@ const Row = ({ row, articlesInRow, parameters, connectDropTarget, articlesIdsInR
     setDimension(container.offsetWidth)
   })
 
+  const setBackgroundColor = () => {
+    if (canDrop && hovered)
+      return '#81ecec'
+    else if (!canDrop && hovered)
+      return '#ff7675'
+    else return '#ecf0f1'
+  }
+
   return connectDropTarget(
-    <section className={`grid grid_no-transition ${b()}`} ref={el => container = el}>
+    <section className={`grid grid_no-transition ${b()}`} ref={el => container = el}
+             style={{ backgroundColor: setBackgroundColor() }}>
       {articlesInRow.map(
         (article, i) => articlesInRow[articlesInRow.length - 1] === article ?
           < LayoutArticle
@@ -115,7 +124,8 @@ export default flow(
     (connect, monitor) => ({
       connectDropTarget: connect.dropTarget(),
       hovered: monitor.isOver(),
-      item: monitor.getItem()
+      item: monitor.getItem(),
+      canDrop: monitor.canDrop()
     })
   ),
   connect(

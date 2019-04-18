@@ -131,7 +131,7 @@ class Sidebar extends Component<SidebarProps> {
 
     return connectDropTarget(
       <aside className={b()} style={{
-        background: hovered ? '#bdc3c7' : '#ecf0f1',
+        background: hovered ? '#81ecec' : '#ecf0f1',
         minWidth: this.state.style.minWidth,
         maxWidth: this.state.style.maxWidth
       }}>
