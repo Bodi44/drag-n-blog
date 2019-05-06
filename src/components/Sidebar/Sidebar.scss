@@ -1,8 +1,6 @@
 .Sidebar {
   display: flex;
   font-family: Roboto, sans-serif;
-  background-color: #ecf0f1;
-  min-height: 800px;
   margin-right: 10px;
 
   &__title {
@@ -15,7 +13,7 @@
     padding: 0;
   }
 
-  &__resize-bar{
+  &__resize-bar {
     transition: 0.3s;
     color: transparent;
     cursor: col-resize;
@@ -24,11 +22,11 @@
     opacity: 0;
     margin-right: auto;
 
-    &:hover{
+    &:hover {
       opacity: 0.6;
     }
 
-    &_active{
+    &_active {
       transition: 0.3s;
       opacity: 0.6;
     }

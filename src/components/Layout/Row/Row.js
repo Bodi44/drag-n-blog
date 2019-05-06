@@ -40,7 +40,7 @@ const Row = ({ row, articlesInRow, parameters, connectDropTarget, articlesIdsInR
       return '#81ecec'
     else if (!canDrop && hovered)
       return '#ff7675'
-    else return '#ecf0f1'
+    else return 'none'
   }
 
   return connectDropTarget(

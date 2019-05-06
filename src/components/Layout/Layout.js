@@ -17,7 +17,9 @@ import {
   getAllRows,
   getLayoutParameters
 } from '../../reducers'
+
 import Row from './Row'
+import Toolbar from '../Toolbar'
 
 import './Layout.scss'
 import BEM from '../../helpers/BEM'
@@ -53,13 +55,7 @@ const Layout = (props: LayoutProps) => {
 
   useEffect(() => {
     fetchArticles()
-  }, [])
-
-  useEffect(() => {
     fetchLayout()
-  }, [])
-
-  useEffect(() => {
     fetchRows()
   }, [])
 
@@ -77,6 +73,7 @@ const Layout = (props: LayoutProps) => {
              articlesIdsInRow={row.articlesInRow}
         />
       )}
+      <Toolbar/>
     </div>
   )
 }

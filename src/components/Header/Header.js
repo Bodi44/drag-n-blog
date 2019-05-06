@@ -15,10 +15,10 @@ const MainButton = () => (
 const Header = () => (
   <div className={b()}>
     <header className={b('header')}>
-      <div className={b('left')}>
+      <NavLink className={b('left')} to={'/'} children={'Home'}>
         <h1 className={b('logo-main')}>Drag'n'Blog</h1>
         <p className={b('logo-secondary')}>flexible-blog</p>
-      </div>
+      </NavLink>
 
       <div className={b('right')}>
         <form action="" className={b('search')}>
@@ -29,22 +29,6 @@ const Header = () => (
         <Link to={'/'} className={b('user')} children={'User'}/>
       </div>
     </header>
-
-    <nav className={b('navigation')}>
-      <NavLink
-        exact
-        to={'/'}
-        className={b('nav-link')}
-        activeClassName={b('nav-link', ['active'])}
-        children={'Home'}
-      />
-      <NavLink
-        to={'/layout'}
-        className={b('nav-link')}
-        activeClassName={b('nav-link', ['active'])}
-        children={'Posts'}
-      />
-    </nav>
   </div>
 )
 

@@ -5,10 +5,7 @@
   border: 1px solid lightgray;
   cursor: move;
   padding: 10px;
-  margin: 10px;
-  &:not(:last-child){
-    margin-bottom: 5px;
-  }
+  margin-left: 5px;
 
   &__modifiers{
     padding: 0;
