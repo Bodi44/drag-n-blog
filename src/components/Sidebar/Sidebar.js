@@ -25,7 +25,6 @@ import { updateLocalStorage } from '../../helpers/manageLocalStorage'
 
 import './Sidebar.scss'
 import BEM from '../../helpers/BEM'
-import Toolbar from '../Toolbar'
 
 const b = BEM('Sidebar')
 

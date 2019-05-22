@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux'
+
 import {
   ADD_ARTICLE,
   FETCH_ARTICLES_BEGIN,
@@ -8,8 +10,6 @@ import {
 } from '../../actions'
 
 import article from './article'
-
-import { combineReducers } from 'redux'
 
 const byId = (state = {}, action = {}) => {
   switch (action.type) {

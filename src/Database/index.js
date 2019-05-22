@@ -30,6 +30,10 @@ export default class Database {
     return Database.normalizeSingle(resp)
   }
 
+  post = async (articles) => {
+    return await this.createFromJson(articles)
+  }
+
   create = async (article: Object) => {
     const { id, title, content, author, tags } = article
     const date = dateToString(new Date())
