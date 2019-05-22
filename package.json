@@ -2,8 +2,10 @@
   "name": "drag-n-blog",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://bodi44.github.io/drag-n-blog/",
   "dependencies": {
     "autosize": "^4.0.2",
+    "gh-pages": "^2.0.1",
     "immutability-helper": "^3.0.0",
     "lodash": "^4.17.11",
     "ramda": "^0.26.1",
@@ -22,6 +24,8 @@
   "scripts": {
     "start": "concurrently \"json-server --watch src/Database/db.json --port 4000\" \"react-scripts start\"",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "json:server": "json-server --watch src/Database/db.json --port 4000",
