@@ -73,7 +73,7 @@
   ],
   "layoutParameters": [
     {
-      "col": "4",
+      "col": "5",
       "row": "_c4y8fd6",
       "id": "_3q4hofk"
     },
@@ -83,9 +83,9 @@
       "id": "_de7jbhz"
     },
     {
-      "id": "_ksmzj28",
       "col": "4",
-      "row": "_c4y8fd6"
+      "row": "_c4y8fd6",
+      "id": "_ksmzj28"
     },
     {
       "id": "_xphhxtz",
