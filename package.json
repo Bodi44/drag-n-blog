@@ -7,13 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:frontend": "cd frontend && npm run build",
     "build:backend": "cd backend && npm run build",
-    "build": "npm build:backend && npm build:frontend",
+    "build": "npm run build:backend && npm run build:frontend",
     "start:frontend": "cd frontend && npm start",
     "start:backend": "cd backend && npm start",
-    "start": "concurrently - kill-others \"yarn start:backend\" \"yarn start:frontend\"",
+    "start": "concurrently - kill-others \"npm run start:backend\" \"npm run start:frontend\"",
     "install:backend": "cd \"backend\" && npm install",
     "install:frontend": "cd \"frontend\" && npm install",
-    "postinstall": "npm install:backend && npm install:frontend"
+    "postinstall": "npm run install:backend && npm run install:frontend"
   },
   "repository": {
     "type": "git",

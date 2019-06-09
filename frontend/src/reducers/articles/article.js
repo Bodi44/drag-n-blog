@@ -8,7 +8,7 @@ import {
   UPDATE_ARTICLE
 } from '../../actions'
 
-const database = new Database('http://localhost:4000/articles')
+const database = new Database('http://localhost:4001/articles')
 
 const article = (state, action) => {
   switch (action.type) {

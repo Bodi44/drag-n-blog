@@ -16,7 +16,7 @@ import {
 
 import Database from '../../Database'
 
-const database = new Database('http://localhost:4000/rowsInLayout')
+const database = new Database('http://localhost:4001/rowsInLayout')
 
 const rowsByIds = (state = {}, action) => {
   switch (action.type) {

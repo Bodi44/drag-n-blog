@@ -24,13 +24,13 @@
     "redux-undo": "^0.6.1"
   },
   "scripts": {
-    "start": "concurrently \"json-server --watch src/Database/db.json --port 4000\" \"react-scripts start\"",
+    "start": "concurrently \"json-server --watch src/Database/db.json --port 4001\" \"react-scripts start\"",
     "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "json:server": "json-server --watch src/Database/db.json --port 4000",
+    "json:server": "json-server --watch src/Database/db.json --port 4001",
     "flow": "flow",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"

@@ -1,4 +1,4 @@
-const API = 'http://localhost:4000'
+const API = 'http://localhost:4001'
 
 const handleErrors = response => {
   if (!response.ok) throw Error(response.statusText)
