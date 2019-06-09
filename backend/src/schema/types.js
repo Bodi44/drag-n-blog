@@ -19,6 +19,15 @@ const ArticleInputType = new GraphQLInputObjectType({
   })
 })
 
+const LayoutInputType = new GraphQLInputObjectType({
+  name: 'LayoutInputType',
+  fields: () => ({
+    rowId: { type: GraphQLID },
+    columnSize: { type: GraphQLString },
+    indexInRow: { type: GraphQLInt }
+  })
+})
+
 const ArticleType = new GraphQLObjectType({
   name: 'Article',
   fields: () => ({
@@ -44,5 +53,6 @@ const LayoutType = new GraphQLObjectType({
 module.exports = {
   ArticleInputType: ArticleInputType,
   ArticleType: ArticleType,
-  LayoutType: LayoutType
+  LayoutType: LayoutType,
+  LayoutInputType: LayoutInputType
 }

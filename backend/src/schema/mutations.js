@@ -9,7 +9,7 @@ const {
 } = graphql
 
 const types = require('./types')
-const { ArticleInputType, ArticleType, LayoutType } = types
+const { ArticleInputType, ArticleType, LayoutType, LayoutInputType } = types
 
 const Article = require('../models/article')
 const Layout = require('../models/layout')
@@ -70,6 +70,21 @@ const Mutation = new GraphQLObjectType({
           indexInRow: args.indexInRow
         })
         return layoutParam.save()
+      }
+    },
+    updateAllLayout: {
+      type: LayoutType,
+      args: {
+        data: { type: new GraphQLNonNull(GraphQLList(LayoutInputType)) }
+      },
+      resolve(parent, args) {
+        Layout.remove({})
+          .then(() =>
+            Layout.collection.insert(args.data, err => {
+              if (err) console.log(err)
+              else console.log('inserted: ', args.data)
+            })
+          )
       }
     }
   }
