@@ -1,0 +1,32 @@
+{
+  "name": "drag-n-blog",
+  "version": "1.0.0",
+  "description": "```\r git clone https://github.com/Bodi44/drag-n-blog.git\r npm install\r npm start\r ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "build": "npm build:backend && npm build:frontend",
+    "start:frontend": "cd frontend && npm start",
+    "start:backend": "cd backend && npm start",
+    "start": "concurrently - kill-others \"yarn start:backend\" \"yarn start:frontend\"",
+    "install:backend": "cd \"backend\" && npm install",
+    "install:frontend": "cd \"frontend\" && npm install",
+    "postinstall": "npm install:backend && npm install:frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bodi44/Drag-n-Blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bodi44/Drag-n-Blog/issues"
+  },
+  "homepage": "https://github.com/Bodi44/Drag-n-Blog#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}
