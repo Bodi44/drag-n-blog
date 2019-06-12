@@ -14,6 +14,7 @@ const ViewPost = (props: ViewPostProps) => {
   const article  = props.location.state.data;
   return (
     <div className={"ViewPost"}>
+      <img className={"ViewPost__image"} src={article.image} alt="image"/>
       <h1 className={"ViewPost__title"}>{article.title}</h1>
       <h3 className={"ViewPost__author"}>{article.author}</h3>
       <p className={"ViewPost__content"}>{article.content}</p>

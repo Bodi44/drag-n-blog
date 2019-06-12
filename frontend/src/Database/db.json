@@ -116,6 +116,11 @@
       "id": "_r7hj27b",
       "col": "6",
       "row": "_r5luzwd"
+    },
+    {
+      "id": "_ksmzj28",
+      "col": "12",
+      "row": "_pspbi9o"
     }
   ],
   "rowsInLayout": [
@@ -130,6 +135,12 @@
       "id": "_72ouvr8",
       "articlesInRow": [
         "_7sj486e"
+      ]
+    },
+    {
+      "id": "_pspbi9o",
+      "articlesInRow": [
+        "_ksmzj28"
       ]
     }
   ]
