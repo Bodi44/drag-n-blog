@@ -1,18 +1,6 @@
 {
   "articles": [
     {
-      "title": "Reflecting fnvnkfsnvksnvknvsk 11",
-      "content": "It may look like I am in an enviable position, running a profitable, growing, low-maintenance software business \nIt took me years to realize I was misguided from the outset. I no longer feel shame in the path I took to get to where I am today — but for a long time, I did. This is my journey, from the beginning.",
-      "date": "2019-03-28",
-      "author": "Maxvfsvsvvs",
-      "image": "http://a.rgbimg.com/users/x/xy/xymonau/600/2dyWx2m.jpg",
-      "tags": [
-        "business",
-        "success"
-      ],
-      "id": "_os1acb7"
-    },
-    {
       "title": "As a Designer, I Refuse to Call People ‘Users’1",
       "content": "ve worked in UX for the better part of a decade. From now on, I plan to remove the word “user” and any associated terms—like “UX” and “user experience”—from my vocabulary. It’ll take time. I’ll start by trying to avoid using them in conversations at work. I’ll erase them from my LinkedIn profile. I’ll find new ways to describe my job when making small talk. I will experiment and look for something better.\n\nI don’t have any strong alternatives to offer right now, but I’m confident I’ll find some. I think of it as a challenge. The U-words are everywhere in tech, but they no longer reflect my values or my approach to design and technology. I can either keep using language I disagree with, or I can begin to search for what’s next. I choose to search.",
       "date": "2019-03-28",
@@ -76,60 +64,72 @@
         "technologies"
       ],
       "id": "_3q4hofk"
+    },
+    {
+      "id": "_xdrm6an",
+      "title": "Regulators Just Put a Target on Apple’s Back",
+      "content": "While the tech world’s eyes were fastened on Apple’s annual developer conference Monday, the news with the potential to shake the industry had nothing to do with the Mac Pro, iMessage Memoji, or iOS 13’s Dark Mode. It was the seismic rumbling of antitrust activity emanating from Washington, D.C.\n\nThe tremors began Friday night with a report that the Department of Justice was preparing an antitrust probe of Google. They continued Sunday with word that the Federal Trade Commission might take a closer look at Amazon’s competitive practices. The aftershocks rolled on through Monday, with reports that the DOJ and FTC might also have Apple and Facebook, respectively, in their crosshairs. And then came word that the House Judiciary Committee is planning a sweeping antitrust probe of its own.\n\nWhat it all means isn’t clear just yet. Both the DOJ and FTC have declined comment, leaving others to piece together the patchwork of anonymously sourced reports. It seems that neither has actually launched an investigation yet into any of the companies, which helps to explain why no one has reported on what their nature or focus might be. The probe by House Democrats is the only one that has been formally announced.",
+      "date": "2019-06-11",
+      "author": "Will Oremus",
+      "image": "https://ekgaming.com/wp-content/uploads/2017/12/apple-logo-banner.png",
+      "tags": [
+        "INDUSTRY",
+        " CONSUMER TECH"
+      ]
+    },
+    {
+      "id": "_r7hj27b",
+      "title": "How I went from 33-year-old museum tour guide to professional Web Developer and UX Designer: My 18-month coding journey",
+      "content": "My story is a bit different from the stories you have read so many times. I did not get my first web development job in 3 months. Not in 6 months. Not even in a year. My journey took 18 months, which were tough and frustrating but also exciting and amazing.\n\nMy background, like many other self taught developers, is one that seems as far as possible from any type of technology. I have a Master’s degree in History. I worked as a guide in a museum, as a group facilitator in a non-profit organization, and as a teacher. I loved all of these roles. Otherwise, I wouldn’t have chosen to spend my time doing them.\n\nAt some point I decided to change it all. I wanted to make a bigger impact through my work, especially in non-profit organizations. In addition, after living in 3 countries (in 3 continents) in 6 years, I wanted to start a career that would not require me to find a new job and even a new field each time I move.\n\nI didn’t need much research to conclude that technology can answer both goals. It can fill my passion to contribute in a (probably the most) meaningful way and it could offer me the freedom to move and relocate while continuing my work.\n\nI quit my great job as a teacher, left a nice salary and job security behind, and started to be a “full time web development self learner.” That was my title for quite a long time.\n\nI began learning web development by myself, thinking (af",
+      "date": "2019-06-11",
+      "author": "Vered Rekanati Mordechai",
+      "image": "http://a.rgbimg.com/users/x/xy/xymonau/600/2dyWx2m.jpg",
+      "tags": [
+        "UX/UI",
+        " Design"
+      ]
+    },
+    {
+      "id": "_7sj486e",
+      "title": "Cybersecurity has never been more important. Here’s how you can keep up.",
+      "content": "The past few months have been some of the most substantial in cybersecurity history:\n\n    WikiLeaks released their Vault7 collection of CIA hacks\n    The WannaCry ransomware has infected hundreds of thousands of computers.\n    The FBI is investigating Russia hacking that may have meddled in the U.S. presidential election.\n    Congress voted on a resolution to roll back Federal Communications Commission privacy protections that kept Internet Service Providers from selling your data to third-parties (and opening the door for ISPs to use your data in other creepy ways).\n    And the open web is under threat from mega-corporations who may use deep packet inspection to turn it into a locked-down Chinese-style internet.\n\nIt would be an understatement to say that issues surrounding cybersecurity and digital privacy are “in the news.” Because these issues are a lot closer to home.\nIn fact they’re in your home, literally. In your computers, your smart phones, your smart-home devices, and maybe even your TVs.\n\nWhich means you might be interested in learning more about the field of cybersecurity, because it’s certainly affecting you. Privacy, security, digital rights, free expression, the open web — these are all raging issues that trace back to the fundamental mechanics of networks.\n\nI’m invested in diving deeper into this world. I work as a consultant at Crypho, a Norwegian security software company that builds private and secure communication tools for organizations. And I’m currently in deferral at UC Berkeley Law, where I plan to learn more about digital privacy and security law.\n\nAnd, in order to stay on top of the issues, I subscribe to the following free email newsletters.",
+      "date": "2019-06-11",
+      "author": "Steven Gilbert",
+      "image": "https://www.assured.enterprises/wp-content/uploads/2017/03/Mergers-Acquisitions-Cybersecurity-Banner.png",
+      "tags": [
+        "cybersecutiry"
+      ]
     }
   ],
   "layoutParameters": [
     {
-      "col": "NaN",
-      "row": "_c4y8fd6",
-      "id": "_de7jbhz"
+      "col": "6",
+      "row": "_r5luzwd",
+      "id": "_xphhxtz"
     },
     {
-      "col": "NaN",
-      "row": "_c4y8fd6",
-      "id": "_ksmzj28"
-    },
-    {
-      "id": "_xphhxtz",
+      "id": "_7sj486e",
       "col": "12",
-      "row": "_cucrrrw"
+      "row": "_72ouvr8"
     },
     {
-      "col": "4",
-      "row": "_881s5p4",
-      "id": "_3q4hofk"
-    },
-    {
-      "col": "3",
-      "row": "_881s5p4",
-      "id": "_rkf0wce"
-    },
-    {
-      "id": "_8j39hx0",
-      "col": "4",
-      "row": "_881s5p4"
+      "id": "_r7hj27b",
+      "col": "6",
+      "row": "_r5luzwd"
     }
   ],
   "rowsInLayout": [
     {
-      "id": "_c4y8fd6",
+      "id": "_r5luzwd",
       "articlesInRow": [
-        "_de7jbhz",
-        "_ksmzj28"
+        "_xphhxtz",
+        "_r7hj27b"
       ]
     },
     {
-      "id": "_cucrrrw",
+      "id": "_72ouvr8",
       "articlesInRow": [
-        "_xphhxtz"
-      ]
-    },
-    {
-      "id": "_881s5p4",
-      "articlesInRow": [
-        "_3q4hofk",
-        "_rkf0wce",
-        "_8j39hx0"
+        "_7sj486e"
       ]
     }
   ]

@@ -73,7 +73,10 @@ const Layout = (props: LayoutProps) => {
              articlesIdsInRow={row.articlesInRow}
         />
       )}
-      <Toolbar/>
+      {
+        layoutParameters.length > 0 ?
+          <Toolbar/> : null
+      }
     </div>
   )
 }
