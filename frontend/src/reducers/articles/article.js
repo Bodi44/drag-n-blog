@@ -22,6 +22,7 @@ const article = (state, action) => {
         content: action.content,
         date: action.date,
         author: action.author,
+        image: action.image,
         tags: action.tags
       }
     case REMOVE_ARTICLE:
@@ -32,6 +33,7 @@ const article = (state, action) => {
         title: action.title,
         content: action.content,
         author: action.author,
+        image: action.image,
         tags: action.tags
       })
       return {
@@ -40,6 +42,7 @@ const article = (state, action) => {
         content: action.content,
         date: dateToString(new Date()),
         author: action.author,
+        image: action.image,
         tags: action.tags
       }
     default:

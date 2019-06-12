@@ -34,7 +34,7 @@
     {
       "title": "Apple’s New iPad Mini Is a Powerful Throwback",
       "content": "Apple’s new iPad Mini, however, is a design throwback, thawed like Sylvester Stallone’s cryogenically frozen Demolition Man to tackle the tablet challenges of a new generation of users.\n\nAt a glance, the iPad Mini 5 is a match for 2015’s iPad Mini 4, right down to physical Touch ID button. That’s right — Apple has delivered a new tablet with a mechanical home button. In an era when the iPhone hasn’t had a movable home button since 2016, and when the iPhone XS and iPad Pros don’t even have home buttons at all, this decision is mind-boggling. Don’t get me wrong, I’ve always been a fan of that button — but this is 2019, not 2015.",
-      "date": "2019-03-28",
+      "date": "2019-06-12",
       "author": "Lance Ulanoff",
       "image": "https://www.mobozy.com/wp-content/uploads/2017/10/apple-banner.jpg",
       "tags": [
@@ -86,7 +86,7 @@
       "image": "http://a.rgbimg.com/users/x/xy/xymonau/600/2dyWx2m.jpg",
       "tags": [
         "UX/UI",
-        " Design"
+        "Design"
       ]
     },
     {
@@ -103,44 +103,16 @@
   ],
   "layoutParameters": [
     {
-      "col": "6",
-      "row": "_r5luzwd",
-      "id": "_xphhxtz"
-    },
-    {
       "id": "_7sj486e",
       "col": "12",
-      "row": "_72ouvr8"
-    },
-    {
-      "id": "_r7hj27b",
-      "col": "6",
-      "row": "_r5luzwd"
-    },
-    {
-      "id": "_ksmzj28",
-      "col": "12",
-      "row": "_pspbi9o"
+      "row": "_ginslyc"
     }
   ],
   "rowsInLayout": [
     {
-      "id": "_r5luzwd",
-      "articlesInRow": [
-        "_xphhxtz",
-        "_r7hj27b"
-      ]
-    },
-    {
-      "id": "_72ouvr8",
+      "id": "_ginslyc",
       "articlesInRow": [
         "_7sj486e"
-      ]
-    },
-    {
-      "id": "_pspbi9o",
-      "articlesInRow": [
-        "_ksmzj28"
       ]
     }
   ]

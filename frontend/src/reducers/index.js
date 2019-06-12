@@ -31,12 +31,6 @@ export const getIdsInLayout = state =>
 export const getLayoutParameters = state =>
   fromLayout.getLayoutParameters(state.layout)
 
-// export const canUndoLayout = state =>
-//   fromLayout.canUndoLayout(state.layout)
-//
-// export const canRedoLayout = state =>
-//   fromLayout.canRedoLayout(state.layout)
-
 export const getAllRows = state =>
   fromLayout.getAllRows(state.layout)
 

@@ -32,6 +32,8 @@ const WriteBlog = props => {
   const [tags, setTags] = useState(props.tags)
   const [input, setInput] = useState('')
 
+  console.log(props.image)
+
   const handleInputChange = e => setInput(e.target.value)
   const handleInputKeyDown = e => {
     if (e.keyCode === SPACE_KYE_CODE) {
@@ -54,6 +56,7 @@ const WriteBlog = props => {
       title: title.value,
       content: content.value,
       author: author.value,
+      image: props.image,
       tags
     }
     props.publishArticle(article)
@@ -126,6 +129,7 @@ const enhancer = compose(
           title: '',
           content: '',
           author: '',
+          image: '',
           tags: []
         }
       }

@@ -44,6 +44,7 @@ export const addArticle = (data: Object): { type: string, ...Article } => ({
   content: data.content,
   date: dateToString(new Date()),
   author: data.author,
+  image: data.image,
   tags: data.tags
 })
 
@@ -54,13 +55,14 @@ export const removeArticle = (id: string): { type: string, id: string } => ({
 
 export const updateArticle = (
   id: string,
-  { title, content, author, tags }: Object
+  { title, content, author, image, tags }: Object
 ): { type: string, ...Article } => ({
   type: UPDATE_ARTICLE,
   id,
   title,
   content,
   author,
+  image,
   tags
 })
 
