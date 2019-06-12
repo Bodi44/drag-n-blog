@@ -34,12 +34,12 @@ const WriteBlog = props => {
 
   const handleInputChange = e => setInput(e.target.value)
   const handleInputKeyDown = e => {
-    if ( e.keyCode === SPACE_KYE_CODE ) {
-      const {value} = e.target;
+    if (e.keyCode === SPACE_KYE_CODE) {
+      const { value } = e.target
       setTags([...tags, value])
       setInput('')
     }
-    if ( tags.length && e.keyCode === 8 && !input.length ) {
+    if (tags.length && e.keyCode === 8 && !input.length) {
       setTags(tags.slice(0, tags.length - 1))
     }
   }
@@ -61,6 +61,13 @@ const WriteBlog = props => {
 
   return (
     <form className={'WriteBlog'} onSubmit={handleSubmit}>
+      <div className={b('upload-file')}>
+        <label htmlFor="file" className={b('file-label')}>
+          <img src="https://res.cloudinary.com/maxvoloskiy/image/upload/c_scale,w_55/v1550486428/Drag'n'Blog/camera.png"
+               alt={'upload file'}/>
+        </label>
+        <input type="file" id={'file'} className={b('file')}/>
+      </div>
       <input
         className={b('title')}
         placeholder="Title"
@@ -146,7 +153,7 @@ const enhancer = compose(
         history.push('/')
       }
     }
-  }),
+  })
 )
 
 export default enhancer(WriteBlog)

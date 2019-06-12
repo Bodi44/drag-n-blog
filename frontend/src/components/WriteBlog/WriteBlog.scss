@@ -4,6 +4,21 @@
   padding: 0;
   width: 800px;
 
+  &__upload-file {
+    left: 320px;
+    opacity: 0.6;
+    position: absolute;
+  }
+
+  &__file-pointer {
+    cursor: pointer;
+  }
+
+  &__file {
+    display: none;
+    position: absolute;
+  }
+
   &__title {
     width: 100%;
     padding: 0 20px;
@@ -31,7 +46,7 @@
 
   &__content {
     height: 200px;
-    resize:none !important;
+    resize: none !important;
     width: 100%;
     padding: 20px;
     font-family: Roboto Slab, serif;
