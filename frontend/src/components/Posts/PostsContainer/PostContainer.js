@@ -19,13 +19,16 @@ const PostContainer = ({ articlesInRow, parametersOfRowArticles }: PostContainer
   return (
     <div className={'grid grid_no-transition'}>
       {articlesInRow.map(article => (
-          <Link to={{ pathname: '/view_post', state: { data: article } }}
-                className={`grid__cell_${parametersOfRowArticles.filter(param => param.id === article.id)[0].col} ${b()}`}>
+        <Link to={{ pathname: '/view_post', state: { data: article } }}
+              className={`grid__cell_${parametersOfRowArticles.filter(param => param.id === article.id)[0].col} ${b()}`}>
+          <img src={article.image} className={b('image')} alt="image"/>
+          <div className={b('info')}>
             <h2 className={b('title')}>{article.title}</h2>
             <p className={b('content')}>{shortenContent(article.content, 100)}</p>
             <small className={b('author')}>{article.author}</small>
             <time className={b('date')}>{article.date}</time>
-          </Link>
+          </div>
+        </Link>
         )
       )}
     </div>

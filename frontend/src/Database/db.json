@@ -5,6 +5,7 @@
       "content": "It may look like I am in an enviable position, running a profitable, growing, low-maintenance software business \nIt took me years to realize I was misguided from the outset. I no longer feel shame in the path I took to get to where I am today — but for a long time, I did. This is my journey, from the beginning.",
       "date": "2019-03-28",
       "author": "Maxvfsvsvvs",
+      "image": "http://a.rgbimg.com/users/x/xy/xymonau/600/2dyWx2m.jpg",
       "tags": [
         "business",
         "success"
@@ -16,6 +17,7 @@
       "content": "ve worked in UX for the better part of a decade. From now on, I plan to remove the word “user” and any associated terms—like “UX” and “user experience”—from my vocabulary. It’ll take time. I’ll start by trying to avoid using them in conversations at work. I’ll erase them from my LinkedIn profile. I’ll find new ways to describe my job when making small talk. I will experiment and look for something better.\n\nI don’t have any strong alternatives to offer right now, but I’m confident I’ll find some. I think of it as a challenge. The U-words are everywhere in tech, but they no longer reflect my values or my approach to design and technology. I can either keep using language I disagree with, or I can begin to search for what’s next. I choose to search.",
       "date": "2019-03-28",
       "author": "Adam Leftonggg",
+      "image": "http://www.starspangledbannerlivingflag.org/wp-content/uploads/2018/09/aboutus-hyderabad.jpg",
       "tags": [],
       "id": "_8j39hx0"
     },
@@ -24,6 +26,7 @@
       "content": "his post has been published first on CodingTheSmartWay.com.\n\nA common task for front-end developers is to simulate a backend REST service to deliver some data in JSON format to the front-end application and make sure everything is working as expected.\n \n Of course you can setup a full backend server, e.g. by using Node.js, Express and MongoDB. However this takes some time and a much simpler approach can help to speed up front-end development time. \n \n JSON Server is a simple project that helps you to setup a REST API with CRUD operations very fast. The project website can be found at https://github.com/typicode/json-server.\n \n In the following you’ll lean how to setup JSON server and publish a sample REST API. Furthermore you’ll see how to use another library, Faker.js, to generate fake data for the REST API which is exposed by using JSON server.",
       "date": "2019-03-28",
       "author": "Sebastian Eschweiler",
+      "image": "https://sutoprise.files.wordpress.com/2014/04/restbanner.png",
       "tags": [
         "javascript"
       ],
@@ -34,6 +37,7 @@
       "content": "At the end of 2018, Instagram overhauled its leadership in the wake of the sudden departure of its two cofounders, Kevin Systrom and Mike Krieger.\n\nPart of that overhaul included the elevation of Vishal Shah, a longtime Facebook employee who previously ran Instagram’s business products, to the Head of Product role. Shah reports to Instagram boss Adam Mosseri, who in turn reports to Facebook CEO Mark Zuckerberg.\n\nA specific area of focus for Shah over the past couple of years has been shopping on Instagram. After letting brands originally just add product tags to their photos, Instagram took the plunge this week by opening up the ability to complete purchases inside the app.\n\nShah sees e-commerce on Instagram as potentially the next great revenue driver after advertising. And that’s no small statement: Some analyst projections estimate that if Instagram were to be spun out of its Facebook parent company, it would already be at least a $100 billion business.\n\n“If you look at overall commerce, it’s a larger part of GDP (gross domestic product) than marketing is today,” Shah told Cheddar. “E-commerce is a smaller part of overall commerce and mobile is even smaller. So I think there’s a while before we can get to a place where it is as meaningful as our ads business today. But the reason we’re excited about the opportunity is I think the market is quite, quite large.”\n\nOn the heels of Instagram’s shopping announcement, Shah recently sat down for a wide-ranging interview with Cheddar’s Alex Heath and Michelle Castillo at Instagram’s New York City office. Discussed topics include the business opportunity Instagram sees in e-commerce, the state of IGTV, the departure of Instagram’s two cofounders, Facebook’s controversial plan to unify its messaging apps, Instagram’s approach to product development, and much more.\n\nThe following interview has been lightly edited for length and clarity.",
       "date": "2019-03-28",
       "author": "Alex Heath",
+      "image": "https://i0.wp.com/cmgventures.com/wp-content/uploads/2018/04/instagram-banner-01.png?ssl=1",
       "tags": [
         "instagram"
       ],
@@ -44,6 +48,7 @@
       "content": "Apple’s new iPad Mini, however, is a design throwback, thawed like Sylvester Stallone’s cryogenically frozen Demolition Man to tackle the tablet challenges of a new generation of users.\n\nAt a glance, the iPad Mini 5 is a match for 2015’s iPad Mini 4, right down to physical Touch ID button. That’s right — Apple has delivered a new tablet with a mechanical home button. In an era when the iPhone hasn’t had a movable home button since 2016, and when the iPhone XS and iPad Pros don’t even have home buttons at all, this decision is mind-boggling. Don’t get me wrong, I’ve always been a fan of that button — but this is 2019, not 2015.",
       "date": "2019-03-28",
       "author": "Lance Ulanoff",
+      "image": "https://www.mobozy.com/wp-content/uploads/2017/10/apple-banner.jpg",
       "tags": [
         "technologies"
       ],
@@ -54,6 +59,7 @@
       "content": "This month, Facebook founder Mark Zuckerberg has announced yet another new direction for his famously bad-acting company. Now, he says, the platform once responsible for the Cambridge Analytica election fiasco and countless other personal invasions will become the poster child for privacy and encryption. Maybe after all the evasions, missteps, and pivots, Zuckerberg is finally learning from his experiences.\n\nBut as I watch Mark Zuckerberg zig and zag his way through one disaster after another, I can’t help but muse on one of the ways he could have spared himself — and the rest of humanity — all this trouble. What if he had simply stayed in school?\n\nAt the end of his sophomore year, Mark Zuckerberg dropped out of Harvard’s class of 2006 in order to pursue development of Facebook. The social networking platform was already the 10th most trafficked site on the internet, so young Zuck decided to follow in the footsteps of Harvard dropout Bill Gates and pursue Silicon Valley venture capitalists over Cambridge academics.\n\nAfter all, at least by the logic of lean startups, Harvard had already served its purpose. Young Zuck had gained enough programming chops in computer science to build his minimum viable product, and — perhaps more important — he had leveraged the elite student population of Harvard to find the partners and ideas he needed to get a company up and running.\n\nBut by forgoing a college education, Zuckerberg may have denied himself — and the world — the benefit of some historical, cultural, economic, and political context for his work. And we are all now paying the price for his impatience. What if Mark Zuckerberg had decided to stay in school instead? Looking back through Harvard’s course catalogs for 2005 and 2006, one finds a bounty of offerings, from sociology and psychology to philosophy and literature, that would have challenged the assumptions underlying Silicon Valley dogma and might just have given Zuckerberg the insight he needed to build a platform that promoted human cognition and connection, and even democracy itself, instead of undermining them.\n\nFor example, over his four semesters as an upperclassman, Zuckerberg could have availed himself of Harvard professors, including Greg Manciw, former chairman of the President’s Council of Economic Advisers. If Zuck had taken Manciw’s “Principles of Economics” class, he may have recognized that there is a growth-based economic operating system running beneath every Silicon Valley unicorn — one that ultimately demands turning users into products or, worse, data fodder for the algorithms. He may have realized that taking the most investment at the highest valuation would only put his company at the mercy of its shareholders and obligate him to grow by any means necessary.\n\nOr what if he had chosen to study with superstar literary critic Helen Vendler, whose undergraduate course “Literature and the Arts” offered “a study of poetry as the history and science of feeling”? Might Zuckerberg have later been able to predict his platform’s bias for emotional insensitivity, or could he have curtailed the use of language as cognitive weapon?\n\nMaybe that inquiry would have been even better informed by taking Steven Pinker’s course that spring, “The Human Mind,” which covered psychoanalysis, behavioralism, cognitive neuroscience, and evolutionary psychology. Imagine if Zuckerberg had considered human consciousness in an academic or ethical context before setting upon entraining the collective psyche through his news feed algorithms?",
       "date": "2019-04-17",
       "author": " Douglas Rushkoff223",
+      "image": "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F669886370%2F960x0.jpg%3Ffit%3Dscale",
       "tags": [
         "facebook",
         "vfvld"
@@ -65,6 +71,7 @@
       "content": "A number of aspects of this message make me feel uneasy:\n\nThe threatening tone\nAn expectation to work weekends\nThe open, public declaration of there being a watch list and the open, public threat of being put on it\nA “simple rule,” which is that staff who do not hit their KPIs will get fired with no negotiations\nThe Slack emoji reactions: “push,” “get (sh)it done,” a tank, the Mortal Kombat logo — it implies that this is a war and that winning the war must happen at all costs\nNow, don’t get me wrong — I love startups, and I love an audacious belief in taking on the world and winning. However, something is going (or has gone) wrong with startup culture.\n\nI don’t believe that we’ve ended up where we are through malicious intent. However, we are all influenced by the practices and celebrated successes of the famous companies we see publicized in our industry, and those celebrated successes are the “unicorns,” the 10x-growth rebels: hustling hard, being disruptive, vacuuming talent and competitors in a race to become the dominant force in the market.\n\nWe read books, we watch podcasts, we follow influential business people on Twitter, and slowly, with time, we move the norm toward an extreme because of the echo chamber that surrounds us. Building technology has been enabled by, but also heavily tainted by, growth-or-die culture.\n\nCan there not be a middle ground?",
       "date": "2019-04-17",
       "author": " James Staniers",
+      "image": "https://i.imgur.com/zYhtf66.jpg",
       "tags": [
         "technologies"
       ],
@@ -73,17 +80,12 @@
   ],
   "layoutParameters": [
     {
-      "col": "5",
-      "row": "_c4y8fd6",
-      "id": "_3q4hofk"
-    },
-    {
-      "col": "4",
+      "col": "NaN",
       "row": "_c4y8fd6",
       "id": "_de7jbhz"
     },
     {
-      "col": "4",
+      "col": "NaN",
       "row": "_c4y8fd6",
       "id": "_ksmzj28"
     },
@@ -91,13 +93,27 @@
       "id": "_xphhxtz",
       "col": "12",
       "row": "_cucrrrw"
+    },
+    {
+      "col": "4",
+      "row": "_881s5p4",
+      "id": "_3q4hofk"
+    },
+    {
+      "col": "3",
+      "row": "_881s5p4",
+      "id": "_rkf0wce"
+    },
+    {
+      "id": "_8j39hx0",
+      "col": "4",
+      "row": "_881s5p4"
     }
   ],
   "rowsInLayout": [
     {
       "id": "_c4y8fd6",
       "articlesInRow": [
-        "_3q4hofk",
         "_de7jbhz",
         "_ksmzj28"
       ]
@@ -106,6 +122,14 @@
       "id": "_cucrrrw",
       "articlesInRow": [
         "_xphhxtz"
+      ]
+    },
+    {
+      "id": "_881s5p4",
+      "articlesInRow": [
+        "_3q4hofk",
+        "_rkf0wce",
+        "_8j39hx0"
       ]
     }
   ]
